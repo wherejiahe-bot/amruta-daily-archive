@@ -13,47 +13,42 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 .nav-bar{display:flex;align-items:center;justify-content:space-between;padding:20px 0;font-family:-apple-system,BlinkMacSystemFont,'Noto Sans SC','PingFang SC',sans-serif}
 .nav-bar a{color:#8a7a6a;text-decoration:none;font-size:14px;transition:color .2s}
 .nav-bar a:hover{color:#5a4a3a}
-.article-header{padding:40px 0 32px;text-align:center}
-.article-header .article-date{font-family:-apple-system,BlinkMacSystemFont,'Noto Sans SC',sans-serif;font-size:14px;color:#aaa;letter-spacing:.05em;margin-bottom:6px}
-.article-header .article-source{font-family:-apple-system,BlinkMacSystemFont,'Noto Sans SC',sans-serif;font-size:13px;color:#bbb;margin-bottom:16px}
+.article-header{padding:32px 0 24px;text-align:center}
+.article-header .article-date{font-family:-apple-system,BlinkMacSystemFont,'Noto Sans SC',sans-serif;font-size:13px;color:#aaa;letter-spacing:.05em;margin-bottom:5px}
+.article-header .article-source{font-family:-apple-system,BlinkMacSystemFont,'Noto Sans SC',sans-serif;font-size:12px;color:#ccc;margin-bottom:14px}
 .article-header .article-source a{color:#8a7a6a;text-decoration:none}
-.article-header .article-source a:hover{text-decoration:underline}
-.article-header h1{font-size:clamp(24px,4vw,34px);font-weight:600;color:#1a1a1a;letter-spacing:.02em;line-height:1.35}
-.article-header .chinese-title{font-size:clamp(18px,3vw,24px);color:#666;font-weight:500;margin-top:10px}
-.divider{display:flex;align-items:center;gap:16px;margin:8px 0 40px;color:#ddd;font-size:12px;font-family:-apple-system,BlinkMacSystemFont,'Noto Sans SC',sans-serif}
+.article-header h1{font-size:clamp(20px,3.5vw,28px);font-weight:600;color:#1a1a1a;letter-spacing:.02em;line-height:1.35}
+.article-header .chinese-title{font-size:clamp(15px,2.5vw,19px);color:#888;font-weight:400;margin-top:6px}
+.divider{display:flex;align-items:center;gap:16px;margin:6px 0 28px;color:#ddd;font-size:12px}
 .divider::before,.divider::after{content:'';flex:1;height:1px;background:linear-gradient(to right,transparent,#e0d8d0,transparent)}
-.article-content{background:rgba(255,255,255,0.6);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,0.8);border-radius:16px;padding:40px 48px;margin-bottom:40px}
-.article-content .lang-label{font-family:-apple-system,BlinkMacSystemFont,'Noto Sans SC',sans-serif;font-size:12px;color:#bbb;text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px}
-.article-content .en-block{margin-bottom:28px;padding-bottom:24px;border-bottom:1px solid rgba(0,0,0,0.05)}
-.article-content .zh-block{margin-bottom:28px;padding-bottom:24px;border-bottom:1px solid rgba(0,0,0,0.05)}
-.article-content .en-block:last-child,.article-content .zh-block:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
-.article-content .en-text{font-size:17px;color:#3a3a3a;line-height:1.75}
-.article-content .zh-text{font-size:17px;color:#555;line-height:1.85;word-break:keep-all;overflow-wrap:anywhere;text-wrap:balance}
-footer{text-align:center;padding:32px 0 48px;font-family:-apple-system,BlinkMacSystemFont,'Noto Sans SC',sans-serif}
+.article-content{background:rgba(255,255,255,0.6);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,0.8);border-radius:16px;padding:28px 40px;margin-bottom:32px}
+.article-content .pair{margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid rgba(0,0,0,0.05)}
+.article-content .pair:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.article-content .en-text{font-size:16px;color:#3a3a3a;line-height:1.7;margin-bottom:4px}
+.article-content .zh-text{font-size:15px;color:#777;line-height:1.75;word-break:keep-all;overflow-wrap:anywhere}
+footer{text-align:center;padding:24px 0 40px;font-family:-apple-system,BlinkMacSystemFont,'Noto Sans SC',sans-serif}
 footer a{color:#8a7a6a;text-decoration:none;font-size:14px;transition:color .2s}
 footer a:hover{color:#5a4a3a}
 footer .sep{color:#ddd;margin:0 8px}
-/* Word click */
-.clickable-text .word{cursor:pointer;border-radius:3px;transition:background .15s}
-.clickable-text .word:hover{background:rgba(138,122,106,0.15)}
-.clickable-text .word.saved{color:#8a7a6a;border-bottom:1px dotted #8a7a6a}
-/* Popup */
-#word-popup{display:none;position:fixed;z-index:9999;background:#fff;border:1px solid rgba(0,0,0,0.08);border-radius:16px;box-shadow:0 8px 40px rgba(0,0,0,0.12);padding:24px 28px;max-width:340px;width:90vw;font-family:-apple-system,BlinkMacSystemFont,'Noto Sans SC',sans-serif}
-#word-popup .popup-word{font-size:22px;font-weight:600;color:#1a1a1a;margin-bottom:4px}
-#word-popup .popup-phonetic{font-size:14px;color:#999;margin-bottom:12px;font-style:italic}
-#word-popup .popup-defs{max-height:200px;overflow-y:auto;margin-bottom:16px}
-#word-popup .popup-def{margin-bottom:10px}
-#word-popup .popup-pos{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#bbb;margin-bottom:3px}
-#word-popup .popup-meaning{font-size:14px;color:#444;line-height:1.6}
-#word-popup .popup-example{font-size:13px;color:#aaa;font-style:italic;margin-top:3px}
-#word-popup .popup-notfound{font-size:14px;color:#aaa;padding:8px 0}
-#word-popup .popup-actions{display:flex;gap:10px}
-#word-popup .btn-save{flex:1;padding:9px 0;background:#2c2c2c;color:#fff;border:none;border-radius:10px;font-size:14px;cursor:pointer;transition:background .2s}
+@media(max-width:600px){.article-content{padding:18px 16px}.article-header{padding:20px 0 14px}.article-content .en-text{font-size:15px}.article-content .zh-text{font-size:14px}}
+.en-text .w{cursor:pointer;border-radius:2px;transition:background .12s}
+.en-text .w:hover{background:rgba(138,122,106,0.14)}
+.en-text .w.saved{color:#8a7a6a;border-bottom:1.5px dotted #8a7a6a}
+#word-popup{display:none;position:fixed;z-index:9999;background:#fff;border:1px solid rgba(0,0,0,0.08);border-radius:14px;box-shadow:0 6px 32px rgba(0,0,0,0.11);padding:20px 24px;max-width:320px;width:88vw;font-family:-apple-system,BlinkMacSystemFont,'Noto Sans SC',sans-serif}
+#word-popup .popup-word{font-size:20px;font-weight:600;color:#1a1a1a;margin-bottom:3px}
+#word-popup .popup-phonetic{font-size:13px;color:#aaa;margin-bottom:10px;font-style:italic}
+#word-popup .popup-defs{max-height:180px;overflow-y:auto;margin-bottom:14px}
+#word-popup .popup-def{margin-bottom:9px}
+#word-popup .popup-pos{font-size:11px;text-transform:uppercase;letter-spacing:.07em;color:#ccc;margin-bottom:2px}
+#word-popup .popup-meaning{font-size:14px;color:#444;line-height:1.55}
+#word-popup .popup-example{font-size:12px;color:#bbb;font-style:italic;margin-top:2px}
+#word-popup .popup-notfound{font-size:13px;color:#bbb;padding:6px 0}
+#word-popup .popup-actions{display:flex;gap:8px}
+#word-popup .btn-save{flex:1;padding:8px 0;background:#2c2c2c;color:#fff;border:none;border-radius:9px;font-size:13px;cursor:pointer;transition:background .2s}
 #word-popup .btn-save:hover{background:#1a1a1a}
 #word-popup .btn-save.saved-state{background:#e8f4ee;color:#2a8a55}
-#word-popup .btn-close{padding:9px 16px;background:rgba(0,0,0,0.04);color:#666;border:none;border-radius:10px;font-size:14px;cursor:pointer}
+#word-popup .btn-close{padding:8px 14px;background:rgba(0,0,0,0.04);color:#888;border:none;border-radius:9px;font-size:13px;cursor:pointer}
 #word-popup-overlay{display:none;position:fixed;inset:0;z-index:9998}
-@media(max-width:600px){.article-content{padding:24px 20px}.article-header{padding:24px 0}.article-content .en-text,.article-content .zh-text{font-size:16px}}
 </style>
 </head>
 <body>
@@ -70,7 +65,7 @@ footer .sep{color:#ddd;margin:0 8px}
 <div class="container">
 <nav class="nav-bar">
   <a href="../index.html">← 返回首页</a>
-  <a href="../wordbook.html" style="display:flex;align-items:center;gap:5px;font-size:13px;color:#8a7a6a;text-decoration:none" id="nav-wb-link">📖 <span id="nav-wb-count"></span></a>
+  <a href="../wordbook.html" id="nav-wb-link" style="font-size:13px;color:#8a7a6a;text-decoration:none">📖 <span id="nav-wb-count">单词本</span></a>
   <a href="https://amruta.today/" target="_blank">Amruta.today</a>
 </nav>
 <div class="article-header">
@@ -81,50 +76,25 @@ footer .sep{color:#ddd;margin:0 8px}
 </div>
 <div class="divider">◇</div>
 <div class="article-content">
-  <div class="en-block">
-    <div class="lang-label">English</div>
-    <div class="en-text clickable-text"><span class="word" data-word="It">It</span>&#039;<span class="word" data-word="s">s</span> <span class="word" data-word="not">not</span> <span class="word" data-word="the">the</span> <span class="word" data-word="problem">problem</span> <span class="word" data-word="that">that</span> <span class="word" data-word="you">you</span> <span class="word" data-word="have">have</span> <span class="word" data-word="few">few</span> <span class="word" data-word="people">people</span>, <span class="word" data-word="it">it</span>&#039;<span class="word" data-word="s">s</span> <span class="word" data-word="not">not</span> <span class="word" data-word="the">the</span> <span class="word" data-word="problem">problem</span> <span class="word" data-word="that">that</span> <span class="word" data-word="Sahaja">Sahaja</span> <span class="word" data-word="Yoga">Yoga</span> <span class="word" data-word="cannot">cannot</span> <span class="word" data-word="give">give</span> <span class="word" data-word="you">you</span> <span class="word" data-word="Realization">Realization</span>, <span class="word" data-word="it">it</span>&#039;<span class="word" data-word="s">s</span> <span class="word" data-word="not">not</span> <span class="word" data-word="the">the</span> <span class="word" data-word="problem">problem</span> <span class="word" data-word="that">that</span> <span class="word" data-word="you">you</span> <span class="word" data-word="will">will</span> <span class="word" data-word="not">not</span> <span class="word" data-word="know">know</span> <span class="word" data-word="the">the</span> <span class="word" data-word="Truth">Truth</span>, <span class="word" data-word="but">but</span> <span class="word" data-word="the">the</span> <span class="word" data-word="whole">whole</span> <span class="word" data-word="circumstance">circumstance</span> <span class="word" data-word="is">is</span> <span class="word" data-word="such">such</span>, <span class="word" data-word="that">that</span> <span class="word" data-word="whatever">whatever</span> <span class="word" data-word="is">is</span> <span class="word" data-word="false">false</span>, <span class="word" data-word="whatever">whatever</span> <span class="word" data-word="is">is</span> <span class="word" data-word="spurious">spurious</span>, <span class="word" data-word="whatever">whatever</span> <span class="word" data-word="is">is</span> <span class="word" data-word="silly">silly</span>, <span class="word" data-word="stupid">stupid</span>, <span class="word" data-word="appeals">appeals</span> <span class="word" data-word="to">to</span> <span class="word" data-word="the">the</span> <span class="word" data-word="masses">masses</span>.</div>
+  <div class="pair">
+    <div class="en-text"><span class="w">It</span>&#039;s <span class="w">not</span> <span class="w">the</span> <span class="w">problem</span> <span class="w">that</span> <span class="w">you</span> <span class="w">have</span> <span class="w">few</span> <span class="w">people</span>, <span class="w">it</span>&#039;s <span class="w">not</span> <span class="w">the</span> <span class="w">problem</span> <span class="w">that</span> <span class="w">Sahaja</span> <span class="w">Yoga</span> <span class="w">cannot</span> <span class="w">give</span> <span class="w">you</span> <span class="w">Realization</span>, <span class="w">it</span>&#039;s <span class="w">not</span> <span class="w">the</span> <span class="w">problem</span> <span class="w">that</span> <span class="w">you</span> <span class="w">will</span> <span class="w">not</span> <span class="w">know</span> <span class="w">the</span> <span class="w">Truth</span>, <span class="w">but</span> <span class="w">the</span> <span class="w">whole</span> <span class="w">circumstance</span> <span class="w">is</span> <span class="w">such</span>, <span class="w">that</span> <span class="w">whatever</span> <span class="w">is</span> <span class="w">false</span>, <span class="w">whatever</span> <span class="w">is</span> <span class="w">spurious</span>, <span class="w">whatever</span> <span class="w">is</span> <span class="w">silly</span>, <span class="w">stupid</span>, <span class="w">appeals</span> <span class="w">to</span> <span class="w">the</span> <span class="w">masses</span>.</div>
+    <div class="zh-text">问题不在于人少，不在于霎哈嘉瑜伽无法给予你自觉，不在于你无法认识真理——而是整个情况如此：一切虚假的、伪劣的、愚蠢的、荒谬的东西，反而吸引着大众。</div>
   </div>
-
-  <div class="zh-block">
-    <div class="lang-label">中文</div>
-    <div class="zh-text">问题不在于人少，不在于霎哈嘉瑜伽无法给你自觉，不在于你无法认识真理——而是整个情况如此：一切虚假的、伪劣的、愚蠢的、荒谬的东西，反而吸引大众。</div>
+  <div class="pair">
+    <div class="en-text"><span class="w">Sometimes</span> I <span class="w">feel</span> I <span class="w">have</span> <span class="w">developed</span> a <span class="w">method</span> <span class="w">by</span> <span class="w">which</span> I <span class="w">can</span> <span class="w">give</span> <span class="w">really</span> <span class="w">en</span> <span class="w">masse</span> <span class="w">Realization</span> <span class="w">all</span> <span class="w">over</span> <span class="w">the</span> <span class="w">world</span>. <span class="w">Definitely</span> I <span class="w">have</span>. <span class="w">But</span> <span class="w">the</span> <span class="w">problem</span> <span class="w">as</span> <span class="w">it</span> <span class="w">remains</span>, <span class="w">the</span> <span class="w">masses</span> <span class="w">are</span> <span class="w">not</span> <span class="w">interested</span>. <span class="w">It</span>&#039;s <span class="w">only</span> <span class="w">very</span> <span class="w">few</span> <span class="w">who</span> <span class="w">really</span> <span class="w">can</span> <span class="w">keenly</span> <span class="w">take</span> <span class="w">interest</span> <span class="w">into</span> <span class="w">their</span> <span class="w">evolutionary</span> <span class="w">process</span> <span class="w">and</span> <span class="w">would</span> <span class="w">like</span> <span class="w">to</span> <span class="w">come</span> <span class="w">out</span> <span class="w">of</span> <span class="w">the</span> <span class="w">ignorance</span> <span class="w">in</span> <span class="w">which</span> <span class="w">they</span> <span class="w">have</span> <span class="w">been</span> <span class="w">living</span>.</div>
+    <div class="zh-text">有时我觉得，我已找到一种方法，可以在全世界大规模地给予自觉。确实如此。但问题依然存在——大众并不感兴趣。只有极少数人真正渴望关注自己的进化历程，愿意走出长久蒙蔽自己的无知。</div>
   </div>
-  <div class="en-block">
-    <div class="lang-label">English</div>
-    <div class="en-text clickable-text"><span class="word" data-word="Sometimes">Sometimes</span> <span class="word" data-word="I">I</span> <span class="word" data-word="feel">feel</span> <span class="word" data-word="I">I</span> <span class="word" data-word="have">have</span> <span class="word" data-word="developed">developed</span> <span class="word" data-word="a">a</span> <span class="word" data-word="method">method</span> <span class="word" data-word="by">by</span> <span class="word" data-word="which">which</span> <span class="word" data-word="I">I</span> <span class="word" data-word="can">can</span> <span class="word" data-word="give">give</span> <span class="word" data-word="really">really</span> <span class="word" data-word="en">en</span> <span class="word" data-word="masse">masse</span> <span class="word" data-word="Realization">Realization</span> <span class="word" data-word="all">all</span> <span class="word" data-word="over">over</span> <span class="word" data-word="the">the</span> <span class="word" data-word="world">world</span>. <span class="word" data-word="Definitely">Definitely</span> <span class="word" data-word="I">I</span> <span class="word" data-word="have">have</span>. <span class="word" data-word="But">But</span> <span class="word" data-word="the">the</span> <span class="word" data-word="problem">problem</span> <span class="word" data-word="as">as</span> <span class="word" data-word="it">it</span> <span class="word" data-word="remains">remains</span>, <span class="word" data-word="the">the</span> <span class="word" data-word="masses">masses</span> <span class="word" data-word="are">are</span> <span class="word" data-word="not">not</span> <span class="word" data-word="interested">interested</span>. <span class="word" data-word="It">It</span>&#039;<span class="word" data-word="s">s</span> <span class="word" data-word="only">only</span> <span class="word" data-word="very">very</span> <span class="word" data-word="few">few</span> <span class="word" data-word="who">who</span> <span class="word" data-word="really">really</span> <span class="word" data-word="can">can</span> <span class="word" data-word="keenly">keenly</span> <span class="word" data-word="take">take</span> <span class="word" data-word="interest">interest</span> <span class="word" data-word="into">into</span> <span class="word" data-word="their">their</span> <span class="word" data-word="evolutionary">evolutionary</span> <span class="word" data-word="process">process</span> <span class="word" data-word="and">and</span> <span class="word" data-word="would">would</span> <span class="word" data-word="like">like</span> <span class="word" data-word="to">to</span> <span class="word" data-word="come">come</span> <span class="word" data-word="out">out</span> <span class="word" data-word="of">of</span> <span class="word" data-word="the">the</span> <span class="word" data-word="ignorance">ignorance</span> <span class="word" data-word="in">in</span> <span class="word" data-word="which">which</span> <span class="word" data-word="they">they</span> <span class="word" data-word="have">have</span> <span class="word" data-word="been">been</span> <span class="word" data-word="living">living</span>.</div>
+  <div class="pair">
+    <div class="en-text"><span class="w">In</span> <span class="w">all</span> <span class="w">the</span> <span class="w">ego</span>-<span class="w">oriented</span> <span class="w">countries</span> <span class="w">it</span>&#039;s <span class="w">very</span> <span class="w">difficult</span> <span class="w">to</span> <span class="w">establish</span>, <span class="w">that</span> <span class="w">we</span> <span class="w">are</span> <span class="w">still</span> <span class="w">ignorant</span>, <span class="w">we</span> <span class="w">have</span> <span class="w">to</span> <span class="w">know</span> a <span class="w">lot</span>. <span class="w">It</span>&#039;s <span class="w">very</span> <span class="w">difficult</span>. <span class="w">Because</span> <span class="w">they</span> <span class="w">think</span> <span class="w">we</span> <span class="w">know</span> <span class="w">everything</span>, <span class="w">because</span> <span class="w">we</span> <span class="w">have</span> <span class="w">been</span> <span class="w">to</span> <span class="w">the</span> <span class="w">moon</span> <span class="w">like</span> <span class="w">the</span> <span class="w">Russians</span> <span class="w">say</span>, &#039;<span class="w">We</span> <span class="w">never</span> <span class="w">saw</span> <span class="w">God</span>, <span class="w">we</span> <span class="w">went</span> <span class="w">to</span> <span class="w">the</span> <span class="w">moon</span>, <span class="w">we</span> <span class="w">never</span> <span class="w">saw</span> <span class="w">God</span>.&#039; <span class="w">It</span> <span class="w">would</span> <span class="w">be</span> <span class="w">like</span> <span class="w">saying</span> <span class="w">that</span> I <span class="w">have</span> <span class="w">come</span> <span class="w">to</span> <span class="w">the</span> <span class="w">third</span> <span class="w">floor</span>, I <span class="w">haven</span>&#039;t <span class="w">seen</span> <span class="w">God</span>.</div>
+    <div class="zh-text">在所有以自我为中心的国家里，很难让人承认：我们仍然无知，还有许多要学。非常难。因为他们认为自己无所不知——就像俄国人说&quot;我们去了月球，从没见过上帝&quot;。这不过像是说&quot;我走到了三楼，我没见到上帝&quot;。</div>
   </div>
-
-  <div class="zh-block">
-    <div class="lang-label">中文</div>
-    <div class="zh-text">有时候我觉得我已找到一种方法，可以在全世界范围大规模地给予自觉。确实可以。但问题依然存在——大众并不感兴趣。只有极少数人真正渴望关注自己的进化过程，愿意走出长久以来蒙蔽他们的无知。</div>
+  <div class="pair">
+    <div class="en-text"><span class="w">Where</span> <span class="w">does</span> <span class="w">God</span> <span class="w">reside</span>? <span class="w">Where</span> <span class="w">it</span> <span class="w">manifest</span> <span class="w">within</span> <span class="w">us</span>? <span class="w">In</span> <span class="w">what</span> <span class="w">way</span> <span class="w">it</span> <span class="w">manifest</span>, <span class="w">we</span> <span class="w">don</span>&#039;t <span class="w">want</span> <span class="w">to</span> <span class="w">see</span>. <span class="w">What</span> <span class="w">we</span> <span class="w">want</span> <span class="w">to</span> <span class="w">see</span> <span class="w">is</span> <span class="w">that</span> <span class="w">through</span> <span class="w">our</span> <span class="w">effort</span>, <span class="w">if</span> <span class="w">we</span> <span class="w">have</span> <span class="w">not</span> <span class="w">been</span> <span class="w">able</span> <span class="w">to</span> <span class="w">see</span> <span class="w">God</span>, <span class="w">then</span> <span class="w">He</span> <span class="w">doesn</span>&#039;t <span class="w">exist</span>. <span class="w">This</span> <span class="w">is</span> <span class="w">the</span> <span class="w">way</span> <span class="w">our</span> <span class="w">attitude</span> <span class="w">is</span>.</div>
+    <div class="zh-text">上帝住在哪里？祂在我们内在如何显现？以何种方式显现——我们不愿去看。我们只想证明：凭我们自己的努力既然没能见到上帝，那祂就不存在。这就是我们的态度。</div>
   </div>
-  <div class="en-block">
-    <div class="lang-label">English</div>
-    <div class="en-text clickable-text"><span class="word" data-word="In">In</span> <span class="word" data-word="all">all</span> <span class="word" data-word="the">the</span> <span class="word" data-word="ego">ego</span>-<span class="word" data-word="oriented">oriented</span> <span class="word" data-word="countries">countries</span> <span class="word" data-word="it">it</span>&#039;<span class="word" data-word="s">s</span> <span class="word" data-word="very">very</span> <span class="word" data-word="difficult">difficult</span> <span class="word" data-word="to">to</span> <span class="word" data-word="establish">establish</span>, <span class="word" data-word="that">that</span> <span class="word" data-word="we">we</span> <span class="word" data-word="are">are</span> <span class="word" data-word="still">still</span> <span class="word" data-word="ignorant">ignorant</span>, <span class="word" data-word="we">we</span> <span class="word" data-word="have">have</span> <span class="word" data-word="to">to</span> <span class="word" data-word="know">know</span> <span class="word" data-word="a">a</span> <span class="word" data-word="lot">lot</span>. <span class="word" data-word="It">It</span>&#039;<span class="word" data-word="s">s</span> <span class="word" data-word="very">very</span> <span class="word" data-word="difficult">difficult</span>. <span class="word" data-word="Because">Because</span> <span class="word" data-word="they">they</span> <span class="word" data-word="think">think</span> <span class="word" data-word="we">we</span> <span class="word" data-word="know">know</span> <span class="word" data-word="everything">everything</span>, <span class="word" data-word="because">because</span> <span class="word" data-word="we">we</span> <span class="word" data-word="have">have</span> <span class="word" data-word="been">been</span> <span class="word" data-word="to">to</span> <span class="word" data-word="the">the</span> <span class="word" data-word="moon">moon</span> <span class="word" data-word="like">like</span> <span class="word" data-word="the">the</span> <span class="word" data-word="Russians">Russians</span> <span class="word" data-word="say">say</span>, &#039;<span class="word" data-word="We">We</span> <span class="word" data-word="never">never</span> <span class="word" data-word="saw">saw</span> <span class="word" data-word="God">God</span>, <span class="word" data-word="we">we</span> <span class="word" data-word="went">went</span> <span class="word" data-word="to">to</span> <span class="word" data-word="the">the</span> <span class="word" data-word="moon">moon</span>, <span class="word" data-word="we">we</span> <span class="word" data-word="never">never</span> <span class="word" data-word="saw">saw</span> <span class="word" data-word="God">God</span>.&#039; <span class="word" data-word="It">It</span> <span class="word" data-word="would">would</span> <span class="word" data-word="be">be</span> <span class="word" data-word="like">like</span> <span class="word" data-word="saying">saying</span> <span class="word" data-word="that">that</span> <span class="word" data-word="I">I</span> <span class="word" data-word="have">have</span> <span class="word" data-word="come">come</span> <span class="word" data-word="to">to</span> <span class="word" data-word="the">the</span> <span class="word" data-word="third">third</span> <span class="word" data-word="floor">floor</span>, <span class="word" data-word="I">I</span> <span class="word" data-word="haven">haven</span>&#039;<span class="word" data-word="t">t</span> <span class="word" data-word="seen">seen</span> <span class="word" data-word="God">God</span>.</div>
-  </div>
-
-  <div class="zh-block">
-    <div class="lang-label">中文</div>
-    <div class="zh-text">在所有以自我为中心的国家里，很难让人们承认：我们仍然无知，我们还有许多要学。非常难。因为他们认为自己无所不知——就像俄国人说&#039;我们去了月球，从没见过上帝&#039;一样。这就像说&#039;我走到了三楼，我没见到上帝&#039;。</div>
-  </div>
-  <div class="en-block">
-    <div class="lang-label">English</div>
-    <div class="en-text clickable-text"><span class="word" data-word="Where">Where</span> <span class="word" data-word="does">does</span> <span class="word" data-word="God">God</span> <span class="word" data-word="reside">reside</span>? <span class="word" data-word="Where">Where</span> <span class="word" data-word="it">it</span> <span class="word" data-word="manifest">manifest</span> <span class="word" data-word="within">within</span> <span class="word" data-word="us">us</span>? <span class="word" data-word="In">In</span> <span class="word" data-word="what">what</span> <span class="word" data-word="way">way</span> <span class="word" data-word="it">it</span> <span class="word" data-word="manifest">manifest</span>, <span class="word" data-word="we">we</span> <span class="word" data-word="don">don</span>&#039;<span class="word" data-word="t">t</span> <span class="word" data-word="want">want</span> <span class="word" data-word="to">to</span> <span class="word" data-word="see">see</span>. <span class="word" data-word="What">What</span> <span class="word" data-word="we">we</span> <span class="word" data-word="want">want</span> <span class="word" data-word="to">to</span> <span class="word" data-word="see">see</span> <span class="word" data-word="is">is</span> <span class="word" data-word="that">that</span> <span class="word" data-word="through">through</span> <span class="word" data-word="our">our</span> <span class="word" data-word="effort">effort</span>, <span class="word" data-word="if">if</span> <span class="word" data-word="we">we</span> <span class="word" data-word="have">have</span> <span class="word" data-word="not">not</span> <span class="word" data-word="been">been</span> <span class="word" data-word="able">able</span> <span class="word" data-word="to">to</span> <span class="word" data-word="see">see</span> <span class="word" data-word="God">God</span>, <span class="word" data-word="then">then</span> <span class="word" data-word="He">He</span> <span class="word" data-word="doesn">doesn</span>&#039;<span class="word" data-word="t">t</span> <span class="word" data-word="exist">exist</span>. <span class="word" data-word="This">This</span> <span class="word" data-word="is">is</span> <span class="word" data-word="the">the</span> <span class="word" data-word="way">way</span> <span class="word" data-word="our">our</span> <span class="word" data-word="attitude">attitude</span> <span class="word" data-word="is">is</span>.</div>
-  </div>
-
-  <div class="zh-block">
-    <div class="lang-label">中文</div>
-    <div class="zh-text">上帝住在哪里？祂在我们内在如何显现？以何种方式显现——我们不愿去看。我们想看的是：通过我们自己的努力，如果没能见到上帝，那么祂就不存在。这就是我们的态度。</div>
-  </div>
-  <div class="en-block">
-    <div class="lang-label">English</div>
-    <div class="en-text clickable-text"><span class="word" data-word="But">But</span> <span class="word" data-word="better">better</span> <span class="word" data-word="say">say</span>, &#039;<span class="word" data-word="No">No</span>,&#039; <span class="word" data-word="to">to</span> <span class="word" data-word="all">all</span> <span class="word" data-word="that">that</span> <span class="word" data-word="we">we</span> <span class="word" data-word="did">did</span> <span class="word" data-word="not">not</span> <span class="word" data-word="know">know</span> <span class="word" data-word="through">through</span> <span class="word" data-word="our">our</span> <span class="word" data-word="effort">effort</span>, <span class="word" data-word="because">because</span> <span class="word" data-word="so">so</span> <span class="word" data-word="far">far</span> <span class="word" data-word="we">we</span> <span class="word" data-word="have">have</span> <span class="word" data-word="not">not</span> <span class="word" data-word="known">known</span> <span class="word" data-word="about">about</span> <span class="word" data-word="Him">Him</span>. <span class="word" data-word="So">So</span> <span class="word" data-word="He">He</span> <span class="word" data-word="doesn">doesn</span>&#039;<span class="word" data-word="t">t</span> <span class="word" data-word="exist">exist</span>. <span class="word" data-word="So">So</span> <span class="word" data-word="you">you</span> <span class="word" data-word="turn">turn</span> <span class="word" data-word="round">round</span> <span class="word" data-word="in">in</span> <span class="word" data-word="a">a</span> <span class="word" data-word="cave">cave</span> <span class="word" data-word="when">when</span> <span class="word" data-word="you">you</span> <span class="word" data-word="see">see</span> <span class="word" data-word="the">the</span> <span class="word" data-word="shadows">shadows</span> <span class="word" data-word="of">of</span> <span class="word" data-word="yourself">yourself</span>, <span class="word" data-word="you">you</span> <span class="word" data-word="believe">believe</span> <span class="word" data-word="in">in</span> <span class="word" data-word="them">them</span> <span class="word" data-word="only">only</span> <span class="word" data-word="and">and</span> <span class="word" data-word="say">say</span>, &#039;<span class="word" data-word="It">It</span> <span class="word" data-word="never">never</span> <span class="word" data-word="existed">existed</span> <span class="word" data-word="anything">anything</span> <span class="word" data-word="else">else</span>, <span class="word" data-word="the">the</span> <span class="word" data-word="light">light</span> <span class="word" data-word="does">does</span> <span class="word" data-word="not">not</span> <span class="word" data-word="exist">exist</span>.&#039; <span class="word" data-word="That">That</span> <span class="word" data-word="kind">kind</span> <span class="word" data-word="of">of</span> <span class="word" data-word="an">an</span> <span class="word" data-word="attitude">attitude</span> <span class="word" data-word="exists">exists</span> <span class="word" data-word="or">or</span> <span class="word" data-word="is">is</span> <span class="word" data-word="persistently">persistently</span> <span class="word" data-word="I">I</span> <span class="word" data-word="am">am</span> <span class="word" data-word="facing">facing</span>.</div>
-  </div>
-
-  <div class="zh-block">
-    <div class="lang-label">中文</div>
-    <div class="zh-text">不如对我们未能通过努力认知的一切说&#039;不&#039;——因为我们至今不了解祂，所以祂不存在。于是你在洞穴里转过身，只看到自己的影子，你只相信这些影子，说：&#039;从来不存在别的东西，光不存在。&#039;这种态度一直存在，也是我持续面对的。</div>
+  <div class="pair">
+    <div class="en-text"><span class="w">But</span> <span class="w">better</span> <span class="w">say</span>, &#039;<span class="w">No</span>,&#039; <span class="w">to</span> <span class="w">all</span> <span class="w">that</span> <span class="w">we</span> <span class="w">did</span> <span class="w">not</span> <span class="w">know</span> <span class="w">through</span> <span class="w">our</span> <span class="w">effort</span>, <span class="w">because</span> <span class="w">so</span> <span class="w">far</span> <span class="w">we</span> <span class="w">have</span> <span class="w">not</span> <span class="w">known</span> <span class="w">about</span> <span class="w">Him</span>. <span class="w">So</span> <span class="w">He</span> <span class="w">doesn</span>&#039;t <span class="w">exist</span>. <span class="w">So</span> <span class="w">you</span> <span class="w">turn</span> <span class="w">round</span> <span class="w">in</span> a <span class="w">cave</span> <span class="w">when</span> <span class="w">you</span> <span class="w">see</span> <span class="w">the</span> <span class="w">shadows</span> <span class="w">of</span> <span class="w">yourself</span>, <span class="w">you</span> <span class="w">believe</span> <span class="w">in</span> <span class="w">them</span> <span class="w">only</span> <span class="w">and</span> <span class="w">say</span>, &#039;<span class="w">It</span> <span class="w">never</span> <span class="w">existed</span> <span class="w">anything</span> <span class="w">else</span>, <span class="w">the</span> <span class="w">light</span> <span class="w">does</span> <span class="w">not</span> <span class="w">exist</span>.&#039; <span class="w">That</span> <span class="w">kind</span> <span class="w">of</span> <span class="w">an</span> <span class="w">attitude</span> <span class="w">exists</span> <span class="w">or</span> <span class="w">is</span> <span class="w">persistently</span> I <span class="w">am</span> <span class="w">facing</span>.</div>
+    <div class="zh-text">不如对我们未能通过努力认知的一切说&quot;不&quot;——因为我们至今不了解祂，所以祂不存在。于是你在洞穴里转过身，只看到自己的影子，只相信这些影子，说：&quot;从来不存在别的东西，光不存在。&quot;这种态度一直都有，也是我持续面对的。</div>
   </div>
 </div>
 <footer>
@@ -138,96 +108,87 @@ footer .sep{color:#ddd;margin:0 8px}
 </footer>
 </div>
 <script>
-const ARTICLE_DATE = '1983-06-06';
-const WB_KEY = 'amruta_wordbook';
-function getWordbook(){try{return JSON.parse(localStorage.getItem(WB_KEY)||'{}')}catch(e){return {}}}
-function saveWordbook(wb){localStorage.setItem(WB_KEY,JSON.stringify(wb))}
-function refreshSavedMarks(){
-  const wb=getWordbook();
-  document.querySelectorAll('.word').forEach(el=>{
-    el.classList.toggle('saved',!!wb[el.dataset.word.toLowerCase()]);
+const ARTICLE_DATE='1983-06-06';
+const WB_KEY='amruta_wordbook';
+function getWB(){try{return JSON.parse(localStorage.getItem(WB_KEY)||'{}')}catch(e){return{}}}
+function saveWB(wb){localStorage.setItem(WB_KEY,JSON.stringify(wb))}
+function refreshMarks(){
+  const wb=getWB();
+  document.querySelectorAll('.en-text .w').forEach(el=>{
+    const w=el.textContent.replace(/[^A-Za-z']/g,'').toLowerCase();
+    el.classList.toggle('saved',!!wb[w]);
   });
-  const count=Object.keys(wb).length;
-  const navEl=document.getElementById('nav-wb-count');
-  if(navEl)navEl.textContent=count>0?'单词本 '+count:'单词本';
+  const n=Object.keys(wb).length;
+  const el=document.getElementById('nav-wb-count');
+  if(el)el.textContent=n>0?'单词本 '+n:'单词本';
 }
-let currentWord='',currentData=null;
+let curWord='',curData=null;
 function closePopup(){
   document.getElementById('word-popup').style.display='none';
   document.getElementById('word-popup-overlay').style.display='none';
 }
-function positionPopup(el){
-  const popup=document.getElementById('word-popup');
-  popup.style.display='block';
-  const rect=el.getBoundingClientRect();
-  const pw=popup.offsetWidth,ph=popup.offsetHeight;
-  let top=rect.bottom+8+window.scrollY;
-  let left=rect.left+window.scrollX;
+function posPopup(t){
+  const p=document.getElementById('word-popup');
+  p.style.display='block';
+  const r=t.getBoundingClientRect();
+  let top=r.bottom+8+window.scrollY, left=r.left+window.scrollX;
+  const pw=p.offsetWidth, ph=p.offsetHeight;
   if(left+pw>window.innerWidth-12)left=window.innerWidth-pw-12;
   if(left<12)left=12;
-  if(top+ph>window.scrollY+window.innerHeight-12)top=rect.top+window.scrollY-ph-8;
-  popup.style.top=top+'px';
-  popup.style.left=left+'px';
+  if(top+ph>window.scrollY+window.innerHeight-12)top=r.top+window.scrollY-ph-8;
+  p.style.top=top+'px'; p.style.left=left+'px';
 }
-async function openWordPopup(el,word){
-  currentWord=word.toLowerCase().replace(/['’]/g,"'");
-  currentData=null;
+async function openPopup(t,word){
+  curWord=word.toLowerCase().replace(/['’]/g,"'");
+  curData=null;
   document.getElementById('pp-word').textContent=word;
   document.getElementById('pp-phonetic').textContent='加载中…';
   document.getElementById('pp-defs').innerHTML='';
   document.getElementById('word-popup-overlay').style.display='block';
-  positionPopup(el);
-  updateSaveBtn();
+  posPopup(t); updateBtn();
   try{
-    const res=await fetch('https://api.dictionaryapi.dev/api/v2/entries/en/'+encodeURIComponent(currentWord));
-    if(!res.ok)throw new Error('not found');
+    const res=await fetch('https://api.dictionaryapi.dev/api/v2/entries/en/'+encodeURIComponent(curWord));
+    if(!res.ok)throw 0;
     const data=await res.json();
-    currentData=data[0];
-    const phonetic=currentData.phonetic||(currentData.phonetics||[]).find(p=>p.text)?.text||'';
-    document.getElementById('pp-phonetic').textContent=phonetic;
-    let defsHtml='';
-    (currentData.meanings||[]).slice(0,3).forEach(m=>{
-      const def=(m.definitions||[])[0];
-      if(!def)return;
-      defsHtml+='<div class="popup-def"><div class="popup-pos">'+m.partOfSpeech+'</div><div class="popup-meaning">'+def.definition+'</div>'+(def.example?'<div class="popup-example">"'+def.example+'"</div>':'')+'</div>';
+    curData=data[0];
+    const ph=curData.phonetic||(curData.phonetics||[]).find(p=>p.text)?.text||'';
+    document.getElementById('pp-phonetic').textContent=ph;
+    let h='';
+    (curData.meanings||[]).slice(0,3).forEach(m=>{
+      const d=(m.definitions||[])[0];
+      if(!d)return;
+      h+='<div class="popup-def"><div class="popup-pos">'+m.partOfSpeech+'</div><div class="popup-meaning">'+d.definition+'</div>'+(d.example?'<div class="popup-example">"'+d.example+'"</div>':'')+'</div>';
     });
-    document.getElementById('pp-defs').innerHTML=defsHtml||'<div class="popup-notfound">无释义</div>';
+    document.getElementById('pp-defs').innerHTML=h||'<div class="popup-notfound">无释义</div>';
   }catch(e){
     document.getElementById('pp-phonetic').textContent='';
     document.getElementById('pp-defs').innerHTML='<div class="popup-notfound">未找到释义，可直接加入单词本</div>';
   }
 }
-function updateSaveBtn(){
-  const wb=getWordbook();
-  const btn=document.getElementById('pp-save-btn');
-  if(wb[currentWord]){btn.textContent='✓ 已在单词本';btn.classList.add('saved-state');}
+function updateBtn(){
+  const wb=getWB(), btn=document.getElementById('pp-save-btn');
+  if(wb[curWord]){btn.textContent='✓ 已在单词本';btn.classList.add('saved-state');}
   else{btn.textContent='加入单词本';btn.classList.remove('saved-state');}
 }
 function saveWord(){
-  const wb=getWordbook();
-  if(wb[currentWord]){delete wb[currentWord];saveWordbook(wb);updateSaveBtn();refreshSavedMarks();return;}
-  const phonetic=document.getElementById('pp-phonetic').textContent.replace('加载中…','');
+  const wb=getWB();
+  if(wb[curWord]){delete wb[curWord];saveWB(wb);updateBtn();refreshMarks();return;}
+  const ph=document.getElementById('pp-phonetic').textContent.replace('加载中…','');
   let defs=[];
-  if(currentData&&currentData.meanings){
-    currentData.meanings.slice(0,3).forEach(m=>{
-      const d=(m.definitions||[])[0];
-      if(d)defs.push({pos:m.partOfSpeech,def:d.definition,example:d.example||''});
-    });
-  }
-  wb[currentWord]={word:currentWord,phonetic,defs,source:ARTICLE_DATE,savedAt:Date.now()};
-  saveWordbook(wb);
-  updateSaveBtn();
-  refreshSavedMarks();
+  if(curData&&curData.meanings)curData.meanings.slice(0,3).forEach(m=>{const d=(m.definitions||[])[0];if(d)defs.push({pos:m.partOfSpeech,def:d.definition,example:d.example||''});});
+  wb[curWord]={word:curWord,phonetic:ph,defs,source:ARTICLE_DATE,savedAt:Date.now()};
+  saveWB(wb);updateBtn();refreshMarks();
 }
-document.querySelectorAll('.word').forEach(el=>{
-  el.addEventListener('click',e=>{
+document.addEventListener('click',e=>{
+  const t=e.target;
+  if(t.classList.contains('w')&&t.closest('.en-text')){
     e.stopPropagation();
-    const w=el.dataset.word;
-    if(/^[A-Za-z]/.test(w))openWordPopup(el,w);
-  });
+    const w=t.textContent.replace(/[^A-Za-z']/g,'');
+    if(w.length>=2)openPopup(t,w);
+  }
 });
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closePopup();});
-refreshSavedMarks();
+refreshMarks();
 </script>
 </body>
 </html>
