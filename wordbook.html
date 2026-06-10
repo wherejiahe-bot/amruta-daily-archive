@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>我的单词本 · Amruta Archive</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;-webkit-font-smoothing:antialiased}
+body{font-family:-apple-system,BlinkMacSystemFont,'Noto Sans SC','PingFang SC','Microsoft YaHei',sans-serif;background:#f5f0eb;color:#2c2c2c;line-height:1.7;min-height:100vh}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse at 20% 10%,rgba(180,160,140,0.12) 0%,transparent 50%),radial-gradient(ellipse at 80% 90%,rgba(200,180,160,0.10) 0%,transparent 50%);pointer-events:none;z-index:-1}
+.container{max-width:720px;margin:0 auto;padding:0 24px}
+.nav-bar{display:flex;align-items:center;justify-content:space-between;padding:20px 0;font-size:14px}
+.nav-bar a{color:#8a7a6a;text-decoration:none;transition:color .2s}
+.nav-bar a:hover{color:#5a4a3a}
+header{padding:40px 0 32px;text-align:center}
+header h1{font-size:clamp(24px,4vw,34px);font-weight:600;color:#1a1a1a;margin-bottom:8px}
+header .subtitle{font-size:15px;color:#999}
+.toolbar{display:flex;align-items:center;justify-content:space-between;padding:16px 0 20px;border-bottom:1px solid rgba(0,0,0,0.06);margin-bottom:24px;flex-wrap:wrap;gap:12px}
+.toolbar .count{font-size:14px;color:#999}
+.toolbar .count strong{color:#666;font-weight:500}
+.btn{padding:8px 18px;border:none;border-radius:10px;font-size:14px;cursor:pointer;transition:all .2s}
+.btn-primary{background:#2c2c2c;color:#fff}
+.btn-primary:hover{background:#1a1a1a}
+.btn-ghost{background:rgba(0,0,0,0.05);color:#666}
+.btn-ghost:hover{background:rgba(0,0,0,0.09)}
+.btn-danger{background:rgba(200,60,60,0.08);color:#c03c3c}
+.btn-danger:hover{background:rgba(200,60,60,0.15)}
+/* Word list */
+.word-list{display:flex;flex-direction:column;gap:10px;padding-bottom:40px}
+.word-card{background:rgba(255,255,255,0.65);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.8);border-radius:14px;padding:18px 22px;display:flex;align-items:flex-start;gap:16px}
+.word-card .wc-main{flex:1;min-width:0}
+.word-card .wc-word{font-size:20px;font-weight:600;color:#1a1a1a;margin-bottom:2px}
+.word-card .wc-phonetic{font-size:13px;color:#aaa;font-style:italic;margin-bottom:8px}
+.word-card .wc-defs{font-size:14px;color:#555;line-height:1.6}
+.word-card .wc-def-item{margin-bottom:4px}
+.word-card .wc-pos{font-size:11px;color:#bbb;text-transform:uppercase;letter-spacing:.06em;display:inline-block;margin-right:6px}
+.word-card .wc-source{font-size:12px;color:#bbb;margin-top:8px}
+.word-card .wc-actions{display:flex;flex-direction:column;gap:8px;flex-shrink:0}
+.icon-btn{width:34px;height:34px;border:none;background:transparent;cursor:pointer;border-radius:8px;font-size:16px;display:flex;align-items:center;justify-content:center;transition:background .2s;color:#aaa}
+.icon-btn:hover{background:rgba(0,0,0,0.06);color:#666}
+.empty-state{text-align:center;padding:80px 24px;color:#bbb}
+.empty-state .empty-icon{font-size:48px;margin-bottom:16px;opacity:.35}
+.empty-state p{font-size:16px;line-height:1.7}
+.empty-state a{color:#8a7a6a;text-decoration:none}
+/* Flashcard overlay */
+#fc-overlay{display:none;position:fixed;inset:0;background:rgba(245,240,235,0.97);z-index:1000;flex-direction:column;align-items:center;justify-content:center;padding:24px}
+#fc-overlay.active{display:flex}
+#fc-header{width:100%;max-width:480px;display:flex;align-items:center;justify-content:space-between;margin-bottom:32px}
+#fc-progress{font-size:14px;color:#999}
+#fc-close{background:none;border:none;font-size:22px;cursor:pointer;color:#999;padding:4px}
+#fc-card{width:100%;max-width:480px;min-height:260px;background:rgba(255,255,255,0.85);border:1px solid rgba(255,255,255,0.9);border-radius:20px;box-shadow:0 8px 40px rgba(0,0,0,0.08);padding:40px 36px;cursor:pointer;transition:all .3s;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative}
+#fc-card:hover{box-shadow:0 12px 48px rgba(0,0,0,0.11)}
+#fc-front{font-size:32px;font-weight:700;color:#1a1a1a}
+#fc-back{display:none;width:100%;text-align:left}
+#fc-back .fc-phonetic{font-size:15px;color:#aaa;font-style:italic;text-align:center;margin-bottom:16px}
+#fc-back .fc-defs{font-size:15px;color:#444;line-height:1.7}
+#fc-back .fc-def-item{margin-bottom:8px}
+#fc-back .fc-pos{font-size:11px;color:#bbb;text-transform:uppercase;letter-spacing:.06em;margin-right:6px}
+#fc-hint{font-size:13px;color:#ccc;margin-top:16px}
+#fc-actions{display:flex;gap:14px;margin-top:28px;width:100%;max-width:480px}
+#fc-actions button{flex:1;padding:14px 0;border:none;border-radius:14px;font-size:15px;cursor:pointer;transition:all .2s}
+#btn-again{background:rgba(200,60,60,0.1);color:#c03c3c}
+#btn-again:hover{background:rgba(200,60,60,0.18)}
+#btn-know{background:rgba(42,138,85,0.12);color:#2a8a55}
+#btn-know:hover{background:rgba(42,138,85,0.2)}
+#fc-actions.hidden{display:none}
+#fc-done{display:none;text-align:center;padding:40px 0}
+#fc-done .done-icon{font-size:48px;margin-bottom:16px}
+#fc-done h2{font-size:22px;font-weight:600;color:#1a1a1a;margin-bottom:8px}
+#fc-done p{font-size:15px;color:#999;margin-bottom:24px}
+@media(max-width:480px){.word-card{padding:14px 16px}.toolbar{flex-direction:column;align-items:flex-start}}
+</style>
+</head>
+<body>
+
+<!-- Flashcard overlay -->
+<div id="fc-overlay">
+  <div id="fc-header">
+    <span id="fc-progress"></span>
+    <button id="fc-close" onclick="exitFlashcard()">✕</button>
+  </div>
+  <div id="fc-card" onclick="flipCard()">
+    <div id="fc-front"></div>
+    <div id="fc-back"></div>
+    <div id="fc-hint">点击翻面</div>
+  </div>
+  <div id="fc-actions" class="hidden">
+    <button id="btn-again" onclick="fcAnswer(false)">再复习</button>
+    <button id="btn-know" onclick="fcAnswer(true)">认识 ✓</button>
+  </div>
+  <div id="fc-done">
+    <div class="done-icon">🎉</div>
+    <h2>复习完成！</h2>
+    <p id="fc-done-msg"></p>
+    <button class="btn btn-primary" onclick="exitFlashcard()">返回单词本</button>
+  </div>
+</div>
+
+<div class="container">
+<nav class="nav-bar">
+  <a href="index.html">← 返回首页</a>
+  <a href="https://amruta.today/" target="_blank">Amruta.today</a>
+</nav>
+<header>
+  <h1>我的单词本</h1>
+  <p class="subtitle">点击文章中的英文单词即可收藏</p>
+</header>
+<div class="toolbar">
+  <span class="count">共 <strong id="wb-count">0</strong> 个单词</span>
+  <div style="display:flex;gap:10px">
+    <button class="btn btn-ghost" onclick="clearAll()" id="btn-clear" style="display:none">清空全部</button>
+    <button class="btn btn-primary" onclick="startFlashcard()" id="btn-review" style="display:none">开始复习 →</button>
+  </div>
+</div>
+<div class="word-list" id="word-list"></div>
+</div>
+
+<script>
+const WB_KEY = 'amruta_wordbook';
+function getWordbook() { try { return JSON.parse(localStorage.getItem(WB_KEY)||'{}'); } catch(e){ return {}; } }
+function saveWordbook(wb){ localStorage.setItem(WB_KEY, JSON.stringify(wb)); }
+
+function render() {
+  const wb = getWordbook();
+  const words = Object.values(wb).sort((a,b) => (b.savedAt||0)-(a.savedAt||0));
+  const count = words.length;
+  document.getElementById('wb-count').textContent = count;
+  document.getElementById('btn-clear').style.display = count > 0 ? '' : 'none';
+  document.getElementById('btn-review').style.display = count > 0 ? '' : 'none';
+
+  const list = document.getElementById('word-list');
+  if (count === 0) {
+    list.innerHTML = '<div class="empty-state"><div class="empty-icon">📖</div><p>还没有收藏的单词。<br>回到<a href="index.html">文章列表</a>，点击英文单词即可加入。</p></div>';
+    return;
+  }
+  list.innerHTML = words.map(w => {
+    const defsHtml = (w.defs||[]).map(d =>
+      '<div class="wc-def-item"><span class="wc-pos">' + (d.pos||'') + '</span>' + (d.def||'') + '</div>'
+    ).join('') || '<div style="color:#bbb;font-size:14px">无释义记录</div>';
+    return '<div class="word-card" id="wc-'+w.word+'">'
+      + '<div class="wc-main">'
+      + '<div class="wc-word">'+w.word+'</div>'
+      + (w.phonetic ? '<div class="wc-phonetic">'+w.phonetic+'</div>' : '')
+      + '<div class="wc-defs">'+defsHtml+'</div>'
+      + (w.source ? '<div class="wc-source">来自 '+w.source+'</div>' : '')
+      + '</div>'
+      + '<div class="wc-actions">'
+      + '<button class="icon-btn" title="删除" onclick="deleteWord(\''+w.word+'\')">🗑</button>'
+      + '</div>'
+      + '</div>';
+  }).join('');
+}
+
+function deleteWord(word) {
+  const wb = getWordbook();
+  delete wb[word];
+  saveWordbook(wb);
+  render();
+}
+
+function clearAll() {
+  if (!confirm('确定清空全部单词？')) return;
+  localStorage.removeItem(WB_KEY);
+  render();
+}
+
+// Flashcard
+let fcQueue = [], fcIdx = 0, fcFlipped = false, fcKnown = 0;
+
+function startFlashcard() {
+  const wb = getWordbook();
+  fcQueue = Object.values(wb).sort(() => Math.random() - .5);
+  fcIdx = 0; fcKnown = 0; fcFlipped = false;
+  document.getElementById('fc-done').style.display = 'none';
+  document.getElementById('fc-card').style.display = 'flex';
+  document.getElementById('fc-actions').classList.add('hidden');
+  document.getElementById('fc-overlay').classList.add('active');
+  showFcCard();
+}
+
+function showFcCard() {
+  if (fcIdx >= fcQueue.length) { showFcDone(); return; }
+  const w = fcQueue[fcIdx];
+  fcFlipped = false;
+  document.getElementById('fc-front').textContent = w.word;
+  document.getElementById('fc-front').style.display = 'block';
+  document.getElementById('fc-hint').style.display = 'block';
+  const back = document.getElementById('fc-back');
+  const defsHtml = (w.defs||[]).map(d =>
+    '<div class="fc-def-item"><span class="fc-pos">'+(d.pos||'')+'</span>'+(d.def||'')+'</div>'
+  ).join('') || '<div style="color:#bbb">无释义记录</div>';
+  back.innerHTML = (w.phonetic?'<div class="fc-phonetic">'+w.phonetic+'</div>':'')
+    + '<div class="fc-defs">'+defsHtml+'</div>';
+  back.style.display = 'none';
+  document.getElementById('fc-actions').classList.add('hidden');
+  document.getElementById('fc-progress').textContent = (fcIdx+1)+' / '+fcQueue.length;
+}
+
+function flipCard() {
+  if (fcFlipped) return;
+  fcFlipped = true;
+  document.getElementById('fc-front').style.display = 'none';
+  document.getElementById('fc-hint').style.display = 'none';
+  document.getElementById('fc-back').style.display = 'block';
+  document.getElementById('fc-actions').classList.remove('hidden');
+}
+
+function fcAnswer(know) {
+  if (know) { fcKnown++; fcIdx++; }
+  else {
+    // move to end of queue for re-review
+    fcQueue.push(fcQueue[fcIdx]);
+    fcIdx++;
+  }
+  showFcCard();
+}
+
+function showFcDone() {
+  document.getElementById('fc-card').style.display = 'none';
+  document.getElementById('fc-actions').classList.add('hidden');
+  const total = Object.keys(getWordbook()).length;
+  document.getElementById('fc-done-msg').textContent = '认识 '+fcKnown+' 个，共 '+total+' 个单词';
+  document.getElementById('fc-done').style.display = 'block';
+}
+
+function exitFlashcard() {
+  document.getElementById('fc-overlay').classList.remove('active');
+}
+
+render();
+</script>
+</body>
+</html>
