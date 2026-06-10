@@ -13,13 +13,14 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 .nav-bar{display:flex;align-items:center;justify-content:space-between;padding:20px 0;font-family:-apple-system,BlinkMacSystemFont,'Noto Sans SC','PingFang SC',sans-serif}
 .nav-bar a{color:#8a7a6a;text-decoration:none;font-size:14px;transition:color .2s}
 .nav-bar a:hover{color:#5a4a3a}
-.article-header{padding:32px 0 24px;text-align:center}
-.article-header .article-date{font-family:-apple-system,BlinkMacSystemFont,'Noto Sans SC',sans-serif;font-size:13px;color:#aaa;letter-spacing:.05em;margin-bottom:5px}
-.article-header .article-source{font-family:-apple-system,BlinkMacSystemFont,'Noto Sans SC',sans-serif;font-size:12px;color:#ccc;margin-bottom:14px}
+.article-header{padding:40px 0 32px;text-align:center}
+.article-header .article-date{font-family:-apple-system,BlinkMacSystemFont,'Noto Sans SC',sans-serif;font-size:14px;color:#aaa;letter-spacing:.05em;margin-bottom:6px}
+.article-header .article-source{font-family:-apple-system,BlinkMacSystemFont,'Noto Sans SC',sans-serif;font-size:13px;color:#bbb;margin-bottom:16px}
 .article-header .article-source a{color:#8a7a6a;text-decoration:none}
-.article-header h1{font-size:clamp(20px,3.5vw,28px);font-weight:600;color:#1a1a1a;letter-spacing:.02em;line-height:1.35}
-.article-header .chinese-title{font-size:clamp(15px,2.5vw,19px);color:#888;font-weight:400;margin-top:6px}
-.divider{display:flex;align-items:center;gap:16px;margin:6px 0 28px;color:#ddd;font-size:12px}
+.article-header .article-source a:hover{text-decoration:underline}
+.article-header h1{font-size:clamp(24px,4vw,34px);font-weight:600;color:#1a1a1a;letter-spacing:.02em;line-height:1.35}
+.article-header .chinese-title{font-size:clamp(18px,3vw,24px);color:#666;font-weight:500;margin-top:10px}
+.divider{display:flex;align-items:center;gap:16px;margin:8px 0 40px;color:#ddd;font-size:12px;font-family:-apple-system,BlinkMacSystemFont,'Noto Sans SC',sans-serif}
 .divider::before,.divider::after{content:'';flex:1;height:1px;background:linear-gradient(to right,transparent,#e0d8d0,transparent)}
 .article-content{background:rgba(255,255,255,0.6);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,0.8);border-radius:16px;padding:28px 40px;margin-bottom:32px}
 .article-content .pair{margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid rgba(0,0,0,0.05)}
@@ -30,7 +31,7 @@ footer{text-align:center;padding:24px 0 40px;font-family:-apple-system,BlinkMacS
 footer a{color:#8a7a6a;text-decoration:none;font-size:14px;transition:color .2s}
 footer a:hover{color:#5a4a3a}
 footer .sep{color:#ddd;margin:0 8px}
-@media(max-width:600px){.article-content{padding:18px 16px}.article-header{padding:20px 0 14px}.article-content .en-text{font-size:15px}.article-content .zh-text{font-size:14px}}
+@media(max-width:600px){.article-content{padding:18px 16px}.article-header{padding:20px 0 16px}.article-content .en-text{font-size:15px}.article-content .zh-text{font-size:14px}}
 .en-text .w{cursor:pointer;border-radius:2px;transition:background .12s}
 .en-text .w:hover,.en-text .w:active{background:rgba(138,122,106,0.18)}
 .en-text .w.saved{color:#8a7a6a;border-bottom:1.5px dotted #8a7a6a}
@@ -39,12 +40,17 @@ footer .sep{color:#ddd;margin:0 8px}
 #word-popup.open{transform:translateY(0)}
 #word-popup .drag-handle{width:36px;height:4px;background:#e0e0e0;border-radius:2px;margin:12px auto 16px;cursor:grab}
 #word-popup .popup-word{font-size:22px;font-weight:700;color:#1a1a1a;margin-bottom:2px}
-#word-popup .popup-phonetic{font-size:13px;color:#aaa;margin-bottom:12px;font-style:italic;min-height:18px}
+#word-popup .popup-phonetic-row{display:flex;align-items:center;gap:8px;margin-bottom:12px;min-height:18px}
+#word-popup .popup-phonetic{font-size:13px;color:#aaa;font-style:italic}
+#word-popup .btn-speak{background:none;border:none;cursor:pointer;padding:2px 4px;font-size:16px;color:#aaa;line-height:1;border-radius:4px;transition:color .15s,background .15s}
+#word-popup .btn-speak:hover{color:#5a7a9a;background:rgba(90,122,154,0.1)}
+#word-popup .btn-speak:active{color:#2a5a7a}
 #word-popup .popup-defs{margin-bottom:16px}
 #word-popup .popup-def{margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid #f0f0f0}
 #word-popup .popup-def:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
 #word-popup .popup-pos{font-size:11px;text-transform:uppercase;letter-spacing:.07em;color:#ccc;margin-bottom:3px}
-#word-popup .popup-meaning{font-size:15px;color:#333;line-height:1.6}
+#word-popup .popup-meaning-cn{font-size:15px;color:#333;line-height:1.6;font-weight:500}
+#word-popup .popup-meaning-en{font-size:12px;color:#bbb;line-height:1.5;margin-top:2px}
 #word-popup .popup-example{font-size:12px;color:#bbb;font-style:italic;margin-top:3px}
 #word-popup .popup-loading{font-size:14px;color:#ccc;padding:8px 0 16px;text-align:center}
 #word-popup .popup-notfound{font-size:13px;color:#bbb;padding:6px 0 16px}
@@ -60,7 +66,10 @@ footer .sep{color:#ddd;margin:0 8px}
 <div id="word-popup">
   <div class="drag-handle"></div>
   <div class="popup-word" id="pp-word"></div>
-  <div class="popup-phonetic" id="pp-phonetic"></div>
+  <div class="popup-phonetic-row">
+    <span class="popup-phonetic" id="pp-phonetic"></span>
+    <button class="btn-speak" id="pp-speak-btn" onclick="speakWord()" title="朗读" style="display:none">🔊</button>
+  </div>
   <div class="popup-defs" id="pp-defs"></div>
   <div class="popup-actions">
     <button class="btn-save" id="pp-save-btn" onclick="saveWord()">加入单词本</button>
@@ -70,7 +79,7 @@ footer .sep{color:#ddd;margin:0 8px}
 <div class="container">
 <nav class="nav-bar">
   <a href="../index.html">← 返回首页</a>
-  <a href="../wordbook.html" id="nav-wb-link" style="font-size:13px;color:#8a7a6a;text-decoration:none">📖 <span id="nav-wb-count">单词本</span></a>
+  <a href="../wordbook.html" style="display:flex;align-items:center;gap:5px;font-size:13px;color:#8a7a6a;text-decoration:none" id="nav-wb-link">📖 <span id="nav-wb-count"></span></a>
   <a href="https://amruta.today/" target="_blank">Amruta.today</a>
 </nav>
 <div class="article-header">
@@ -113,86 +122,59 @@ footer .sep{color:#ddd;margin:0 8px}
 </footer>
 </div>
 <script>
-const ARTICLE_DATE='1983-06-06';
-const WB_KEY='amruta_wordbook';
-function getWB(){try{return JSON.parse(localStorage.getItem(WB_KEY)||'{}')}catch(e){return{}}}
-function saveWB(wb){localStorage.setItem(WB_KEY,JSON.stringify(wb))}
-function refreshMarks(){
-  const wb=getWB();
+const ARTICLE_DATE='1983-06-06',WB_KEY='amruta_wordbook';
+function getWordbook(){try{return JSON.parse(localStorage.getItem(WB_KEY)||'{}')}catch(e){return{}}}
+function saveWordbook(wb){localStorage.setItem(WB_KEY,JSON.stringify(wb))}
+function refreshSavedMarks(){
+  const wb=getWordbook();
   document.querySelectorAll('.en-text .w').forEach(el=>{
     const w=el.textContent.replace(/[^A-Za-z']/g,'').toLowerCase();
     el.classList.toggle('saved',!!wb[w]);
   });
-  const n=Object.keys(wb).length;
-  const el=document.getElementById('nav-wb-count');
-  if(el)el.textContent=n>0?'单词本 '+n:'单词本';
+  const c=Object.keys(wb).length,n=document.getElementById('nav-wb-count');
+  if(n)n.textContent=c>0?'单词本 '+c:'单词本';
 }
-let curWord='',curData=null;
-function closePopup(){
-  document.getElementById('word-popup').classList.remove('open');
-  document.getElementById('word-popup-overlay').style.display='none';
-}
-function openSheet(){
-  const overlay=document.getElementById('word-popup-overlay');
-  const popup=document.getElementById('word-popup');
-  overlay.style.display='block';
-  popup.getBoundingClientRect();
-  popup.classList.add('open');
-}
-async function openPopup(t,word){
-  curWord=word.toLowerCase().replace(/['’]/g,"'");
-  curData=null;
+let currentWord='',currentData=null,currentAudioUrl='';
+const POS_CN={noun:'名词',verb:'动词',adjective:'形容词',adverb:'副词',pronoun:'代词',preposition:'介词',conjunction:'连词',interjection:'感叹词',article:'冠词',determiner:'限定词',exclamation:'感叹词',abbreviation:'缩写'};
+function posLabel(p){return POS_CN[p]||p}
+function speakWord(){if(currentAudioUrl){const a=new Audio(currentAudioUrl);a.play().catch(()=>synthSpeak());}else synthSpeak();}
+function synthSpeak(){if(!window.speechSynthesis)return;const u=new SpeechSynthesisUtterance(currentWord);u.lang='en-US';u.rate=0.9;window.speechSynthesis.cancel();window.speechSynthesis.speak(u);}
+async function translateDef(t){try{const r=await fetch('https://api.mymemory.translated.net/get?q='+encodeURIComponent(t)+'&langpair=en|zh',{signal:AbortSignal.timeout(4000)});if(!r.ok)return'';const d=await r.json();const s=d?.responseData?.translatedText||'';return(!s||s===t)?'':s;}catch(e){return''}}
+function closePopup(){document.getElementById('word-popup').classList.remove('open');document.getElementById('word-popup-overlay').style.display='none';}
+function openSheet(){const o=document.getElementById('word-popup-overlay'),p=document.getElementById('word-popup');o.style.display='block';p.getBoundingClientRect();p.classList.add('open');}
+async function openWordPopup(el,word){
+  currentWord=word.toLowerCase().replace(/['’]/g,"'");currentData=null;currentAudioUrl='';
   document.getElementById('pp-word').textContent=word;
   document.getElementById('pp-phonetic').textContent='';
+  document.getElementById('pp-speak-btn').style.display='none';
   document.getElementById('pp-defs').innerHTML='<div class="popup-loading">查询中…</div>';
-  updateBtn();
-  openSheet();
+  updateSaveBtn();openSheet();
   try{
-    const ctrl=new AbortController();
-    const timer=setTimeout(()=>ctrl.abort(),6000);
-    const res=await fetch('https://api.dictionaryapi.dev/api/v2/entries/en/'+encodeURIComponent(curWord),{signal:ctrl.signal});
-    clearTimeout(timer);
-    if(!res.ok)throw 0;
-    const data=await res.json();
-    curData=data[0];
-    const ph=curData.phonetic||(curData.phonetics||[]).find(p=>p.text)?.text||'';
+    const ctrl=new AbortController(),t=setTimeout(()=>ctrl.abort(),6000);
+    const res=await fetch('https://api.dictionaryapi.dev/api/v2/entries/en/'+encodeURIComponent(currentWord),{signal:ctrl.signal});
+    clearTimeout(t);if(!res.ok)throw new Error('not found');
+    const data=await res.json();currentData=data[0];
+    const pts=currentData.phonetics||[],ph=currentData.phonetic||pts.find(p=>p.text)?.text||'';
     document.getElementById('pp-phonetic').textContent=ph;
-    let h='';
-    (curData.meanings||[]).slice(0,3).forEach(m=>{
-      const d=(m.definitions||[])[0];
-      if(!d)return;
-      h+='<div class="popup-def"><div class="popup-pos">'+m.partOfSpeech+'</div><div class="popup-meaning">'+d.definition+'</div>'+(d.example?'<div class="popup-example">'+d.example+'</div>':'')+'</div>';
-    });
-    document.getElementById('pp-defs').innerHTML=h||'<div class="popup-notfound">无释义</div>';
+    const ae=pts.find(p=>p.audio&&p.audio.length>0);
+    if(ae)currentAudioUrl=ae.audio.startsWith('http')?ae.audio:'https:'+ae.audio;
+    if(currentAudioUrl||window.speechSynthesis)document.getElementById('pp-speak-btn').style.display='';
+    const ms=(currentData.meanings||[]).slice(0,3);
+    let html='';
+    ms.forEach((m,i)=>{const def=(m.definitions||[])[0];if(!def)return;html+='<div class="popup-def" id="pp-def-'+i+'"><div class="popup-pos">'+posLabel(m.partOfSpeech)+'</div><div class="popup-meaning-cn" id="pp-cn-'+i+'">'+def.definition+'</div>'+(def.example?'<div class="popup-example">'+def.example+'</div>':'')+'</div>';});
+    document.getElementById('pp-defs').innerHTML=html||'<div class="popup-notfound">无释义</div>';
+    ms.forEach((m,i)=>{const def=(m.definitions||[])[0];if(!def)return;translateDef(def.definition).then(cn=>{const el=document.getElementById('pp-cn-'+i);if(!el||!cn)return;el.textContent=cn;const s=document.createElement('div');s.className='popup-meaning-en';s.textContent=def.definition;el.after(s);});});
   }catch(e){
     document.getElementById('pp-phonetic').textContent='';
+    if(window.speechSynthesis)document.getElementById('pp-speak-btn').style.display='';
     document.getElementById('pp-defs').innerHTML='<div class="popup-notfound">未找到释义，可直接加入单词本</div>';
   }
 }
-function updateBtn(){
-  const wb=getWB(), btn=document.getElementById('pp-save-btn');
-  if(wb[curWord]){btn.textContent='✓ 已在单词本';btn.classList.add('saved-state');}
-  else{btn.textContent='加入单词本';btn.classList.remove('saved-state');}
-}
-function saveWord(){
-  const wb=getWB();
-  if(wb[curWord]){delete wb[curWord];saveWB(wb);updateBtn();refreshMarks();return;}
-  const ph=document.getElementById('pp-phonetic').textContent.replace('加载中…','');
-  let defs=[];
-  if(curData&&curData.meanings)curData.meanings.slice(0,3).forEach(m=>{const d=(m.definitions||[])[0];if(d)defs.push({pos:m.partOfSpeech,def:d.definition,example:d.example||''});});
-  wb[curWord]={word:curWord,phonetic:ph,defs,source:ARTICLE_DATE,savedAt:Date.now()};
-  saveWB(wb);updateBtn();refreshMarks();
-}
-document.addEventListener('click',e=>{
-  const t=e.target;
-  if(t.classList.contains('w')&&t.closest('.en-text')){
-    e.stopPropagation();
-    const w=t.textContent.replace(/[^A-Za-z']/g,'');
-    if(w.length>=2)openPopup(t,w);
-  }
-});
+function updateSaveBtn(){const wb=getWordbook(),btn=document.getElementById('pp-save-btn');if(wb[currentWord]){btn.textContent='✓ 已在单词本';btn.classList.add('saved-state');}else{btn.textContent='加入单词本';btn.classList.remove('saved-state');}}
+function saveWord(){const wb=getWordbook();if(wb[currentWord]){delete wb[currentWord];saveWordbook(wb);updateSaveBtn();refreshSavedMarks();return;}const phonetic=document.getElementById('pp-phonetic').textContent.trim();let defs=[];if(currentData&&currentData.meanings){currentData.meanings.slice(0,3).forEach((m,i)=>{const d=(m.definitions||[])[0];if(!d)return;const cnEl=document.getElementById('pp-cn-'+i);const cnText=cnEl?cnEl.textContent.trim():'';defs.push({pos:m.partOfSpeech,posCn:posLabel(m.partOfSpeech),def:d.definition,defCn:cnText!==d.definition?cnText:'',example:d.example||''});});}wb[currentWord]={word:currentWord,phonetic,defs,source:ARTICLE_DATE,savedAt:Date.now()};saveWordbook(wb);updateSaveBtn();refreshSavedMarks();}
+document.addEventListener('click',e=>{const t=e.target;if(t.classList.contains('w')&&t.closest('.en-text')){e.stopPropagation();const word=t.textContent.replace(/[^A-Za-z']/g,'');if(word.length>=2)openWordPopup(t,word);}});
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closePopup();});
-refreshMarks();
+refreshSavedMarks();
 </script>
 </body>
 </html>
