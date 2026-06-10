@@ -231,6 +231,36 @@ function saveWord(){const wb=getWordbook();if(wb[currentWord]){delete wb[current
 document.addEventListener('click',e=>{const t=e.target;if(t.classList.contains('w')&&t.closest('.en-text')){e.stopPropagation();const word=t.textContent.replace(/[^A-Za-z']/g,'');if(word.length>=2)openWordPopup(t,word);}});
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closePopup();});
 refreshSavedMarks();
+// Hash-based word highlight: #word-{word} scrolls to first occurrence and highlights the pair
+(function(){
+  const hash = location.hash;
+  if (!hash || !hash.startsWith('#word-')) return;
+  const target = decodeURIComponent(hash.slice(6)).toLowerCase();
+  // Find first .w span matching the word
+  const spans = document.querySelectorAll('.en-text .w');
+  let found = null;
+  for (const s of spans) {
+    if (s.textContent.replace(/[^A-Za-z']/g,'').toLowerCase() === target) { found = s; break; }
+  }
+  if (!found) return;
+  const pair = found.closest('.pair');
+  if (!pair) return;
+  // Mark the pair
+  pair.id = 'highlight-pair';
+  pair.style.cssText += ';border-radius:8px;transition:background .4s;';
+  // Scroll
+  setTimeout(() => {
+    pair.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    pair.style.background = 'rgba(138,122,106,0.13)';
+    // Mark the word spans
+    for (const s of pair.querySelectorAll('.w')) {
+      if (s.textContent.replace(/[^A-Za-z']/g,'').toLowerCase() === target) {
+        s.style.cssText += ';background:rgba(138,122,106,0.28);border-radius:3px;padding:0 1px;';
+      }
+    }
+    setTimeout(() => { pair.style.background = ''; }, 2200);
+  }, 350);
+})();
 </script>
 </body>
 </html>
