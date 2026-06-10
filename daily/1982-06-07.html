@@ -13,47 +13,42 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 .nav-bar{display:flex;align-items:center;justify-content:space-between;padding:20px 0;font-family:-apple-system,BlinkMacSystemFont,'Noto Sans SC','PingFang SC',sans-serif}
 .nav-bar a{color:#8a7a6a;text-decoration:none;font-size:14px;transition:color .2s}
 .nav-bar a:hover{color:#5a4a3a}
-.article-header{padding:40px 0 32px;text-align:center}
-.article-header .article-date{font-family:-apple-system,BlinkMacSystemFont,'Noto Sans SC',sans-serif;font-size:14px;color:#aaa;letter-spacing:.05em;margin-bottom:6px}
-.article-header .article-source{font-family:-apple-system,BlinkMacSystemFont,'Noto Sans SC',sans-serif;font-size:13px;color:#bbb;margin-bottom:16px}
+.article-header{padding:32px 0 24px;text-align:center}
+.article-header .article-date{font-family:-apple-system,BlinkMacSystemFont,'Noto Sans SC',sans-serif;font-size:13px;color:#aaa;letter-spacing:.05em;margin-bottom:5px}
+.article-header .article-source{font-family:-apple-system,BlinkMacSystemFont,'Noto Sans SC',sans-serif;font-size:12px;color:#ccc;margin-bottom:14px}
 .article-header .article-source a{color:#8a7a6a;text-decoration:none}
-.article-header .article-source a:hover{text-decoration:underline}
-.article-header h1{font-size:clamp(24px,4vw,34px);font-weight:600;color:#1a1a1a;letter-spacing:.02em;line-height:1.35}
-.article-header .chinese-title{font-size:clamp(18px,3vw,24px);color:#666;font-weight:500;margin-top:10px}
-.divider{display:flex;align-items:center;gap:16px;margin:8px 0 40px;color:#ddd;font-size:12px;font-family:-apple-system,BlinkMacSystemFont,'Noto Sans SC',sans-serif}
+.article-header h1{font-size:clamp(20px,3.5vw,28px);font-weight:600;color:#1a1a1a;letter-spacing:.02em;line-height:1.35}
+.article-header .chinese-title{font-size:clamp(15px,2.5vw,19px);color:#888;font-weight:400;margin-top:6px}
+.divider{display:flex;align-items:center;gap:16px;margin:6px 0 28px;color:#ddd;font-size:12px}
 .divider::before,.divider::after{content:'';flex:1;height:1px;background:linear-gradient(to right,transparent,#e0d8d0,transparent)}
-.article-content{background:rgba(255,255,255,0.6);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,0.8);border-radius:16px;padding:40px 48px;margin-bottom:40px}
-.article-content .lang-label{font-family:-apple-system,BlinkMacSystemFont,'Noto Sans SC',sans-serif;font-size:12px;color:#bbb;text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px}
-.article-content .en-block{margin-bottom:28px;padding-bottom:24px;border-bottom:1px solid rgba(0,0,0,0.05)}
-.article-content .zh-block{margin-bottom:28px;padding-bottom:24px;border-bottom:1px solid rgba(0,0,0,0.05)}
-.article-content .en-block:last-child,.article-content .zh-block:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
-.article-content .en-text{font-size:17px;color:#3a3a3a;line-height:1.75}
-.article-content .zh-text{font-size:17px;color:#555;line-height:1.85;word-break:keep-all;overflow-wrap:anywhere;text-wrap:balance}
-footer{text-align:center;padding:32px 0 48px;font-family:-apple-system,BlinkMacSystemFont,'Noto Sans SC',sans-serif}
+.article-content{background:rgba(255,255,255,0.6);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,0.8);border-radius:16px;padding:28px 40px;margin-bottom:32px}
+.article-content .pair{margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid rgba(0,0,0,0.05)}
+.article-content .pair:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.article-content .en-text{font-size:16px;color:#3a3a3a;line-height:1.7;margin-bottom:4px}
+.article-content .zh-text{font-size:15px;color:#777;line-height:1.75;word-break:keep-all;overflow-wrap:anywhere}
+footer{text-align:center;padding:24px 0 40px;font-family:-apple-system,BlinkMacSystemFont,'Noto Sans SC',sans-serif}
 footer a{color:#8a7a6a;text-decoration:none;font-size:14px;transition:color .2s}
 footer a:hover{color:#5a4a3a}
 footer .sep{color:#ddd;margin:0 8px}
-/* Word click */
-.clickable-text .word{cursor:pointer;border-radius:3px;transition:background .15s}
-.clickable-text .word:hover{background:rgba(138,122,106,0.15)}
-.clickable-text .word.saved{color:#8a7a6a;border-bottom:1px dotted #8a7a6a}
-/* Popup */
-#word-popup{display:none;position:fixed;z-index:9999;background:#fff;border:1px solid rgba(0,0,0,0.08);border-radius:16px;box-shadow:0 8px 40px rgba(0,0,0,0.12);padding:24px 28px;max-width:340px;width:90vw;font-family:-apple-system,BlinkMacSystemFont,'Noto Sans SC',sans-serif}
-#word-popup .popup-word{font-size:22px;font-weight:600;color:#1a1a1a;margin-bottom:4px}
-#word-popup .popup-phonetic{font-size:14px;color:#999;margin-bottom:12px;font-style:italic}
-#word-popup .popup-defs{max-height:200px;overflow-y:auto;margin-bottom:16px}
-#word-popup .popup-def{margin-bottom:10px}
-#word-popup .popup-pos{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#bbb;margin-bottom:3px}
-#word-popup .popup-meaning{font-size:14px;color:#444;line-height:1.6}
-#word-popup .popup-example{font-size:13px;color:#aaa;font-style:italic;margin-top:3px}
-#word-popup .popup-notfound{font-size:14px;color:#aaa;padding:8px 0}
-#word-popup .popup-actions{display:flex;gap:10px}
-#word-popup .btn-save{flex:1;padding:9px 0;background:#2c2c2c;color:#fff;border:none;border-radius:10px;font-size:14px;cursor:pointer;transition:background .2s}
+@media(max-width:600px){.article-content{padding:18px 16px}.article-header{padding:20px 0 14px}.article-content .en-text{font-size:15px}.article-content .zh-text{font-size:14px}}
+.en-text .w{cursor:pointer;border-radius:2px;transition:background .12s}
+.en-text .w:hover{background:rgba(138,122,106,0.14)}
+.en-text .w.saved{color:#8a7a6a;border-bottom:1.5px dotted #8a7a6a}
+#word-popup{display:none;position:fixed;z-index:9999;background:#fff;border:1px solid rgba(0,0,0,0.08);border-radius:14px;box-shadow:0 6px 32px rgba(0,0,0,0.11);padding:20px 24px;max-width:320px;width:88vw;font-family:-apple-system,BlinkMacSystemFont,'Noto Sans SC',sans-serif}
+#word-popup .popup-word{font-size:20px;font-weight:600;color:#1a1a1a;margin-bottom:3px}
+#word-popup .popup-phonetic{font-size:13px;color:#aaa;margin-bottom:10px;font-style:italic}
+#word-popup .popup-defs{max-height:180px;overflow-y:auto;margin-bottom:14px}
+#word-popup .popup-def{margin-bottom:9px}
+#word-popup .popup-pos{font-size:11px;text-transform:uppercase;letter-spacing:.07em;color:#ccc;margin-bottom:2px}
+#word-popup .popup-meaning{font-size:14px;color:#444;line-height:1.55}
+#word-popup .popup-example{font-size:12px;color:#bbb;font-style:italic;margin-top:2px}
+#word-popup .popup-notfound{font-size:13px;color:#bbb;padding:6px 0}
+#word-popup .popup-actions{display:flex;gap:8px}
+#word-popup .btn-save{flex:1;padding:8px 0;background:#2c2c2c;color:#fff;border:none;border-radius:9px;font-size:13px;cursor:pointer;transition:background .2s}
 #word-popup .btn-save:hover{background:#1a1a1a}
 #word-popup .btn-save.saved-state{background:#e8f4ee;color:#2a8a55}
-#word-popup .btn-close{padding:9px 16px;background:rgba(0,0,0,0.04);color:#666;border:none;border-radius:10px;font-size:14px;cursor:pointer}
+#word-popup .btn-close{padding:8px 14px;background:rgba(0,0,0,0.04);color:#888;border:none;border-radius:9px;font-size:13px;cursor:pointer}
 #word-popup-overlay{display:none;position:fixed;inset:0;z-index:9998}
-@media(max-width:600px){.article-content{padding:24px 20px}.article-header{padding:24px 0}.article-content .en-text,.article-content .zh-text{font-size:16px}}
 </style>
 </head>
 <body>
@@ -70,7 +65,7 @@ footer .sep{color:#ddd;margin:0 8px}
 <div class="container">
 <nav class="nav-bar">
   <a href="../index.html">← 返回首页</a>
-  <a href="../wordbook.html" style="display:flex;align-items:center;gap:5px;font-size:13px;color:#8a7a6a;text-decoration:none" id="nav-wb-link">📖 <span id="nav-wb-count"></span></a>
+  <a href="../wordbook.html" id="nav-wb-link" style="font-size:13px;color:#8a7a6a;text-decoration:none">📖 <span id="nav-wb-count">单词本</span></a>
   <a href="https://amruta.today/" target="_blank">Amruta.today</a>
 </nav>
 <div class="article-header">
@@ -81,257 +76,117 @@ footer .sep{color:#ddd;margin:0 8px}
 </div>
 <div class="divider">◇</div>
 <div class="article-content">
-  <div class="en-block">
-    <div class="lang-label">English</div>
-    <div class="en-text clickable-text"><span class="word" data-word="But">But</span> <span class="word" data-word="just">just</span> <span class="word" data-word="see">see</span> <span class="word" data-word="you">you</span> <span class="word" data-word="are">are</span> <span class="word" data-word="spiritual">spiritual</span>. <span class="word" data-word="You">You</span> <span class="word" data-word="will">will</span> <span class="word" data-word="find">find</span> <span class="word" data-word="it">it</span> <span class="word" data-word="impossible">impossible</span> <span class="word" data-word="to">to</span> <span class="word" data-word="use">use</span> <span class="word" data-word="plastics">plastics</span> <span class="word" data-word="after">after</span> <span class="word" data-word="some">some</span> <span class="word" data-word="time">time</span>, <span class="word" data-word="because">because</span> <span class="word" data-word="you">you</span> <span class="word" data-word="will">will</span> <span class="word" data-word="know">know</span> <span class="word" data-word="that">that</span> <span class="word" data-word="the">the</span> <span class="word" data-word="plastics">plastics</span> <span class="word" data-word="give">give</span> <span class="word" data-word="you">you</span> <span class="word" data-word="horrid">horrid</span> <span class="word" data-word="vibrations">vibrations</span>.</div>
+  <div class="pair">
+    <div class="en-text"><span class="w">But</span> <span class="w">just</span> <span class="w">see</span> <span class="w">you</span> <span class="w">are</span> <span class="w">spiritual</span>. <span class="w">You</span> <span class="w">will</span> <span class="w">find</span> <span class="w">it</span> <span class="w">impossible</span> <span class="w">to</span> <span class="w">use</span> <span class="w">plastics</span> <span class="w">after</span> <span class="w">some</span> <span class="w">time</span>, <span class="w">because</span> <span class="w">you</span> <span class="w">will</span> <span class="w">know</span> <span class="w">that</span> <span class="w">the</span> <span class="w">plastics</span> <span class="w">give</span> <span class="w">you</span> <span class="w">horrid</span> <span class="w">vibrations</span>.</div>
+    <div class="zh-text">但你只要看看自己是否有了灵性。过一段时间，你会发现自己无法再使用塑料，因为你会感知到塑料会散发出可怕的振动。</div>
   </div>
-
-  <div class="zh-block">
-    <div class="lang-label">中文</div>
-    <div class="zh-text">但你看，当你真正有了灵性，过一段时间后，你会发现自己再也无法使用塑料制品，因为你会感知到塑料会散发出可怕的生命能量。</div>
+  <div class="pair">
+    <div class="en-text"><span class="w">After</span> <span class="w">some</span> <span class="w">time</span> <span class="w">you</span> <span class="w">will</span> <span class="w">really</span> <span class="w">find</span> <span class="w">it</span> <span class="w">repulsive</span>.</div>
+    <div class="zh-text">用不了多久，你真的会对它感到厌恶。</div>
   </div>
-  <div class="en-block">
-    <div class="lang-label">English</div>
-    <div class="en-text clickable-text"><span class="word" data-word="After">After</span> <span class="word" data-word="some">some</span> <span class="word" data-word="time">time</span> <span class="word" data-word="you">you</span> <span class="word" data-word="will">will</span> <span class="word" data-word="really">really</span> <span class="word" data-word="find">find</span> <span class="word" data-word="it">it</span> <span class="word" data-word="repulsive">repulsive</span>.</div>
+  <div class="pair">
+    <div class="en-text"><span class="w">It</span>&#039;s <span class="w">all</span> <span class="w">right</span> <span class="w">to</span> <span class="w">sit</span> <span class="w">in</span> a <span class="w">train</span> <span class="w">for</span> a <span class="w">while</span> <span class="w">on</span> a <span class="w">plastic</span> <span class="w">coach</span>, <span class="w">all</span> <span class="w">right</span>, <span class="w">but</span>, <span class="w">to</span> <span class="w">sit</span> <span class="w">in</span> <span class="w">your</span> <span class="w">house</span> <span class="w">on</span> a <span class="w">plastic</span> <span class="w">all</span> <span class="w">the</span> <span class="w">time</span> <span class="w">would</span> <span class="w">be</span> <span class="w">horrible</span> <span class="w">and</span> <span class="w">to</span> <span class="w">wear</span> a <span class="w">plastic</span> <span class="w">coat</span> <span class="w">all</span> <span class="w">the</span> <span class="w">time</span>, <span class="w">our</span> <span class="w">body</span> <span class="w">will</span> <span class="w">refuse</span>.</div>
+    <div class="zh-text">在火车的塑料座椅上坐一会儿没关系，但要一直坐在家里的塑料椅子上，或者一直穿着塑料材质的衣服，我们的身体会排斥的。</div>
   </div>
-
-  <div class="zh-block">
-    <div class="lang-label">中文</div>
-    <div class="zh-text">过不了多久，你真的会对其感到厌恶。</div>
+  <div class="pair">
+    <div class="en-text"><span class="w">So</span> <span class="w">when</span> <span class="w">people</span> <span class="w">will</span> <span class="w">be</span> <span class="w">spiritually</span> <span class="w">awakened</span>, <span class="w">they</span>&#039;<span class="w">ll</span> <span class="w">give</span> <span class="w">up</span> <span class="w">all</span> <span class="w">these</span> <span class="w">nonsensical</span> <span class="w">things</span>.</div>
+    <div class="zh-text">所以，当人们在灵性上觉醒，便会自然舍弃这些毫无意义的东西。</div>
   </div>
-  <div class="en-block">
-    <div class="lang-label">English</div>
-    <div class="en-text clickable-text"><span class="word" data-word="It">It</span>&#039;<span class="word" data-word="s">s</span> <span class="word" data-word="all">all</span> <span class="word" data-word="right">right</span> <span class="word" data-word="to">to</span> <span class="word" data-word="sit">sit</span> <span class="word" data-word="in">in</span> <span class="word" data-word="a">a</span> <span class="word" data-word="train">train</span> <span class="word" data-word="for">for</span> <span class="word" data-word="a">a</span> <span class="word" data-word="while">while</span> <span class="word" data-word="on">on</span> <span class="word" data-word="a">a</span> <span class="word" data-word="plastic">plastic</span> <span class="word" data-word="coach">coach</span>, <span class="word" data-word="all">all</span> <span class="word" data-word="right">right</span>, <span class="word" data-word="but">but</span>, <span class="word" data-word="to">to</span> <span class="word" data-word="sit">sit</span> <span class="word" data-word="in">in</span> <span class="word" data-word="your">your</span> <span class="word" data-word="house">house</span> <span class="word" data-word="on">on</span> <span class="word" data-word="a">a</span> <span class="word" data-word="plastic">plastic</span> <span class="word" data-word="all">all</span> <span class="word" data-word="the">the</span> <span class="word" data-word="time">time</span> <span class="word" data-word="would">would</span> <span class="word" data-word="be">be</span> <span class="word" data-word="horrible">horrible</span> <span class="word" data-word="and">and</span> <span class="word" data-word="to">to</span> <span class="word" data-word="wear">wear</span> <span class="word" data-word="a">a</span> <span class="word" data-word="plastic">plastic</span> <span class="word" data-word="coat">coat</span> <span class="word" data-word="all">all</span> <span class="word" data-word="the">the</span> <span class="word" data-word="time">time</span>, <span class="word" data-word="our">our</span> <span class="word" data-word="body">body</span> <span class="word" data-word="will">will</span> <span class="word" data-word="refuse">refuse</span>.</div>
+  <div class="pair">
+    <div class="en-text"><span class="w">So</span>, <span class="w">they</span> <span class="w">may</span> <span class="w">say</span> <span class="w">then</span>, &#039;<span class="w">What</span> <span class="w">will</span> <span class="w">happen</span> <span class="w">to</span> <span class="w">the</span> <span class="w">machines</span>?&#039;</div>
+    <div class="zh-text">于是，他们可能会问：&quot;那机器怎么办呢？&quot;</div>
   </div>
-
-  <div class="zh-block">
-    <div class="lang-label">中文</div>
-    <div class="zh-text">在火车的塑料座椅上坐一会儿还行，但要是一直坐在家里的塑料椅子上，或者一直穿着塑料材质的衣服，我们的身体会排斥的。</div>
+  <div class="pair">
+    <div class="en-text"><span class="w">Now</span>, <span class="w">machines</span> <span class="w">are</span> <span class="w">for</span> <span class="w">us</span>; <span class="w">we</span> <span class="w">are</span> <span class="w">not</span> <span class="w">for</span> <span class="w">the</span> <span class="w">machines</span>.</div>
+    <div class="zh-text">要知道，机器是为我们服务的，不是我们为机器服务。</div>
   </div>
-  <div class="en-block">
-    <div class="lang-label">English</div>
-    <div class="en-text clickable-text"><span class="word" data-word="So">So</span> <span class="word" data-word="when">when</span> <span class="word" data-word="people">people</span> <span class="word" data-word="will">will</span> <span class="word" data-word="be">be</span> <span class="word" data-word="spiritually">spiritually</span> <span class="word" data-word="awakened">awakened</span>, <span class="word" data-word="they">they</span>&#039;<span class="word" data-word="ll">ll</span> <span class="word" data-word="give">give</span> <span class="word" data-word="up">up</span> <span class="word" data-word="all">all</span> <span class="word" data-word="these">these</span> <span class="word" data-word="nonsensical">nonsensical</span> <span class="word" data-word="things">things</span>.</div>
+  <div class="pair">
+    <div class="en-text"><span class="w">This</span> <span class="w">is</span> <span class="w">another</span> <span class="w">concept</span> <span class="w">is</span>: <span class="w">whatever</span> <span class="w">is</span> <span class="w">created</span> <span class="w">is</span> <span class="w">for</span> <span class="w">us</span> <span class="w">and</span> <span class="w">we</span> <span class="w">are</span> <span class="w">not</span> <span class="w">for</span> <span class="w">that</span>.</div>
+    <div class="zh-text">这是另一个理念：一切被创造出来的东西都是为我们所用，而不是我们去迎合它。</div>
   </div>
-
-  <div class="zh-block">
-    <div class="lang-label">中文</div>
-    <div class="zh-text">所以，当人们在灵性上觉醒，他们就会摒弃这些毫无意义的东西。</div>
+  <div class="pair">
+    <div class="en-text"><span class="w">All</span> <span class="w">right</span>, <span class="w">doesn</span>&#039;t <span class="w">matter</span>.</div>
+    <div class="zh-text">没关系。</div>
   </div>
-  <div class="en-block">
-    <div class="lang-label">English</div>
-    <div class="en-text clickable-text"><span class="word" data-word="So">So</span>, <span class="word" data-word="they">they</span> <span class="word" data-word="may">may</span> <span class="word" data-word="say">say</span> <span class="word" data-word="then">then</span>, &#039;<span class="word" data-word="What">What</span> <span class="word" data-word="will">will</span> <span class="word" data-word="happen">happen</span> <span class="word" data-word="to">to</span> <span class="word" data-word="the">the</span> <span class="word" data-word="machines">machines</span>?&#039;</div>
+  <div class="pair">
+    <div class="en-text"><span class="w">Nothing</span> <span class="w">will</span> <span class="w">go</span> <span class="w">wrong</span> <span class="w">with</span> <span class="w">the</span> <span class="w">machines</span>.</div>
+    <div class="zh-text">机器本身不会出什么问题。</div>
   </div>
-
-  <div class="zh-block">
-    <div class="lang-label">中文</div>
-    <div class="zh-text">所以，他们可能会问：&#039;那机器怎么办呢？&#039;</div>
+  <div class="pair">
+    <div class="en-text"><span class="w">Machines</span> <span class="w">should</span> <span class="w">be</span> <span class="w">used</span> <span class="w">for</span> <span class="w">anything</span> <span class="w">that</span> <span class="w">is</span> a <span class="w">public</span> <span class="w">work</span>.</div>
+    <div class="zh-text">机器应该用于一切公共事务。</div>
   </div>
-  <div class="en-block">
-    <div class="lang-label">English</div>
-    <div class="en-text clickable-text"><span class="word" data-word="Now">Now</span>, <span class="word" data-word="machines">machines</span> <span class="word" data-word="are">are</span> <span class="word" data-word="for">for</span> <span class="word" data-word="us">us</span>; <span class="word" data-word="we">we</span> <span class="word" data-word="are">are</span> <span class="word" data-word="not">not</span> <span class="word" data-word="for">for</span> <span class="word" data-word="the">the</span> <span class="word" data-word="machines">machines</span>.</div>
+  <div class="pair">
+    <div class="en-text"><span class="w">Like</span> <span class="w">for</span> <span class="w">your</span> <span class="w">motor</span> <span class="w">cars</span>, <span class="w">for</span> <span class="w">your</span> <span class="w">trains</span>, <span class="w">trams</span>, <span class="w">all</span> <span class="w">public</span> <span class="w">work</span> <span class="w">which</span> <span class="w">is</span> <span class="w">outside</span>.</div>
+    <div class="zh-text">比如汽车、火车、电车，所有户外的公共设施建设。</div>
   </div>
-
-  <div class="zh-block">
-    <div class="lang-label">中文</div>
-    <div class="zh-text">要知道，机器是为我们服务的，而不是我们为机器服务。</div>
-  </div>
-  <div class="en-block">
-    <div class="lang-label">English</div>
-    <div class="en-text clickable-text"><span class="word" data-word="This">This</span> <span class="word" data-word="is">is</span> <span class="word" data-word="another">another</span> <span class="word" data-word="concept">concept</span> <span class="word" data-word="is">is</span>: <span class="word" data-word="whatever">whatever</span> <span class="word" data-word="is">is</span> <span class="word" data-word="created">created</span> <span class="word" data-word="is">is</span> <span class="word" data-word="for">for</span> <span class="word" data-word="us">us</span> <span class="word" data-word="and">and</span> <span class="word" data-word="we">we</span> <span class="word" data-word="are">are</span> <span class="word" data-word="not">not</span> <span class="word" data-word="for">for</span> <span class="word" data-word="that">that</span>.</div>
-  </div>
-
-  <div class="zh-block">
-    <div class="lang-label">中文</div>
-    <div class="zh-text">这是另一个理念：任何被创造出来的东西都是为我们所用，而不是我们去迎合它们。</div>
-  </div>
-  <div class="en-block">
-    <div class="lang-label">English</div>
-    <div class="en-text clickable-text"><span class="word" data-word="All">All</span> <span class="word" data-word="right">right</span>, <span class="word" data-word="doesn">doesn</span>&#039;<span class="word" data-word="t">t</span> <span class="word" data-word="matter">matter</span>.</div>
-  </div>
-
-  <div class="zh-block">
-    <div class="lang-label">中文</div>
-    <div class="zh-text">没关系，机器本身不会有问题。</div>
-  </div>
-  <div class="en-block">
-    <div class="lang-label">English</div>
-    <div class="en-text clickable-text"><span class="word" data-word="Nothing">Nothing</span> <span class="word" data-word="will">will</span> <span class="word" data-word="go">go</span> <span class="word" data-word="wrong">wrong</span> <span class="word" data-word="with">with</span> <span class="word" data-word="the">the</span> <span class="word" data-word="machines">machines</span>.</div>
-  </div>
-
-  <div class="zh-block">
-    <div class="lang-label">中文</div>
-    <div class="zh-text">机器本身不会有问题。</div>
-  </div>
-  <div class="en-block">
-    <div class="lang-label">English</div>
-    <div class="en-text clickable-text"><span class="word" data-word="Machines">Machines</span> <span class="word" data-word="should">should</span> <span class="word" data-word="be">be</span> <span class="word" data-word="used">used</span> <span class="word" data-word="for">for</span> <span class="word" data-word="anything">anything</span> <span class="word" data-word="that">that</span> <span class="word" data-word="is">is</span> <span class="word" data-word="a">a</span> <span class="word" data-word="public">public</span> <span class="word" data-word="work">work</span>.</div>
-  </div>
-
-  <div class="zh-block">
-    <div class="lang-label">中文</div>
-    <div class="zh-text">机器应该用于公共事务，比如汽车、火车、电车等所有户外的公共设施建设。</div>
-  </div>
-  <div class="en-block">
-    <div class="lang-label">English</div>
-    <div class="en-text clickable-text"><span class="word" data-word="Like">Like</span> <span class="word" data-word="for">for</span> <span class="word" data-word="your">your</span> <span class="word" data-word="motor">motor</span> <span class="word" data-word="cars">cars</span>, <span class="word" data-word="for">for</span> <span class="word" data-word="your">your</span> <span class="word" data-word="trains">trains</span>, <span class="word" data-word="trams">trams</span>, <span class="word" data-word="all">all</span> <span class="word" data-word="public">public</span> <span class="word" data-word="work">work</span> <span class="word" data-word="which">which</span> <span class="word" data-word="is">is</span> <span class="word" data-word="outside">outside</span>.</div>
-  </div>
-
-  <div class="zh-block">
-    <div class="lang-label">中文</div>
-    <div class="zh-text">比如汽车、火车、电车等所有户外的公共设施建设。</div>
-  </div>
-  <div class="en-block">
-    <div class="lang-label">English</div>
-    <div class="en-text clickable-text"><span class="word" data-word="For">For</span> <span class="word" data-word="houses">houses</span> <span class="word" data-word="at">at</span> <span class="word" data-word="the">the</span> <span class="word" data-word="most">most</span> <span class="word" data-word="you">you</span> <span class="word" data-word="can">can</span> <span class="word" data-word="use">use</span> <span class="word" data-word="machines">machines</span>.</div>
-  </div>
-
-  <div class="zh-block">
-    <div class="lang-label">中文</div>
+  <div class="pair">
+    <div class="en-text"><span class="w">For</span> <span class="w">houses</span> <span class="w">at</span> <span class="w">the</span> <span class="w">most</span> <span class="w">you</span> <span class="w">can</span> <span class="w">use</span> <span class="w">machines</span>.</div>
     <div class="zh-text">最多在房子相关的事上，可以用到机器。</div>
   </div>
-  <div class="en-block">
-    <div class="lang-label">English</div>
-    <div class="en-text clickable-text"><span class="word" data-word="But">But</span>, <span class="word" data-word="for">for</span> <span class="word" data-word="personal">personal</span> <span class="word" data-word="things">things</span>, <span class="word" data-word="you">you</span> <span class="word" data-word="must">must</span> <span class="word" data-word="use">use</span> <span class="word" data-word="handmade">handmade</span> <span class="word" data-word="things">things</span>, <span class="word" data-word="handmade">handmade</span> <span class="word" data-word="things">things</span>.</div>
+  <div class="pair">
+    <div class="en-text"><span class="w">But</span>, <span class="w">for</span> <span class="w">personal</span> <span class="w">things</span>, <span class="w">you</span> <span class="w">must</span> <span class="w">use</span> <span class="w">handmade</span> <span class="w">things</span>, <span class="w">handmade</span> <span class="w">things</span>.</div>
+    <div class="zh-text">但对于个人用品，必须用手工制品——手工制品。</div>
   </div>
-
-  <div class="zh-block">
-    <div class="lang-label">中文</div>
-    <div class="zh-text">但是，对于个人用品，你必须使用手工制品。</div>
+  <div class="pair">
+    <div class="en-text"><span class="w">For</span> <span class="w">spiritual</span> <span class="w">people</span>, <span class="w">you</span> <span class="w">like</span> <span class="w">to</span> <span class="w">wear</span> <span class="w">something</span> <span class="w">that</span> <span class="w">is</span> <span class="w">handmade</span> <span class="w">or</span> <span class="w">real</span>.</div>
+    <div class="zh-text">有了灵性的人，会喜欢穿戴手工或天然材质的东西。</div>
   </div>
-  <div class="en-block">
-    <div class="lang-label">English</div>
-    <div class="en-text clickable-text"><span class="word" data-word="For">For</span> <span class="word" data-word="spiritual">spiritual</span> <span class="word" data-word="people">people</span>, <span class="word" data-word="you">you</span> <span class="word" data-word="like">like</span> <span class="word" data-word="to">to</span> <span class="word" data-word="wear">wear</span> <span class="word" data-word="something">something</span> <span class="word" data-word="that">that</span> <span class="word" data-word="is">is</span> <span class="word" data-word="handmade">handmade</span> <span class="word" data-word="or">or</span> <span class="word" data-word="real">real</span>.</div>
-  </div>
-
-  <div class="zh-block">
-    <div class="lang-label">中文</div>
-    <div class="zh-text">对于有灵性的人来说，会喜欢穿手工制作或天然材质的衣物。</div>
-  </div>
-  <div class="en-block">
-    <div class="lang-label">English</div>
-    <div class="en-text clickable-text"><span class="word" data-word="I">I</span> <span class="word" data-word="can">can</span>&#039;<span class="word" data-word="t">t</span> <span class="word" data-word="wear">wear</span> <span class="word" data-word="a">a</span> <span class="word" data-word="nylon">nylon</span> <span class="word" data-word="sari">sari</span>.</div>
-  </div>
-
-  <div class="zh-block">
-    <div class="lang-label">中文</div>
+  <div class="pair">
+    <div class="en-text">I <span class="w">can</span>&#039;t <span class="w">wear</span> a <span class="w">nylon</span> <span class="w">sari</span>.</div>
     <div class="zh-text">我就没法穿尼龙纱丽。</div>
   </div>
-  <div class="en-block">
-    <div class="lang-label">English</div>
-    <div class="en-text clickable-text"><span class="word" data-word="Not">Not</span> <span class="word" data-word="that">that</span> <span class="word" data-word="I">I</span> <span class="word" data-word="am">am</span> <span class="word" data-word="very">very</span> <span class="word" data-word="fussy">fussy</span> <span class="word" data-word="about">about</span> <span class="word" data-word="things">things</span>, <span class="word" data-word="but">but</span> <span class="word" data-word="I">I</span> <span class="word" data-word="just">just</span> <span class="word" data-word="can">can</span>&#039;<span class="word" data-word="t">t</span> <span class="word" data-word="wear">wear</span>.</div>
+  <div class="pair">
+    <div class="en-text"><span class="w">Not</span> <span class="w">that</span> I <span class="w">am</span> <span class="w">very</span> <span class="w">fussy</span> <span class="w">about</span> <span class="w">things</span>, <span class="w">but</span> I <span class="w">just</span> <span class="w">can</span>&#039;t <span class="w">wear</span>.</div>
+    <div class="zh-text">不是我挑剔，只是实在穿不了。</div>
   </div>
-
-  <div class="zh-block">
-    <div class="lang-label">中文</div>
-    <div class="zh-text">不是我挑剔，而是实在穿不了。</div>
+  <div class="pair">
+    <div class="en-text"><span class="w">After</span> <span class="w">some</span> <span class="w">time</span>, <span class="w">if</span> I <span class="w">do</span> <span class="w">not</span> <span class="w">take</span> <span class="w">out</span> <span class="w">My</span> <span class="w">socks</span>, <span class="w">which</span> <span class="w">are</span> <span class="w">only</span> <span class="w">nylon</span>, <span class="w">what</span> <span class="w">to</span> <span class="w">do</span>?</div>
+    <div class="zh-text">如果我不脱掉纯尼龙的袜子，穿上一段时间，会怎样呢？</div>
   </div>
-  <div class="en-block">
-    <div class="lang-label">English</div>
-    <div class="en-text clickable-text"><span class="word" data-word="After">After</span> <span class="word" data-word="some">some</span> <span class="word" data-word="time">time</span>, <span class="word" data-word="if">if</span> <span class="word" data-word="I">I</span> <span class="word" data-word="do">do</span> <span class="word" data-word="not">not</span> <span class="word" data-word="take">take</span> <span class="word" data-word="out">out</span> <span class="word" data-word="My">My</span> <span class="word" data-word="socks">socks</span>, <span class="word" data-word="which">which</span> <span class="word" data-word="are">are</span> <span class="word" data-word="only">only</span> <span class="word" data-word="nylon">nylon</span>, <span class="word" data-word="what">what</span> <span class="word" data-word="to">to</span> <span class="word" data-word="do">do</span>?</div>
+  <div class="pair">
+    <div class="en-text"><span class="w">My</span> <span class="w">vibrations</span> <span class="w">get</span> <span class="w">jammed</span>, <span class="w">completely</span>.</div>
+    <div class="zh-text">我的振动就会完全受阻。</div>
   </div>
-
-  <div class="zh-block">
-    <div class="lang-label">中文</div>
-    <div class="zh-text">如果我不脱掉纯尼龙的袜子，穿着一段时间，会怎么样呢？</div>
+  <div class="pair">
+    <div class="en-text"><span class="w">So</span>, <span class="w">you</span> <span class="w">won</span>&#039;t <span class="w">be</span> <span class="w">able</span> <span class="w">to</span> <span class="w">wear</span> <span class="w">next</span> <span class="w">to</span> <span class="w">your</span> <span class="w">skin</span>, <span class="w">near</span> <span class="w">your</span> <span class="w">skin</span>, <span class="w">near</span> <span class="w">your</span> <span class="w">body</span>, <span class="w">eating</span> <span class="w">your</span> <span class="w">food</span>, <span class="w">everything</span> <span class="w">in</span> <span class="w">plastics</span>, <span class="w">cooking</span> <span class="w">in</span> <span class="w">plastics</span>.</div>
+    <div class="zh-text">所以你不会愿意让塑料制品紧贴皮肤，也不会愿意吃的食物全用塑料包装，连烹饪都离不开塑料。</div>
   </div>
-  <div class="en-block">
-    <div class="lang-label">English</div>
-    <div class="en-text clickable-text"><span class="word" data-word="My">My</span> <span class="word" data-word="vibrations">vibrations</span> <span class="word" data-word="get">get</span> <span class="word" data-word="jammed">jammed</span>, <span class="word" data-word="completely">completely</span>.</div>
+  <div class="pair">
+    <div class="en-text">I <span class="w">mean</span> <span class="w">it</span>&#039;s <span class="w">too</span> <span class="w">much</span>.</div>
+    <div class="zh-text">我是说，这实在太过了。</div>
   </div>
-
-  <div class="zh-block">
-    <div class="lang-label">中文</div>
-    <div class="zh-text">我的生命能量就会完全受阻。</div>
+  <div class="pair">
+    <div class="en-text"><span class="w">Thank</span> <span class="w">God</span>, <span class="w">cooking</span> I <span class="w">don</span>&#039;t <span class="w">think</span> <span class="w">is</span> <span class="w">possible</span>, <span class="w">isn</span>&#039;t <span class="w">it</span>?</div>
+    <div class="zh-text">谢天谢地，烹饪应该还不至于全靠塑料，对吧？</div>
   </div>
-  <div class="en-block">
-    <div class="lang-label">English</div>
-    <div class="en-text clickable-text"><span class="word" data-word="So">So</span>, <span class="word" data-word="you">you</span> <span class="word" data-word="won">won</span>&#039;<span class="word" data-word="t">t</span> <span class="word" data-word="be">be</span> <span class="word" data-word="able">able</span> <span class="word" data-word="to">to</span> <span class="word" data-word="wear">wear</span> <span class="word" data-word="next">next</span> <span class="word" data-word="to">to</span> <span class="word" data-word="your">your</span> <span class="word" data-word="skin">skin</span>, <span class="word" data-word="near">near</span> <span class="word" data-word="your">your</span> <span class="word" data-word="skin">skin</span>, <span class="word" data-word="near">near</span> <span class="word" data-word="your">your</span> <span class="word" data-word="body">body</span>, <span class="word" data-word="eating">eating</span> <span class="word" data-word="your">your</span> <span class="word" data-word="food">food</span>, <span class="word" data-word="everything">everything</span> <span class="word" data-word="in">in</span> <span class="word" data-word="plastics">plastics</span>, <span class="word" data-word="cooking">cooking</span> <span class="word" data-word="in">in</span> <span class="word" data-word="plastics">plastics</span>.</div>
-  </div>
-
-  <div class="zh-block">
-    <div class="lang-label">中文</div>
-    <div class="zh-text">所以，你也不会愿意穿戴塑料制品，让它紧贴皮肤，靠近皮肤。也不会愿意吃的食物全是塑料包装，连做饭都离不开塑料。</div>
-  </div>
-  <div class="en-block">
-    <div class="lang-label">English</div>
-    <div class="en-text clickable-text"><span class="word" data-word="I">I</span> <span class="word" data-word="mean">mean</span> <span class="word" data-word="it">it</span>&#039;<span class="word" data-word="s">s</span> <span class="word" data-word="too">too</span> <span class="word" data-word="much">much</span>.</div>
-  </div>
-
-  <div class="zh-block">
-    <div class="lang-label">中文</div>
-    <div class="zh-text">我是说，这太糟糕了。</div>
-  </div>
-  <div class="en-block">
-    <div class="lang-label">English</div>
-    <div class="en-text clickable-text"><span class="word" data-word="Thank">Thank</span> <span class="word" data-word="God">God</span>, <span class="word" data-word="cooking">cooking</span> <span class="word" data-word="I">I</span> <span class="word" data-word="don">don</span>&#039;<span class="word" data-word="t">t</span> <span class="word" data-word="think">think</span> <span class="word" data-word="is">is</span> <span class="word" data-word="possible">possible</span>, <span class="word" data-word="isn">isn</span>&#039;<span class="word" data-word="t">t</span> <span class="word" data-word="it">it</span>?</div>
-  </div>
-
-  <div class="zh-block">
-    <div class="lang-label">中文</div>
-    <div class="zh-text">谢天谢地，烹饪应该不太可能用塑料制品，对吧？</div>
-  </div>
-  <div class="en-block">
-    <div class="lang-label">English</div>
-    <div class="en-text clickable-text"><span class="word" data-word="But">But</span> <span class="word" data-word="aluminium">aluminium</span> <span class="word" data-word="is">is</span> <span class="word" data-word="another">another</span> <span class="word" data-word="thing">thing</span>.</div>
-  </div>
-
-  <div class="zh-block">
-    <div class="lang-label">中文</div>
+  <div class="pair">
+    <div class="en-text"><span class="w">But</span> <span class="w">aluminium</span> <span class="w">is</span> <span class="w">another</span> <span class="w">thing</span>.</div>
     <div class="zh-text">但铝制品又是另一回事了。</div>
   </div>
-  <div class="en-block">
-    <div class="lang-label">English</div>
-    <div class="en-text clickable-text"><span class="word" data-word="Is">Is</span> <span class="word" data-word="very">very</span> <span class="word" data-word="bad">bad</span>.</div>
+  <div class="pair">
+    <div class="en-text"><span class="w">Is</span> <span class="w">very</span> <span class="w">bad</span>.</div>
+    <div class="zh-text">非常不好。</div>
   </div>
-
-  <div class="zh-block">
-    <div class="lang-label">中文</div>
-    <div class="zh-text">它非常不好。</div>
+  <div class="pair">
+    <div class="en-text"><span class="w">Aluminium</span> – <span class="w">you</span> <span class="w">won</span>&#039;t <span class="w">be</span> <span class="w">able</span> <span class="w">to</span> <span class="w">use</span>.</div>
+    <div class="zh-text">铝制品——你不会想用的。</div>
   </div>
-  <div class="en-block">
-    <div class="lang-label">English</div>
-    <div class="en-text clickable-text"><span class="word" data-word="Aluminium">Aluminium</span> – <span class="word" data-word="you">you</span> <span class="word" data-word="won">won</span>&#039;<span class="word" data-word="t">t</span> <span class="word" data-word="be">be</span> <span class="word" data-word="able">able</span> <span class="word" data-word="to">to</span> <span class="word" data-word="use">use</span>.</div>
+  <div class="pair">
+    <div class="en-text"><span class="w">You</span>&#039;<span class="w">ll</span> <span class="w">either</span> <span class="w">try</span> <span class="w">copper</span> <span class="w">or</span> <span class="w">brass</span>, I <span class="w">think</span> <span class="w">so</span>.</div>
+    <div class="zh-text">我觉得你会转而用铜或黄铜制品。</div>
   </div>
-
-  <div class="zh-block">
-    <div class="lang-label">中文</div>
-    <div class="zh-text">铝制品——你不会想去用的。</div>
+  <div class="pair">
+    <div class="en-text"><span class="w">Now</span>, <span class="w">handmade</span> <span class="w">things</span> <span class="w">we</span> <span class="w">may</span> <span class="w">have</span>, <span class="w">because</span> <span class="w">they</span> <span class="w">are</span> <span class="w">made</span> <span class="w">by</span> <span class="w">hand</span>, <span class="w">so</span> <span class="w">they</span> <span class="w">have</span> <span class="w">vibrations</span>.</div>
+    <div class="zh-text">手工制品是好的，因为出自人手，所以带有振动。</div>
   </div>
-  <div class="en-block">
-    <div class="lang-label">English</div>
-    <div class="en-text clickable-text"><span class="word" data-word="You">You</span>&#039;<span class="word" data-word="ll">ll</span> <span class="word" data-word="either">either</span> <span class="word" data-word="try">try</span> <span class="word" data-word="copper">copper</span> <span class="word" data-word="or">or</span> <span class="word" data-word="brass">brass</span>, <span class="word" data-word="I">I</span> <span class="word" data-word="think">think</span> <span class="word" data-word="so">so</span>.</div>
+  <div class="pair">
+    <div class="en-text"><span class="w">People</span> <span class="w">would</span> <span class="w">like</span> <span class="w">to</span> <span class="w">have</span> <span class="w">handmade</span>.</div>
+    <div class="zh-text">人们会喜欢手工制品的。</div>
   </div>
-
-  <div class="zh-block">
-    <div class="lang-label">中文</div>
-    <div class="zh-text">我觉得你可以试试铜制品或黄铜制品。</div>
-  </div>
-  <div class="en-block">
-    <div class="lang-label">English</div>
-    <div class="en-text clickable-text"><span class="word" data-word="Now">Now</span>, <span class="word" data-word="handmade">handmade</span> <span class="word" data-word="things">things</span> <span class="word" data-word="we">we</span> <span class="word" data-word="may">may</span> <span class="word" data-word="have">have</span>, <span class="word" data-word="because">because</span> <span class="word" data-word="they">they</span> <span class="word" data-word="are">are</span> <span class="word" data-word="made">made</span> <span class="word" data-word="by">by</span> <span class="word" data-word="hand">hand</span>, <span class="word" data-word="so">so</span> <span class="word" data-word="they">they</span> <span class="word" data-word="have">have</span> <span class="word" data-word="vibrations">vibrations</span>.</div>
-  </div>
-
-  <div class="zh-block">
-    <div class="lang-label">中文</div>
-    <div class="zh-text">现在，我们可以拥有手工制品，因为它们是手工制作的，所以带有生命能量。</div>
-  </div>
-  <div class="en-block">
-    <div class="lang-label">English</div>
-    <div class="en-text clickable-text"><span class="word" data-word="People">People</span> <span class="word" data-word="would">would</span> <span class="word" data-word="like">like</span> <span class="word" data-word="to">to</span> <span class="word" data-word="have">have</span> <span class="word" data-word="handmade">handmade</span>.</div>
-  </div>
-
-  <div class="zh-block">
-    <div class="lang-label">中文</div>
-    <div class="zh-text">人们会喜欢手工制品。</div>
-  </div>
-  <div class="en-block">
-    <div class="lang-label">English</div>
-    <div class="en-text clickable-text"><span class="word" data-word="It">It</span> <span class="word" data-word="is">is</span> <span class="word" data-word="a">a</span> <span class="word" data-word="part">part</span>, <span class="word" data-word="so">so</span> <span class="word" data-word="by">by</span> <span class="word" data-word="that">that</span> <span class="word" data-word="we">we</span> <span class="word" data-word="remove">remove</span> <span class="word" data-word="the">the</span> <span class="word" data-word="disparity">disparity</span> <span class="word" data-word="of">of</span> <span class="word" data-word="the">the</span> <span class="word" data-word="world">world</span>.</div>
-  </div>
-
-  <div class="zh-block">
-    <div class="lang-label">中文</div>
-    <div class="zh-text">这是一种方式，通过这种方式，我们可以消除世界的不平衡。</div>
+  <div class="pair">
+    <div class="en-text"><span class="w">It</span> <span class="w">is</span> a <span class="w">part</span>, <span class="w">so</span> <span class="w">by</span> <span class="w">that</span> <span class="w">we</span> <span class="w">remove</span> <span class="w">the</span> <span class="w">disparity</span> <span class="w">of</span> <span class="w">the</span> <span class="w">world</span>.</div>
+    <div class="zh-text">这也是其中一环——通过这种方式，可以消除世界的不平衡。</div>
   </div>
 </div>
 <footer>
@@ -345,96 +200,87 @@ footer .sep{color:#ddd;margin:0 8px}
 </footer>
 </div>
 <script>
-const ARTICLE_DATE = '1982-06-07';
-const WB_KEY = 'amruta_wordbook';
-function getWordbook(){try{return JSON.parse(localStorage.getItem(WB_KEY)||'{}')}catch(e){return {}}}
-function saveWordbook(wb){localStorage.setItem(WB_KEY,JSON.stringify(wb))}
-function refreshSavedMarks(){
-  const wb=getWordbook();
-  document.querySelectorAll('.word').forEach(el=>{
-    el.classList.toggle('saved',!!wb[el.dataset.word.toLowerCase()]);
+const ARTICLE_DATE='1982-06-07';
+const WB_KEY='amruta_wordbook';
+function getWB(){try{return JSON.parse(localStorage.getItem(WB_KEY)||'{}')}catch(e){return{}}}
+function saveWB(wb){localStorage.setItem(WB_KEY,JSON.stringify(wb))}
+function refreshMarks(){
+  const wb=getWB();
+  document.querySelectorAll('.en-text .w').forEach(el=>{
+    const w=el.textContent.replace(/[^A-Za-z']/g,'').toLowerCase();
+    el.classList.toggle('saved',!!wb[w]);
   });
-  const count=Object.keys(wb).length;
-  const navEl=document.getElementById('nav-wb-count');
-  if(navEl)navEl.textContent=count>0?'单词本 '+count:'单词本';
+  const n=Object.keys(wb).length;
+  const el=document.getElementById('nav-wb-count');
+  if(el)el.textContent=n>0?'单词本 '+n:'单词本';
 }
-let currentWord='',currentData=null;
+let curWord='',curData=null;
 function closePopup(){
   document.getElementById('word-popup').style.display='none';
   document.getElementById('word-popup-overlay').style.display='none';
 }
-function positionPopup(el){
-  const popup=document.getElementById('word-popup');
-  popup.style.display='block';
-  const rect=el.getBoundingClientRect();
-  const pw=popup.offsetWidth,ph=popup.offsetHeight;
-  let top=rect.bottom+8+window.scrollY;
-  let left=rect.left+window.scrollX;
+function posPopup(t){
+  const p=document.getElementById('word-popup');
+  p.style.display='block';
+  const r=t.getBoundingClientRect();
+  let top=r.bottom+8+window.scrollY, left=r.left+window.scrollX;
+  const pw=p.offsetWidth, ph=p.offsetHeight;
   if(left+pw>window.innerWidth-12)left=window.innerWidth-pw-12;
   if(left<12)left=12;
-  if(top+ph>window.scrollY+window.innerHeight-12)top=rect.top+window.scrollY-ph-8;
-  popup.style.top=top+'px';
-  popup.style.left=left+'px';
+  if(top+ph>window.scrollY+window.innerHeight-12)top=r.top+window.scrollY-ph-8;
+  p.style.top=top+'px'; p.style.left=left+'px';
 }
-async function openWordPopup(el,word){
-  currentWord=word.toLowerCase().replace(/['’]/g,"'");
-  currentData=null;
+async function openPopup(t,word){
+  curWord=word.toLowerCase().replace(/['’]/g,"'");
+  curData=null;
   document.getElementById('pp-word').textContent=word;
   document.getElementById('pp-phonetic').textContent='加载中…';
   document.getElementById('pp-defs').innerHTML='';
   document.getElementById('word-popup-overlay').style.display='block';
-  positionPopup(el);
-  updateSaveBtn();
+  posPopup(t); updateBtn();
   try{
-    const res=await fetch('https://api.dictionaryapi.dev/api/v2/entries/en/'+encodeURIComponent(currentWord));
-    if(!res.ok)throw new Error('not found');
+    const res=await fetch('https://api.dictionaryapi.dev/api/v2/entries/en/'+encodeURIComponent(curWord));
+    if(!res.ok)throw 0;
     const data=await res.json();
-    currentData=data[0];
-    const phonetic=currentData.phonetic||(currentData.phonetics||[]).find(p=>p.text)?.text||'';
-    document.getElementById('pp-phonetic').textContent=phonetic;
-    let defsHtml='';
-    (currentData.meanings||[]).slice(0,3).forEach(m=>{
-      const def=(m.definitions||[])[0];
-      if(!def)return;
-      defsHtml+='<div class="popup-def"><div class="popup-pos">'+m.partOfSpeech+'</div><div class="popup-meaning">'+def.definition+'</div>'+(def.example?'<div class="popup-example">"'+def.example+'"</div>':'')+'</div>';
+    curData=data[0];
+    const ph=curData.phonetic||(curData.phonetics||[]).find(p=>p.text)?.text||'';
+    document.getElementById('pp-phonetic').textContent=ph;
+    let h='';
+    (curData.meanings||[]).slice(0,3).forEach(m=>{
+      const d=(m.definitions||[])[0];
+      if(!d)return;
+      h+='<div class="popup-def"><div class="popup-pos">'+m.partOfSpeech+'</div><div class="popup-meaning">'+d.definition+'</div>'+(d.example?'<div class="popup-example">"'+d.example+'"</div>':'')+'</div>';
     });
-    document.getElementById('pp-defs').innerHTML=defsHtml||'<div class="popup-notfound">无释义</div>';
+    document.getElementById('pp-defs').innerHTML=h||'<div class="popup-notfound">无释义</div>';
   }catch(e){
     document.getElementById('pp-phonetic').textContent='';
     document.getElementById('pp-defs').innerHTML='<div class="popup-notfound">未找到释义，可直接加入单词本</div>';
   }
 }
-function updateSaveBtn(){
-  const wb=getWordbook();
-  const btn=document.getElementById('pp-save-btn');
-  if(wb[currentWord]){btn.textContent='✓ 已在单词本';btn.classList.add('saved-state');}
+function updateBtn(){
+  const wb=getWB(), btn=document.getElementById('pp-save-btn');
+  if(wb[curWord]){btn.textContent='✓ 已在单词本';btn.classList.add('saved-state');}
   else{btn.textContent='加入单词本';btn.classList.remove('saved-state');}
 }
 function saveWord(){
-  const wb=getWordbook();
-  if(wb[currentWord]){delete wb[currentWord];saveWordbook(wb);updateSaveBtn();refreshSavedMarks();return;}
-  const phonetic=document.getElementById('pp-phonetic').textContent.replace('加载中…','');
+  const wb=getWB();
+  if(wb[curWord]){delete wb[curWord];saveWB(wb);updateBtn();refreshMarks();return;}
+  const ph=document.getElementById('pp-phonetic').textContent.replace('加载中…','');
   let defs=[];
-  if(currentData&&currentData.meanings){
-    currentData.meanings.slice(0,3).forEach(m=>{
-      const d=(m.definitions||[])[0];
-      if(d)defs.push({pos:m.partOfSpeech,def:d.definition,example:d.example||''});
-    });
-  }
-  wb[currentWord]={word:currentWord,phonetic,defs,source:ARTICLE_DATE,savedAt:Date.now()};
-  saveWordbook(wb);
-  updateSaveBtn();
-  refreshSavedMarks();
+  if(curData&&curData.meanings)curData.meanings.slice(0,3).forEach(m=>{const d=(m.definitions||[])[0];if(d)defs.push({pos:m.partOfSpeech,def:d.definition,example:d.example||''});});
+  wb[curWord]={word:curWord,phonetic:ph,defs,source:ARTICLE_DATE,savedAt:Date.now()};
+  saveWB(wb);updateBtn();refreshMarks();
 }
-document.querySelectorAll('.word').forEach(el=>{
-  el.addEventListener('click',e=>{
+document.addEventListener('click',e=>{
+  const t=e.target;
+  if(t.classList.contains('w')&&t.closest('.en-text')){
     e.stopPropagation();
-    const w=el.dataset.word;
-    if(/^[A-Za-z]/.test(w))openWordPopup(el,w);
-  });
+    const w=t.textContent.replace(/[^A-Za-z']/g,'');
+    if(w.length>=2)openPopup(t,w);
+  }
 });
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closePopup();});
-refreshSavedMarks();
+refreshMarks();
 </script>
 </body>
 </html>
