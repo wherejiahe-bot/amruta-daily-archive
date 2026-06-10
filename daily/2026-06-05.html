@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>In the illusion of "doing" · 2026-06-05</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;-webkit-font-smoothing:antialiased}
+body{font-family:'Noto Serif SC','Source Han Serif SC','STSongti','Songti SC',Georgia,'Times New Roman',serif;background:#f8f5f0;color:#2c2c2c;line-height:1.8;min-height:100vh}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse at 15% 8%,rgba(180,160,140,0.10) 0%,transparent 50%),radial-gradient(ellipse at 85% 92%,rgba(200,180,160,0.08) 0%,transparent 50%);pointer-events:none;z-index:-1}
+.container{max-width:780px;margin:0 auto;padding:0 24px}
+.nav-bar{display:flex;align-items:center;justify-content:space-between;padding:20px 0;font-family:-apple-system,BlinkMacSystemFont,'Noto Sans SC','PingFang SC',sans-serif}
+.nav-bar a{color:#8a7a6a;text-decoration:none;font-size:14px;transition:color .2s}
+.nav-bar a:hover{color:#5a4a3a}
+.article-header{padding:40px 0 32px;text-align:center}
+.article-header .article-date{font-family:-apple-system,BlinkMacSystemFont,'Noto Sans SC',sans-serif;font-size:14px;color:#aaa;letter-spacing:.05em;margin-bottom:6px}
+.article-header .article-source{font-family:-apple-system,BlinkMacSystemFont,'Noto Sans SC',sans-serif;font-size:13px;color:#bbb;margin-bottom:16px}
+.article-header .article-source a{color:#8a7a6a;text-decoration:none}
+.article-header .article-source a:hover{text-decoration:underline}
+.article-header h1{font-size:clamp(24px,4vw,34px);font-weight:600;color:#1a1a1a;letter-spacing:.02em;line-height:1.35}
+.article-header .chinese-title{font-size:clamp(18px,3vw,24px);color:#666;font-weight:500;margin-top:10px}
+.divider{display:flex;align-items:center;gap:16px;margin:8px 0 40px;color:#ddd;font-size:12px;font-family:-apple-system,BlinkMacSystemFont,'Noto Sans SC',sans-serif}
+.divider::before,.divider::after{content:'';flex:1;height:1px;background:linear-gradient(to right,transparent,#e0d8d0,transparent)}
+.article-content{background:rgba(255,255,255,0.6);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,0.8);border-radius:16px;padding:28px 40px;margin-bottom:32px}
+.article-content .pair{margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid rgba(0,0,0,0.05)}
+.article-content .pair:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.article-content .en-text{font-size:16px;color:#3a3a3a;line-height:1.7;margin-bottom:4px}
+.article-content .zh-text{font-size:15px;color:#777;line-height:1.75;word-break:keep-all;overflow-wrap:anywhere}
+footer{text-align:center;padding:24px 0 40px;font-family:-apple-system,BlinkMacSystemFont,'Noto Sans SC',sans-serif}
+footer a{color:#8a7a6a;text-decoration:none;font-size:14px;transition:color .2s}
+footer a:hover{color:#5a4a3a}
+footer .sep{color:#ddd;margin:0 8px}
+@media(max-width:600px){.article-content{padding:18px 16px}.article-header{padding:20px 0 16px}.article-content .en-text{font-size:15px}.article-content .zh-text{font-size:14px}}
+.en-text .w{cursor:pointer;border-radius:2px;transition:background .12s}
+.en-text .w:hover,.en-text .w:active{background:rgba(138,122,106,0.18)}
+.en-text .w.saved{color:#8a7a6a;border-bottom:1.5px dotted #8a7a6a}
+#word-popup-overlay{display:none;position:fixed;inset:0;z-index:9998;background:rgba(0,0,0,0.25);backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px)}
+#word-popup{position:fixed;z-index:9999;left:0;right:0;bottom:0;background:#fff;border-radius:18px 18px 0 0;box-shadow:0 -4px 32px rgba(0,0,0,0.13);padding:0 24px 32px;font-family:-apple-system,BlinkMacSystemFont,'Noto Sans SC',sans-serif;transform:translateY(100%);transition:transform .25s cubic-bezier(.32,.72,0,1);will-change:transform;max-height:70vh;overflow-y:auto}
+#word-popup.open{transform:translateY(0)}
+#word-popup .drag-handle{width:36px;height:4px;background:#e0e0e0;border-radius:2px;margin:12px auto 16px;cursor:grab}
+#word-popup .popup-word{font-size:22px;font-weight:700;color:#1a1a1a;margin-bottom:2px}
+#word-popup .popup-phonetic-row{display:flex;align-items:center;gap:8px;margin-bottom:12px;min-height:18px}
+#word-popup .popup-phonetic{font-size:13px;color:#aaa;font-style:italic}
+#word-popup .btn-speak{background:none;border:none;cursor:pointer;padding:2px 4px;font-size:16px;color:#aaa;line-height:1;border-radius:4px;transition:color .15s,background .15s}
+#word-popup .btn-speak:hover{color:#5a7a9a;background:rgba(90,122,154,0.1)}
+#word-popup .btn-speak:active{color:#2a5a7a}
+#word-popup .popup-defs{margin-bottom:16px}
+#word-popup .popup-def{margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid #f0f0f0}
+#word-popup .popup-def:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+#word-popup .popup-pos{font-size:11px;text-transform:uppercase;letter-spacing:.07em;color:#ccc;margin-bottom:3px}
+#word-popup .popup-meaning-cn{font-size:15px;color:#333;line-height:1.6;font-weight:500}
+#word-popup .popup-meaning-en{font-size:12px;color:#bbb;line-height:1.5;margin-top:2px}
+#word-popup .popup-example{font-size:12px;color:#bbb;font-style:italic;margin-top:3px}
+#word-popup .popup-loading{font-size:14px;color:#ccc;padding:8px 0 16px;text-align:center}
+#word-popup .popup-notfound{font-size:13px;color:#bbb;padding:6px 0 16px}
+#word-popup .popup-actions{display:flex;gap:8px;position:sticky;bottom:0;background:#fff;padding-top:8px}
+#word-popup .btn-save{flex:1;padding:11px 0;background:#2c2c2c;color:#fff;border:none;border-radius:10px;font-size:14px;cursor:pointer;transition:background .2s;font-weight:500}
+#word-popup .btn-save:active{background:#111}
+#word-popup .btn-save.saved-state{background:#e8f4ee;color:#2a8a55}
+#word-popup .btn-close{padding:11px 16px;background:rgba(0,0,0,0.05);color:#888;border:none;border-radius:10px;font-size:14px;cursor:pointer}
+</style>
+</head>
+<body>
+<div id="word-popup-overlay" onclick="closePopup()"></div>
+<div id="word-popup">
+  <div class="drag-handle"></div>
+  <div class="popup-word" id="pp-word"></div>
+  <div class="popup-phonetic-row">
+    <span class="popup-phonetic" id="pp-phonetic"></span>
+    <button class="btn-speak" id="pp-speak-btn" onclick="speakWord()" title="朗读" style="display:none">🔊</button>
+  </div>
+  <div class="popup-defs" id="pp-defs"></div>
+  <div class="popup-actions">
+    <button class="btn-save" id="pp-save-btn" onclick="saveWord()">加入单词本</button>
+    <button class="btn-close" onclick="closePopup()">关闭</button>
+  </div>
+</div>
+<div class="container">
+<nav class="nav-bar">
+  <a href="../index.html">← 返回首页</a>
+  <a href="../wordbook.html" style="display:flex;align-items:center;gap:5px;font-size:13px;color:#8a7a6a;text-decoration:none" id="nav-wb-link">📖 <span id="nav-wb-count"></span></a>
+  <a href="https://amruta.today/" target="_blank">Amruta.today</a>
+</nav>
+<div class="article-header">
+  <div class="article-date">Jun 5, 2026</div>
+  <h1>In the illusion of "doing"</h1>
+  <div class="chinese-title">在「做」的幻象之中</div>
+  <div class="article-source">Source: <a href="https://www.sahaja.live/1985-06-05-public-program-school-for-the-humanities-new-york-usa/" target="_blank">www.sahaja.live</a></div>
+</div>
+<div class="divider">◇</div>
+<div class="article-content">
+  <div class="pair">
+    <div class="en-text"><span class="w">So</span> <span class="w">after</span> <span class="w">balancing</span>, <span class="w">ascension</span> <span class="w">is</span> <span class="w">needed</span> <span class="w">in</span> <span class="w">the</span> <span class="w">attention</span>. <span class="w">Without</span> <span class="w">that</span> <span class="w">ascent</span>, <span class="w">our</span> <span class="w">attention</span> <span class="w">is</span> <span class="w">at</span> <span class="w">that</span> <span class="w">level</span> <span class="w">where</span> <span class="w">we</span> <span class="w">are</span> <span class="w">not</span> <span class="w">yet</span> <span class="w">superhuman</span> <span class="w">beings</span>, <span class="w">where</span> <span class="w">we</span> <span class="w">have</span> <span class="w">to</span> <span class="w">become</span> <span class="w">non</span>-<span class="w">being</span>.</div>
+    <div class="zh-text">平衡之后，注意力需要提升。没有这种提升，注意力便停留在尚未成为超人类的层面——在那里，我们要成为"无为"（空无）。</div>
+  </div>
+  <div class="pair">
+    <div class="en-text"><span class="w">Now</span> <span class="w">the</span> <span class="w">concept</span> <span class="w">of</span> <span class="w">non</span>-<span class="w">being</span> <span class="w">is</span> <span class="w">absolutely</span> <span class="w">Eastern</span> <span class="w">concept</span>, <span class="w">that</span> <span class="w">you</span> <span class="w">become</span> <span class="w">the</span> <span class="w">non</span>-<span class="w">being</span>. <span class="w">So</span> <span class="w">now</span> <span class="w">we</span> <span class="w">are</span> <span class="w">the</span> <span class="w">being</span> <span class="w">and</span> <span class="w">then</span> <span class="w">we</span> <span class="w">become</span> <span class="w">the</span> <span class="w">non</span>-<span class="w">being</span>.</div>
+    <div class="zh-text">"无为"的概念完全是东方的概念——你成为无为。我们现在是存在，然后要成为无为。</div>
+  </div>
+  <div class="pair">
+    <div class="en-text"><span class="w">In</span> <span class="w">the</span> <span class="w">state</span> <span class="w">when</span> <span class="w">we</span> <span class="w">are</span> <span class="w">the</span> <span class="w">being</span> <span class="w">what</span> <span class="w">happens</span> <span class="w">to</span> <span class="w">us</span> <span class="w">that</span> <span class="w">we</span> <span class="w">are</span> <span class="w">actually</span> <span class="w">believing</span> <span class="w">in</span> <span class="w">the</span> <span class="w">illusion</span> <span class="w">that</span> <span class="w">we</span> <span class="w">are</span> <span class="w">doing</span> <span class="w">something</span>.</div>
+    <div class="zh-text">在我们处于"存在"状态时，发生在我们身上的是——我们相信自己正在做事，这是一种幻象。</div>
+  </div>
+  <div class="pair">
+    <div class="en-text"><span class="w">Because</span> <span class="w">the</span> <span class="w">two</span> <span class="w">dimensions</span> <span class="w">of</span> <span class="w">the</span> <span class="w">left</span> <span class="w">and</span> <span class="w">right</span> <span class="w">give</span> <span class="w">you</span> a <span class="w">feeling</span> <span class="w">that</span> <span class="w">we</span> <span class="w">are</span> <span class="w">doing</span> <span class="w">something</span> <span class="w">because</span> <span class="w">we</span> <span class="w">can</span> <span class="w">go</span> <span class="w">to</span> <span class="w">the</span> <span class="w">right</span> <span class="w">and</span> <span class="w">we</span> <span class="w">can</span> <span class="w">go</span> <span class="w">to</span> <span class="w">the</span> <span class="w">left</span>.</div>
+    <div class="zh-text">因为左右两个维度给你一种感觉，觉得自己在做事——因为我们可以偏右，也可以偏左。</div>
+  </div>
+  <div class="pair">
+    <div class="en-text"><span class="w">Like</span> <span class="w">if</span> <span class="w">you</span> <span class="w">want</span> <span class="w">to</span> <span class="w">think</span> <span class="w">you</span> <span class="w">are</span> <span class="w">in</span> <span class="w">love</span> <span class="w">with</span> <span class="w">somebody</span> <span class="w">and</span> <span class="w">imaginary</span> <span class="w">you</span> <span class="w">see</span>…<span class="w">all</span> <span class="w">these</span> <span class="w">things</span> <span class="w">we</span> <span class="w">can</span> <span class="w">build</span> <span class="w">up</span> <span class="w">the</span> <span class="w">castle</span> <span class="w">that</span> <span class="w">side</span>. <span class="w">If</span> <span class="w">you</span> <span class="w">want</span> <span class="w">to</span> <span class="w">think</span> <span class="w">that</span> <span class="w">we</span> <span class="w">have</span> <span class="w">to</span> <span class="w">do</span> <span class="w">something</span> <span class="w">so</span> <span class="w">we</span> <span class="w">can</span> <span class="w">change</span> <span class="w">matter</span>.</div>
+    <div class="zh-text">比如你想着自己爱上了某人——你可以凭空在那边建起一座想象的城堡。又或者你想着：我们可以做点什么来改变物质。</div>
+  </div>
+  <div class="pair">
+    <div class="en-text"><span class="w">And</span> <span class="w">how</span> <span class="w">do</span> <span class="w">we</span> <span class="w">change</span> <span class="w">matter</span> <span class="w">is</span> <span class="w">that</span> <span class="w">if</span> <span class="w">something</span> <span class="w">is</span> <span class="w">dead</span> <span class="w">we</span> <span class="w">change</span> <span class="w">the</span> <span class="w">form</span> <span class="w">and</span> <span class="w">we</span> <span class="w">think</span> <span class="w">that</span> <span class="w">some</span> <span class="w">dead</span>…<span class="w">from</span> <span class="w">the</span> <span class="w">dead</span> <span class="w">we</span> <span class="w">have</span> <span class="w">done</span>….<span class="w">so</span> <span class="w">we</span> <span class="w">have</span> <span class="w">done</span> a <span class="w">great</span> <span class="w">job</span>. <span class="w">That</span> <span class="w">means</span> <span class="w">we</span> <span class="w">think</span> <span class="w">we</span> <span class="w">are</span> <span class="w">the</span> <span class="w">doers</span>.</div>
+    <div class="zh-text">我们改变物质的方式，是将死物改变形态，然后以为从死物中创造了什么——做了一项伟大的工作。这意味着我们以为自己是做事者。</div>
+  </div>
+  <div class="pair">
+    <div class="en-text"><span class="w">Actually</span>, <span class="w">by</span> <span class="w">changing</span> <span class="w">the</span> <span class="w">forms</span> <span class="w">we</span> <span class="w">have</span> <span class="w">achieved</span> <span class="w">nothing</span> <span class="w">because</span> <span class="w">you</span> <span class="w">cannot</span> <span class="w">create</span> <span class="w">anything</span>. <span class="w">So</span> <span class="w">one</span> <span class="w">must</span> <span class="w">know</span> <span class="w">the</span> <span class="w">creator</span> <span class="w">is</span> <span class="w">beyond</span> <span class="w">us</span>. <span class="w">But</span> <span class="w">we</span> <span class="w">also</span> <span class="w">don't</span> <span class="w">know</span> <span class="w">the</span> <span class="w">creator</span>.</div>
+    <div class="zh-text">实际上，改变形态我们什么也没有成就，因为你无法真正创造任何东西。所以必须知道，创造者超然于我们之上。然而我们也不认识这个创造者。</div>
+  </div>
+  <div class="pair">
+    <div class="en-text"><span class="w">This</span> <span class="w">is</span> <span class="w">the</span> <span class="w">dimension</span> <span class="w">that</span> <span class="w">is</span> <span class="w">missing</span> <span class="w">in</span> <span class="w">us</span>. <span class="w">So</span> <span class="w">we</span> <span class="w">live</span> <span class="w">in</span> <span class="w">the</span> <span class="w">three</span> <span class="w">dimensions</span> <span class="w">but</span> <span class="w">if</span> <span class="w">you</span> <span class="w">have</span> <span class="w">to</span> <span class="w">rise</span> <span class="w">to</span> <span class="w">the</span> <span class="w">fourth</span> <span class="w">dimension</span> <span class="w">where</span> <span class="w">we</span> <span class="w">have</span> <span class="w">to</span> <span class="w">know</span> <span class="w">that</span> <span class="w">the</span> <span class="w">doer</span> <span class="w">is</span> <span class="w">somebody</span> <span class="w">else</span>, <span class="w">the</span> <span class="w">creator</span> <span class="w">is</span> <span class="w">somebody</span> <span class="w">else</span> <span class="w">and</span> <span class="w">that</span> <span class="w">His</span> <span class="w">all</span>-<span class="w">pervading</span> <span class="w">power</span> <span class="w">is</span> <span class="w">flowing</span> <span class="w">through</span> <span class="w">you</span>, <span class="w">we</span> <span class="w">will</span> <span class="w">not</span> <span class="w">believe</span> <span class="w">into</span> <span class="w">anything</span> <span class="w">which</span> <span class="w">is</span> <span class="w">the</span> <span class="w">truth</span>.</div>
+    <div class="zh-text">这正是我们内在缺失的那个维度。我们活在三维之中，但若要提升到第四维度——在那里你必须知道，做事者另有其人，创造者另有其人，祂遍及一切的力量正流经你——我们却不相信任何真实的东西。</div>
+  </div>
+</div>
+<footer>
+  <a href="../index.html">← 返回首页</a>
+  <span class="sep">·</span>
+  <a href="../wordbook.html">📖 单词本</a>
+  <span class="sep">·</span>
+  <a href="https://amruta.today/" target="_blank">Amruta.today</a>
+  <span class="sep">·</span>
+  <a href="https://github.com/wherejiahe-bot/amruta-daily-archive" target="_blank">GitHub</a>
+</footer>
+</div>
+<script>
+const ARTICLE_DATE='2026-06-05',WB_KEY='amruta_wordbook';
+function getWordbook(){try{return JSON.parse(localStorage.getItem(WB_KEY)||'{}')}catch(e){return{}}}
+function saveWordbook(wb){localStorage.setItem(WB_KEY,JSON.stringify(wb))}
+function refreshSavedMarks(){
+  const wb=getWordbook();
+  document.querySelectorAll('.en-text .w').forEach(el=>{
+    const w=el.textContent.replace(/[^A-Za-z']/g,'').toLowerCase();
+    el.classList.toggle('saved',!!wb[w]);
+  });
+  const c=Object.keys(wb).length,n=document.getElementById('nav-wb-count');
+  if(n)n.textContent=c>0?'单词本 '+c:'单词本';
+}
+let currentWord='',currentData=null,currentAudioUrl='';
+const POS_CN={noun:'名词',verb:'动词',adjective:'形容词',adverb:'副词',pronoun:'代词',preposition:'介词',conjunction:'连词',interjection:'感叹词',article:'冠词',determiner:'限定词',exclamation:'感叹词',abbreviation:'缩写'};
+function posLabel(p){return POS_CN[p]||p}
+function speakWord(){if(currentAudioUrl){const a=new Audio(currentAudioUrl);a.play().catch(()=>synthSpeak());}else synthSpeak();}
+function synthSpeak(){if(!window.speechSynthesis)return;const u=new SpeechSynthesisUtterance(currentWord);u.lang='en-US';u.rate=0.9;window.speechSynthesis.cancel();window.speechSynthesis.speak(u);}
+async function translateDef(t){try{const r=await fetch('https://api.mymemory.translated.net/get?q='+encodeURIComponent(t)+'&langpair=en|zh',{signal:AbortSignal.timeout(4000)});if(!r.ok)return'';const d=await r.json();const s=d?.responseData?.translatedText||'';return(!s||s===t)?'':s;}catch(e){return''}}
+function closePopup(){document.getElementById('word-popup').classList.remove('open');document.getElementById('word-popup-overlay').style.display='none';}
+function openSheet(){const o=document.getElementById('word-popup-overlay'),p=document.getElementById('word-popup');o.style.display='block';p.getBoundingClientRect();p.classList.add('open');}
+async function openWordPopup(el,word){
+  currentWord=word.toLowerCase().replace(/['’]/g,"'");currentData=null;currentAudioUrl='';
+  document.getElementById('pp-word').textContent=word;
+  document.getElementById('pp-phonetic').textContent='';
+  document.getElementById('pp-speak-btn').style.display='none';
+  document.getElementById('pp-defs').innerHTML='<div class="popup-loading">查询中…</div>';
+  updateSaveBtn();openSheet();
+  try{
+    const ctrl=new AbortController(),t=setTimeout(()=>ctrl.abort(),6000);
+    const res=await fetch('https://api.dictionaryapi.dev/api/v2/entries/en/'+encodeURIComponent(currentWord),{signal:ctrl.signal});
+    clearTimeout(t);if(!res.ok)throw new Error('not found');
+    const data=await res.json();currentData=data[0];
+    const pts=currentData.phonetics||[],ph=currentData.phonetic||pts.find(p=>p.text)?.text||'';
+    document.getElementById('pp-phonetic').textContent=ph;
+    const ae=pts.find(p=>p.audio&&p.audio.length>0);
+    if(ae)currentAudioUrl=ae.audio.startsWith('http')?ae.audio:'https:'+ae.audio;
+    if(currentAudioUrl||window.speechSynthesis)document.getElementById('pp-speak-btn').style.display='';
+    const ms=(currentData.meanings||[]).slice(0,3);
+    let html='';
+    ms.forEach((m,i)=>{const def=(m.definitions||[])[0];if(!def)return;html+='<div class="popup-def" id="pp-def-'+i+'"><div class="popup-pos">'+posLabel(m.partOfSpeech)+'</div><div class="popup-meaning-cn" id="pp-cn-'+i+'">'+def.definition+'</div>'+(def.example?'<div class="popup-example">'+def.example+'</div>':'')+'</div>';});
+    document.getElementById('pp-defs').innerHTML=html||'<div class="popup-notfound">无释义</div>';
+    ms.forEach((m,i)=>{const def=(m.definitions||[])[0];if(!def)return;translateDef(def.definition).then(cn=>{const el=document.getElementById('pp-cn-'+i);if(!el||!cn)return;el.textContent=cn;const s=document.createElement('div');s.className='popup-meaning-en';s.textContent=def.definition;el.after(s);});});
+  }catch(e){
+    document.getElementById('pp-phonetic').textContent='';
+    if(window.speechSynthesis)document.getElementById('pp-speak-btn').style.display='';
+    document.getElementById('pp-defs').innerHTML='<div class="popup-notfound">未找到释义，可直接加入单词本</div>';
+  }
+}
+function updateSaveBtn(){const wb=getWordbook(),btn=document.getElementById('pp-save-btn');if(wb[currentWord]){btn.textContent='✓ 已在单词本';btn.classList.add('saved-state');}else{btn.textContent='加入单词本';btn.classList.remove('saved-state');}}
+function saveWord(){const wb=getWordbook();if(wb[currentWord]){delete wb[currentWord];saveWordbook(wb);updateSaveBtn();refreshSavedMarks();return;}const phonetic=document.getElementById('pp-phonetic').textContent.trim();let defs=[];if(currentData&&currentData.meanings){currentData.meanings.slice(0,3).forEach((m,i)=>{const d=(m.definitions||[])[0];if(!d)return;const cnEl=document.getElementById('pp-cn-'+i);const cnText=cnEl?cnEl.textContent.trim():'';defs.push({pos:m.partOfSpeech,posCn:posLabel(m.partOfSpeech),def:d.definition,defCn:cnText!==d.definition?cnText:'',example:d.example||''});});}wb[currentWord]={word:currentWord,phonetic,defs,source:ARTICLE_DATE,savedAt:Date.now()};saveWordbook(wb);updateSaveBtn();refreshSavedMarks();}
+document.addEventListener('click',e=>{const t=e.target;if(t.classList.contains('w')&&t.closest('.en-text')){e.stopPropagation();const word=t.textContent.replace(/[^A-Za-z']/g,'');if(word.length>=2)openWordPopup(t,word);}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closePopup();});
+refreshSavedMarks();
+</script>
+</body>
+</html>
