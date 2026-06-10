@@ -33,26 +33,57 @@ footer{text-align:center;padding:32px 0 48px;font-family:-apple-system,BlinkMacS
 footer a{color:#8a7a6a;text-decoration:none;font-size:14px;transition:color .2s}
 footer a:hover{color:#5a4a3a}
 footer .sep{color:#ddd;margin:0 8px}
+/* Word click */
+.clickable-text .word{cursor:pointer;border-radius:3px;transition:background .15s}
+.clickable-text .word:hover{background:rgba(138,122,106,0.15)}
+.clickable-text .word.saved{color:#8a7a6a;border-bottom:1px dotted #8a7a6a}
+/* Popup */
+#word-popup{display:none;position:fixed;z-index:9999;background:#fff;border:1px solid rgba(0,0,0,0.08);border-radius:16px;box-shadow:0 8px 40px rgba(0,0,0,0.12);padding:24px 28px;max-width:340px;width:90vw;font-family:-apple-system,BlinkMacSystemFont,'Noto Sans SC',sans-serif}
+#word-popup .popup-word{font-size:22px;font-weight:600;color:#1a1a1a;margin-bottom:4px}
+#word-popup .popup-phonetic{font-size:14px;color:#999;margin-bottom:12px;font-style:italic}
+#word-popup .popup-defs{max-height:200px;overflow-y:auto;margin-bottom:16px}
+#word-popup .popup-def{margin-bottom:10px}
+#word-popup .popup-pos{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#bbb;margin-bottom:3px}
+#word-popup .popup-meaning{font-size:14px;color:#444;line-height:1.6}
+#word-popup .popup-example{font-size:13px;color:#aaa;font-style:italic;margin-top:3px}
+#word-popup .popup-notfound{font-size:14px;color:#aaa;padding:8px 0}
+#word-popup .popup-actions{display:flex;gap:10px}
+#word-popup .btn-save{flex:1;padding:9px 0;background:#2c2c2c;color:#fff;border:none;border-radius:10px;font-size:14px;cursor:pointer;transition:background .2s}
+#word-popup .btn-save:hover{background:#1a1a1a}
+#word-popup .btn-save.saved-state{background:#e8f4ee;color:#2a8a55}
+#word-popup .btn-close{padding:9px 16px;background:rgba(0,0,0,0.04);color:#666;border:none;border-radius:10px;font-size:14px;cursor:pointer}
+#word-popup-overlay{display:none;position:fixed;inset:0;z-index:9998}
 @media(max-width:600px){.article-content{padding:24px 20px}.article-header{padding:24px 0}.article-content .en-text,.article-content .zh-text{font-size:16px}}
 </style>
 </head>
 <body>
+<div id="word-popup-overlay" onclick="closePopup()"></div>
+<div id="word-popup">
+  <div class="popup-word" id="pp-word"></div>
+  <div class="popup-phonetic" id="pp-phonetic"></div>
+  <div class="popup-defs" id="pp-defs"></div>
+  <div class="popup-actions">
+    <button class="btn-save" id="pp-save-btn" onclick="saveWord()">加入单词本</button>
+    <button class="btn-close" onclick="closePopup()">关闭</button>
+  </div>
+</div>
 <div class="container">
 <nav class="nav-bar">
   <a href="../index.html">← 返回首页</a>
+  <a href="../wordbook.html" style="display:flex;align-items:center;gap:5px;font-size:13px;color:#8a7a6a;text-decoration:none" id="nav-wb-link">📖 <span id="nav-wb-count"></span></a>
   <a href="https://amruta.today/" target="_blank">Amruta.today</a>
 </nav>
 <div class="article-header">
   <div class="article-date">Jun 5, 1985</div>
   <h1>In the illusion of &quot;doing&quot;</h1>
   <div class="chinese-title">在「做」的幻象之中</div>
-  <div class="article-source"><a href="https://www.sahaja.live/1985-06-05-public-program-school-for-the-humanities-new-york-usa/" target="_blank">https://www.sahaja.live/1985-06-05-public-program-school-for-the-humanities-new-york-usa/</a></div>
+  <div class="article-source">Source: <a href="https://www.sahaja.live/1985-06-05-public-program-school-for-the-humanities-new-york-usa/" target="_blank">www.sahaja.live</a></div>
 </div>
 <div class="divider">◇</div>
 <div class="article-content">
   <div class="en-block">
     <div class="lang-label">English</div>
-    <div class="en-text">So after balancing, ascension is needed in the attention. Without that ascent, our attention is at that level where we are not yet superhuman beings, where we have to become non-being.</div>
+    <div class="en-text clickable-text"><span class="word" data-word="So">So</span> <span class="word" data-word="after">after</span> <span class="word" data-word="balancing">balancing</span>, <span class="word" data-word="ascension">ascension</span> <span class="word" data-word="is">is</span> <span class="word" data-word="needed">needed</span> <span class="word" data-word="in">in</span> <span class="word" data-word="the">the</span> <span class="word" data-word="attention">attention</span>. <span class="word" data-word="Without">Without</span> <span class="word" data-word="that">that</span> <span class="word" data-word="ascent">ascent</span>, <span class="word" data-word="our">our</span> <span class="word" data-word="attention">attention</span> <span class="word" data-word="is">is</span> <span class="word" data-word="at">at</span> <span class="word" data-word="that">that</span> <span class="word" data-word="level">level</span> <span class="word" data-word="where">where</span> <span class="word" data-word="we">we</span> <span class="word" data-word="are">are</span> <span class="word" data-word="not">not</span> <span class="word" data-word="yet">yet</span> <span class="word" data-word="superhuman">superhuman</span> <span class="word" data-word="beings">beings</span>, <span class="word" data-word="where">where</span> <span class="word" data-word="we">we</span> <span class="word" data-word="have">have</span> <span class="word" data-word="to">to</span> <span class="word" data-word="become">become</span> <span class="word" data-word="non">non</span>-<span class="word" data-word="being">being</span>.</div>
   </div>
 
   <div class="zh-block">
@@ -61,7 +92,7 @@ footer .sep{color:#ddd;margin:0 8px}
   </div>
   <div class="en-block">
     <div class="lang-label">English</div>
-    <div class="en-text">Now the concept of non-being is absolutely Eastern concept, that you become the non-being. So now we are the being and then we become the non-being.</div>
+    <div class="en-text clickable-text"><span class="word" data-word="Now">Now</span> <span class="word" data-word="the">the</span> <span class="word" data-word="concept">concept</span> <span class="word" data-word="of">of</span> <span class="word" data-word="non">non</span>-<span class="word" data-word="being">being</span> <span class="word" data-word="is">is</span> <span class="word" data-word="absolutely">absolutely</span> <span class="word" data-word="Eastern">Eastern</span> <span class="word" data-word="concept">concept</span>, <span class="word" data-word="that">that</span> <span class="word" data-word="you">you</span> <span class="word" data-word="become">become</span> <span class="word" data-word="the">the</span> <span class="word" data-word="non">non</span>-<span class="word" data-word="being">being</span>. <span class="word" data-word="So">So</span> <span class="word" data-word="now">now</span> <span class="word" data-word="we">we</span> <span class="word" data-word="are">are</span> <span class="word" data-word="the">the</span> <span class="word" data-word="being">being</span> <span class="word" data-word="and">and</span> <span class="word" data-word="then">then</span> <span class="word" data-word="we">we</span> <span class="word" data-word="become">become</span> <span class="word" data-word="the">the</span> <span class="word" data-word="non">non</span>-<span class="word" data-word="being">being</span>.</div>
   </div>
 
   <div class="zh-block">
@@ -70,7 +101,7 @@ footer .sep{color:#ddd;margin:0 8px}
   </div>
   <div class="en-block">
     <div class="lang-label">English</div>
-    <div class="en-text">In the state when we are the being what happens to us that we are actually believing in the illusion that we are doing something.</div>
+    <div class="en-text clickable-text"><span class="word" data-word="In">In</span> <span class="word" data-word="the">the</span> <span class="word" data-word="state">state</span> <span class="word" data-word="when">when</span> <span class="word" data-word="we">we</span> <span class="word" data-word="are">are</span> <span class="word" data-word="the">the</span> <span class="word" data-word="being">being</span> <span class="word" data-word="what">what</span> <span class="word" data-word="happens">happens</span> <span class="word" data-word="to">to</span> <span class="word" data-word="us">us</span> <span class="word" data-word="that">that</span> <span class="word" data-word="we">we</span> <span class="word" data-word="are">are</span> <span class="word" data-word="actually">actually</span> <span class="word" data-word="believing">believing</span> <span class="word" data-word="in">in</span> <span class="word" data-word="the">the</span> <span class="word" data-word="illusion">illusion</span> <span class="word" data-word="that">that</span> <span class="word" data-word="we">we</span> <span class="word" data-word="are">are</span> <span class="word" data-word="doing">doing</span> <span class="word" data-word="something">something</span>.</div>
   </div>
 
   <div class="zh-block">
@@ -79,7 +110,7 @@ footer .sep{color:#ddd;margin:0 8px}
   </div>
   <div class="en-block">
     <div class="lang-label">English</div>
-    <div class="en-text">Because the two dimensions of the left and right give you a feeling that we are doing something because we can go to the right and we can go to the left.</div>
+    <div class="en-text clickable-text"><span class="word" data-word="Because">Because</span> <span class="word" data-word="the">the</span> <span class="word" data-word="two">two</span> <span class="word" data-word="dimensions">dimensions</span> <span class="word" data-word="of">of</span> <span class="word" data-word="the">the</span> <span class="word" data-word="left">left</span> <span class="word" data-word="and">and</span> <span class="word" data-word="right">right</span> <span class="word" data-word="give">give</span> <span class="word" data-word="you">you</span> <span class="word" data-word="a">a</span> <span class="word" data-word="feeling">feeling</span> <span class="word" data-word="that">that</span> <span class="word" data-word="we">we</span> <span class="word" data-word="are">are</span> <span class="word" data-word="doing">doing</span> <span class="word" data-word="something">something</span> <span class="word" data-word="because">because</span> <span class="word" data-word="we">we</span> <span class="word" data-word="can">can</span> <span class="word" data-word="go">go</span> <span class="word" data-word="to">to</span> <span class="word" data-word="the">the</span> <span class="word" data-word="right">right</span> <span class="word" data-word="and">and</span> <span class="word" data-word="we">we</span> <span class="word" data-word="can">can</span> <span class="word" data-word="go">go</span> <span class="word" data-word="to">to</span> <span class="word" data-word="the">the</span> <span class="word" data-word="left">left</span>.</div>
   </div>
 
   <div class="zh-block">
@@ -88,7 +119,7 @@ footer .sep{color:#ddd;margin:0 8px}
   </div>
   <div class="en-block">
     <div class="lang-label">English</div>
-    <div class="en-text">Like if you want to think you are in love with somebody and imaginary you see…all these things we can build up the castle that side. If you want to think that we have to do something so we can change matter.</div>
+    <div class="en-text clickable-text"><span class="word" data-word="Like">Like</span> <span class="word" data-word="if">if</span> <span class="word" data-word="you">you</span> <span class="word" data-word="want">want</span> <span class="word" data-word="to">to</span> <span class="word" data-word="think">think</span> <span class="word" data-word="you">you</span> <span class="word" data-word="are">are</span> <span class="word" data-word="in">in</span> <span class="word" data-word="love">love</span> <span class="word" data-word="with">with</span> <span class="word" data-word="somebody">somebody</span> <span class="word" data-word="and">and</span> <span class="word" data-word="imaginary">imaginary</span> <span class="word" data-word="you">you</span> <span class="word" data-word="see">see</span>…<span class="word" data-word="all">all</span> <span class="word" data-word="these">these</span> <span class="word" data-word="things">things</span> <span class="word" data-word="we">we</span> <span class="word" data-word="can">can</span> <span class="word" data-word="build">build</span> <span class="word" data-word="up">up</span> <span class="word" data-word="the">the</span> <span class="word" data-word="castle">castle</span> <span class="word" data-word="that">that</span> <span class="word" data-word="side">side</span>. <span class="word" data-word="If">If</span> <span class="word" data-word="you">you</span> <span class="word" data-word="want">want</span> <span class="word" data-word="to">to</span> <span class="word" data-word="think">think</span> <span class="word" data-word="that">that</span> <span class="word" data-word="we">we</span> <span class="word" data-word="have">have</span> <span class="word" data-word="to">to</span> <span class="word" data-word="do">do</span> <span class="word" data-word="something">something</span> <span class="word" data-word="so">so</span> <span class="word" data-word="we">we</span> <span class="word" data-word="can">can</span> <span class="word" data-word="change">change</span> <span class="word" data-word="matter">matter</span>.</div>
   </div>
 
   <div class="zh-block">
@@ -97,7 +128,7 @@ footer .sep{color:#ddd;margin:0 8px}
   </div>
   <div class="en-block">
     <div class="lang-label">English</div>
-    <div class="en-text">And how do we change matter is that if something is dead we change the form and we think that some dead…from the dead we have done….so we have done a great job. That means we think we are the doers.</div>
+    <div class="en-text clickable-text"><span class="word" data-word="And">And</span> <span class="word" data-word="how">how</span> <span class="word" data-word="do">do</span> <span class="word" data-word="we">we</span> <span class="word" data-word="change">change</span> <span class="word" data-word="matter">matter</span> <span class="word" data-word="is">is</span> <span class="word" data-word="that">that</span> <span class="word" data-word="if">if</span> <span class="word" data-word="something">something</span> <span class="word" data-word="is">is</span> <span class="word" data-word="dead">dead</span> <span class="word" data-word="we">we</span> <span class="word" data-word="change">change</span> <span class="word" data-word="the">the</span> <span class="word" data-word="form">form</span> <span class="word" data-word="and">and</span> <span class="word" data-word="we">we</span> <span class="word" data-word="think">think</span> <span class="word" data-word="that">that</span> <span class="word" data-word="some">some</span> <span class="word" data-word="dead">dead</span>…<span class="word" data-word="from">from</span> <span class="word" data-word="the">the</span> <span class="word" data-word="dead">dead</span> <span class="word" data-word="we">we</span> <span class="word" data-word="have">have</span> <span class="word" data-word="done">done</span>….<span class="word" data-word="so">so</span> <span class="word" data-word="we">we</span> <span class="word" data-word="have">have</span> <span class="word" data-word="done">done</span> <span class="word" data-word="a">a</span> <span class="word" data-word="great">great</span> <span class="word" data-word="job">job</span>. <span class="word" data-word="That">That</span> <span class="word" data-word="means">means</span> <span class="word" data-word="we">we</span> <span class="word" data-word="think">think</span> <span class="word" data-word="we">we</span> <span class="word" data-word="are">are</span> <span class="word" data-word="the">the</span> <span class="word" data-word="doers">doers</span>.</div>
   </div>
 
   <div class="zh-block">
@@ -106,7 +137,7 @@ footer .sep{color:#ddd;margin:0 8px}
   </div>
   <div class="en-block">
     <div class="lang-label">English</div>
-    <div class="en-text">Actually, by changing the forms we have achieved nothing because you cannot create anything. So one must know the creator is beyond us. But we also don&#039;t know the creator.</div>
+    <div class="en-text clickable-text"><span class="word" data-word="Actually">Actually</span>, <span class="word" data-word="by">by</span> <span class="word" data-word="changing">changing</span> <span class="word" data-word="the">the</span> <span class="word" data-word="forms">forms</span> <span class="word" data-word="we">we</span> <span class="word" data-word="have">have</span> <span class="word" data-word="achieved">achieved</span> <span class="word" data-word="nothing">nothing</span> <span class="word" data-word="because">because</span> <span class="word" data-word="you">you</span> <span class="word" data-word="cannot">cannot</span> <span class="word" data-word="create">create</span> <span class="word" data-word="anything">anything</span>. <span class="word" data-word="So">So</span> <span class="word" data-word="one">one</span> <span class="word" data-word="must">must</span> <span class="word" data-word="know">know</span> <span class="word" data-word="the">the</span> <span class="word" data-word="creator">creator</span> <span class="word" data-word="is">is</span> <span class="word" data-word="beyond">beyond</span> <span class="word" data-word="us">us</span>. <span class="word" data-word="But">But</span> <span class="word" data-word="we">we</span> <span class="word" data-word="also">also</span> <span class="word" data-word="don">don</span>&#039;<span class="word" data-word="t">t</span> <span class="word" data-word="know">know</span> <span class="word" data-word="the">the</span> <span class="word" data-word="creator">creator</span>.</div>
   </div>
 
   <div class="zh-block">
@@ -115,7 +146,7 @@ footer .sep{color:#ddd;margin:0 8px}
   </div>
   <div class="en-block">
     <div class="lang-label">English</div>
-    <div class="en-text">This is the dimension that is missing in us. So we live in the three dimensions but if you have to rise to the fourth dimension where we have to know that the doer is somebody else, the creator is somebody else and that His all-pervading power is flowing through you, we will not believe into anything which is the truth.</div>
+    <div class="en-text clickable-text"><span class="word" data-word="This">This</span> <span class="word" data-word="is">is</span> <span class="word" data-word="the">the</span> <span class="word" data-word="dimension">dimension</span> <span class="word" data-word="that">that</span> <span class="word" data-word="is">is</span> <span class="word" data-word="missing">missing</span> <span class="word" data-word="in">in</span> <span class="word" data-word="us">us</span>. <span class="word" data-word="So">So</span> <span class="word" data-word="we">we</span> <span class="word" data-word="live">live</span> <span class="word" data-word="in">in</span> <span class="word" data-word="the">the</span> <span class="word" data-word="three">three</span> <span class="word" data-word="dimensions">dimensions</span> <span class="word" data-word="but">but</span> <span class="word" data-word="if">if</span> <span class="word" data-word="you">you</span> <span class="word" data-word="have">have</span> <span class="word" data-word="to">to</span> <span class="word" data-word="rise">rise</span> <span class="word" data-word="to">to</span> <span class="word" data-word="the">the</span> <span class="word" data-word="fourth">fourth</span> <span class="word" data-word="dimension">dimension</span> <span class="word" data-word="where">where</span> <span class="word" data-word="we">we</span> <span class="word" data-word="have">have</span> <span class="word" data-word="to">to</span> <span class="word" data-word="know">know</span> <span class="word" data-word="that">that</span> <span class="word" data-word="the">the</span> <span class="word" data-word="doer">doer</span> <span class="word" data-word="is">is</span> <span class="word" data-word="somebody">somebody</span> <span class="word" data-word="else">else</span>, <span class="word" data-word="the">the</span> <span class="word" data-word="creator">creator</span> <span class="word" data-word="is">is</span> <span class="word" data-word="somebody">somebody</span> <span class="word" data-word="else">else</span> <span class="word" data-word="and">and</span> <span class="word" data-word="that">that</span> <span class="word" data-word="His">His</span> <span class="word" data-word="all">all</span>-<span class="word" data-word="pervading">pervading</span> <span class="word" data-word="power">power</span> <span class="word" data-word="is">is</span> <span class="word" data-word="flowing">flowing</span> <span class="word" data-word="through">through</span> <span class="word" data-word="you">you</span>, <span class="word" data-word="we">we</span> <span class="word" data-word="will">will</span> <span class="word" data-word="not">not</span> <span class="word" data-word="believe">believe</span> <span class="word" data-word="into">into</span> <span class="word" data-word="anything">anything</span> <span class="word" data-word="which">which</span> <span class="word" data-word="is">is</span> <span class="word" data-word="the">the</span> <span class="word" data-word="truth">truth</span>.</div>
   </div>
 
   <div class="zh-block">
@@ -126,10 +157,104 @@ footer .sep{color:#ddd;margin:0 8px}
 <footer>
   <a href="../index.html">← 返回首页</a>
   <span class="sep">·</span>
+  <a href="../wordbook.html">📖 单词本</a>
+  <span class="sep">·</span>
   <a href="https://amruta.today/" target="_blank">Amruta.today</a>
   <span class="sep">·</span>
   <a href="https://github.com/wherejiahe-bot/amruta-daily-archive" target="_blank">GitHub</a>
 </footer>
 </div>
+<script>
+const ARTICLE_DATE = '1985-06-05';
+const WB_KEY = 'amruta_wordbook';
+function getWordbook(){try{return JSON.parse(localStorage.getItem(WB_KEY)||'{}')}catch(e){return {}}}
+function saveWordbook(wb){localStorage.setItem(WB_KEY,JSON.stringify(wb))}
+function refreshSavedMarks(){
+  const wb=getWordbook();
+  document.querySelectorAll('.word').forEach(el=>{
+    el.classList.toggle('saved',!!wb[el.dataset.word.toLowerCase()]);
+  });
+  const count=Object.keys(wb).length;
+  const navEl=document.getElementById('nav-wb-count');
+  if(navEl)navEl.textContent=count>0?'单词本 '+count:'单词本';
+}
+let currentWord='',currentData=null;
+function closePopup(){
+  document.getElementById('word-popup').style.display='none';
+  document.getElementById('word-popup-overlay').style.display='none';
+}
+function positionPopup(el){
+  const popup=document.getElementById('word-popup');
+  popup.style.display='block';
+  const rect=el.getBoundingClientRect();
+  const pw=popup.offsetWidth,ph=popup.offsetHeight;
+  let top=rect.bottom+8+window.scrollY;
+  let left=rect.left+window.scrollX;
+  if(left+pw>window.innerWidth-12)left=window.innerWidth-pw-12;
+  if(left<12)left=12;
+  if(top+ph>window.scrollY+window.innerHeight-12)top=rect.top+window.scrollY-ph-8;
+  popup.style.top=top+'px';
+  popup.style.left=left+'px';
+}
+async function openWordPopup(el,word){
+  currentWord=word.toLowerCase().replace(/['’]/g,"'");
+  currentData=null;
+  document.getElementById('pp-word').textContent=word;
+  document.getElementById('pp-phonetic').textContent='加载中…';
+  document.getElementById('pp-defs').innerHTML='';
+  document.getElementById('word-popup-overlay').style.display='block';
+  positionPopup(el);
+  updateSaveBtn();
+  try{
+    const res=await fetch('https://api.dictionaryapi.dev/api/v2/entries/en/'+encodeURIComponent(currentWord));
+    if(!res.ok)throw new Error('not found');
+    const data=await res.json();
+    currentData=data[0];
+    const phonetic=currentData.phonetic||(currentData.phonetics||[]).find(p=>p.text)?.text||'';
+    document.getElementById('pp-phonetic').textContent=phonetic;
+    let defsHtml='';
+    (currentData.meanings||[]).slice(0,3).forEach(m=>{
+      const def=(m.definitions||[])[0];
+      if(!def)return;
+      defsHtml+='<div class="popup-def"><div class="popup-pos">'+m.partOfSpeech+'</div><div class="popup-meaning">'+def.definition+'</div>'+(def.example?'<div class="popup-example">"'+def.example+'"</div>':'')+'</div>';
+    });
+    document.getElementById('pp-defs').innerHTML=defsHtml||'<div class="popup-notfound">无释义</div>';
+  }catch(e){
+    document.getElementById('pp-phonetic').textContent='';
+    document.getElementById('pp-defs').innerHTML='<div class="popup-notfound">未找到释义，可直接加入单词本</div>';
+  }
+}
+function updateSaveBtn(){
+  const wb=getWordbook();
+  const btn=document.getElementById('pp-save-btn');
+  if(wb[currentWord]){btn.textContent='✓ 已在单词本';btn.classList.add('saved-state');}
+  else{btn.textContent='加入单词本';btn.classList.remove('saved-state');}
+}
+function saveWord(){
+  const wb=getWordbook();
+  if(wb[currentWord]){delete wb[currentWord];saveWordbook(wb);updateSaveBtn();refreshSavedMarks();return;}
+  const phonetic=document.getElementById('pp-phonetic').textContent.replace('加载中…','');
+  let defs=[];
+  if(currentData&&currentData.meanings){
+    currentData.meanings.slice(0,3).forEach(m=>{
+      const d=(m.definitions||[])[0];
+      if(d)defs.push({pos:m.partOfSpeech,def:d.definition,example:d.example||''});
+    });
+  }
+  wb[currentWord]={word:currentWord,phonetic,defs,source:ARTICLE_DATE,savedAt:Date.now()};
+  saveWordbook(wb);
+  updateSaveBtn();
+  refreshSavedMarks();
+}
+document.querySelectorAll('.word').forEach(el=>{
+  el.addEventListener('click',e=>{
+    e.stopPropagation();
+    const w=el.dataset.word;
+    if(/^[A-Za-z]/.test(w))openWordPopup(el,w);
+  });
+});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closePopup();});
+refreshSavedMarks();
+</script>
 </body>
 </html>
