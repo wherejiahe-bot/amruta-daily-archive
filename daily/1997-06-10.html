@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>“Who is the other?” · 1997-06-10</title>
+<title>&quot;Who is the other?&quot; · 1997-06-10</title>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{font-size:16px;-webkit-font-smoothing:antialiased}
@@ -13,47 +13,42 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 .nav-bar{display:flex;align-items:center;justify-content:space-between;padding:20px 0;font-family:-apple-system,BlinkMacSystemFont,'Noto Sans SC','PingFang SC',sans-serif}
 .nav-bar a{color:#8a7a6a;text-decoration:none;font-size:14px;transition:color .2s}
 .nav-bar a:hover{color:#5a4a3a}
-.article-header{padding:40px 0 32px;text-align:center}
-.article-header .article-date{font-family:-apple-system,BlinkMacSystemFont,'Noto Sans SC',sans-serif;font-size:14px;color:#aaa;letter-spacing:.05em;margin-bottom:6px}
-.article-header .article-source{font-family:-apple-system,BlinkMacSystemFont,'Noto Sans SC',sans-serif;font-size:13px;color:#bbb;margin-bottom:16px}
+.article-header{padding:32px 0 24px;text-align:center}
+.article-header .article-date{font-family:-apple-system,BlinkMacSystemFont,'Noto Sans SC',sans-serif;font-size:13px;color:#aaa;letter-spacing:.05em;margin-bottom:5px}
+.article-header .article-source{font-family:-apple-system,BlinkMacSystemFont,'Noto Sans SC',sans-serif;font-size:12px;color:#ccc;margin-bottom:14px}
 .article-header .article-source a{color:#8a7a6a;text-decoration:none}
-.article-header .article-source a:hover{text-decoration:underline}
-.article-header h1{font-size:clamp(24px,4vw,34px);font-weight:600;color:#1a1a1a;letter-spacing:.02em;line-height:1.35}
-.article-header .chinese-title{font-size:clamp(18px,3vw,24px);color:#666;font-weight:500;margin-top:10px}
-.divider{display:flex;align-items:center;gap:16px;margin:8px 0 40px;color:#ddd;font-size:12px;font-family:-apple-system,BlinkMacSystemFont,'Noto Sans SC',sans-serif}
+.article-header h1{font-size:clamp(20px,3.5vw,28px);font-weight:600;color:#1a1a1a;letter-spacing:.02em;line-height:1.35}
+.article-header .chinese-title{font-size:clamp(15px,2.5vw,19px);color:#888;font-weight:400;margin-top:6px}
+.divider{display:flex;align-items:center;gap:16px;margin:6px 0 28px;color:#ddd;font-size:12px}
 .divider::before,.divider::after{content:'';flex:1;height:1px;background:linear-gradient(to right,transparent,#e0d8d0,transparent)}
-.article-content{background:rgba(255,255,255,0.6);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,0.8);border-radius:16px;padding:40px 48px;margin-bottom:40px}
-.article-content .lang-label{font-family:-apple-system,BlinkMacSystemFont,'Noto Sans SC',sans-serif;font-size:12px;color:#bbb;text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px}
-.article-content .en-block{margin-bottom:28px;padding-bottom:24px;border-bottom:1px solid rgba(0,0,0,0.05)}
-.article-content .zh-block{margin-bottom:28px;padding-bottom:24px;border-bottom:1px solid rgba(0,0,0,0.05)}
-.article-content .en-block:last-child,.article-content .zh-block:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
-.article-content .en-text{font-size:17px;color:#3a3a3a;line-height:1.75}
-.article-content .zh-text{font-size:17px;color:#555;line-height:1.85;word-break:keep-all;overflow-wrap:anywhere;text-wrap:balance}
-footer{text-align:center;padding:32px 0 48px;font-family:-apple-system,BlinkMacSystemFont,'Noto Sans SC',sans-serif}
+.article-content{background:rgba(255,255,255,0.6);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,0.8);border-radius:16px;padding:28px 40px;margin-bottom:32px}
+.article-content .pair{margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid rgba(0,0,0,0.05)}
+.article-content .pair:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.article-content .en-text{font-size:16px;color:#3a3a3a;line-height:1.7;margin-bottom:4px}
+.article-content .zh-text{font-size:15px;color:#777;line-height:1.75;word-break:keep-all;overflow-wrap:anywhere}
+footer{text-align:center;padding:24px 0 40px;font-family:-apple-system,BlinkMacSystemFont,'Noto Sans SC',sans-serif}
 footer a{color:#8a7a6a;text-decoration:none;font-size:14px;transition:color .2s}
 footer a:hover{color:#5a4a3a}
 footer .sep{color:#ddd;margin:0 8px}
-/* Word click */
-.clickable-text .word{cursor:pointer;border-radius:3px;transition:background .15s}
-.clickable-text .word:hover{background:rgba(138,122,106,0.15)}
-.clickable-text .word.saved{color:#8a7a6a;border-bottom:1px dotted #8a7a6a}
-/* Popup */
-#word-popup{display:none;position:fixed;z-index:9999;background:#fff;border:1px solid rgba(0,0,0,0.08);border-radius:16px;box-shadow:0 8px 40px rgba(0,0,0,0.12);padding:24px 28px;max-width:340px;width:90vw;font-family:-apple-system,BlinkMacSystemFont,'Noto Sans SC',sans-serif}
-#word-popup .popup-word{font-size:22px;font-weight:600;color:#1a1a1a;margin-bottom:4px}
-#word-popup .popup-phonetic{font-size:14px;color:#999;margin-bottom:12px;font-style:italic}
-#word-popup .popup-defs{max-height:200px;overflow-y:auto;margin-bottom:16px}
-#word-popup .popup-def{margin-bottom:10px}
-#word-popup .popup-pos{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#bbb;margin-bottom:3px}
-#word-popup .popup-meaning{font-size:14px;color:#444;line-height:1.6}
-#word-popup .popup-example{font-size:13px;color:#aaa;font-style:italic;margin-top:3px}
-#word-popup .popup-notfound{font-size:14px;color:#aaa;padding:8px 0}
-#word-popup .popup-actions{display:flex;gap:10px}
-#word-popup .btn-save{flex:1;padding:9px 0;background:#2c2c2c;color:#fff;border:none;border-radius:10px;font-size:14px;cursor:pointer;transition:background .2s}
+@media(max-width:600px){.article-content{padding:18px 16px}.article-header{padding:20px 0 14px}.article-content .en-text{font-size:15px}.article-content .zh-text{font-size:14px}}
+.en-text .w{cursor:pointer;border-radius:2px;transition:background .12s}
+.en-text .w:hover{background:rgba(138,122,106,0.14)}
+.en-text .w.saved{color:#8a7a6a;border-bottom:1.5px dotted #8a7a6a}
+#word-popup{display:none;position:fixed;z-index:9999;background:#fff;border:1px solid rgba(0,0,0,0.08);border-radius:14px;box-shadow:0 6px 32px rgba(0,0,0,0.11);padding:20px 24px;max-width:320px;width:88vw;font-family:-apple-system,BlinkMacSystemFont,'Noto Sans SC',sans-serif}
+#word-popup .popup-word{font-size:20px;font-weight:600;color:#1a1a1a;margin-bottom:3px}
+#word-popup .popup-phonetic{font-size:13px;color:#aaa;margin-bottom:10px;font-style:italic}
+#word-popup .popup-defs{max-height:180px;overflow-y:auto;margin-bottom:14px}
+#word-popup .popup-def{margin-bottom:9px}
+#word-popup .popup-pos{font-size:11px;text-transform:uppercase;letter-spacing:.07em;color:#ccc;margin-bottom:2px}
+#word-popup .popup-meaning{font-size:14px;color:#444;line-height:1.55}
+#word-popup .popup-example{font-size:12px;color:#bbb;font-style:italic;margin-top:2px}
+#word-popup .popup-notfound{font-size:13px;color:#bbb;padding:6px 0}
+#word-popup .popup-actions{display:flex;gap:8px}
+#word-popup .btn-save{flex:1;padding:8px 0;background:#2c2c2c;color:#fff;border:none;border-radius:9px;font-size:13px;cursor:pointer;transition:background .2s}
 #word-popup .btn-save:hover{background:#1a1a1a}
 #word-popup .btn-save.saved-state{background:#e8f4ee;color:#2a8a55}
-#word-popup .btn-close{padding:9px 16px;background:rgba(0,0,0,0.04);color:#666;border:none;border-radius:10px;font-size:14px;cursor:pointer}
+#word-popup .btn-close{padding:8px 14px;background:rgba(0,0,0,0.04);color:#888;border:none;border-radius:9px;font-size:13px;cursor:pointer}
 #word-popup-overlay{display:none;position:fixed;inset:0;z-index:9998}
-@media(max-width:600px){.article-content{padding:24px 20px}.article-header{padding:24px 0}.article-content .en-text,.article-content .zh-text{font-size:16px}}
 </style>
 </head>
 <body>
@@ -70,187 +65,92 @@ footer .sep{color:#ddd;margin:0 8px}
 <div class="container">
 <nav class="nav-bar">
   <a href="../index.html">← 返回首页</a>
-  <a href="../wordbook.html" style="display:flex;align-items:center;gap:5px;font-size:13px;color:#8a7a6a;text-decoration:none" id="nav-wb-link">📖 <span id="nav-wb-count"></span></a>
+  <a href="../wordbook.html" id="nav-wb-link" style="font-size:13px;color:#8a7a6a;text-decoration:none">📖 <span id="nav-wb-count">单词本</span></a>
   <a href="https://amruta.today/" target="_blank">Amruta.today</a>
 </nav>
 <div class="article-header">
   <div class="article-date">Jun 10, 1997</div>
-  <h1>“Who is the other?”</h1>
+  <h1>&quot;Who is the other?&quot;</h1>
   <div class="chinese-title">谁是他人？</div>
   <div class="article-source">Source: <a href="https://www.sahaja.live/1997-0610-public-program-cathedral-of-st-john-the-divine-manhatttan-nyc/" target="_blank">www.sahaja.live</a></div>
 </div>
 <div class="divider">◇</div>
 <div class="article-content">
-  <div class="en-block">
-    <div class="lang-label">English</div>
-    <div class="en-text clickable-text"><span class="word" data-word="But">But</span> <span class="word" data-word="the">the</span> <span class="word" data-word="highest">highest</span> <span class="word" data-word="thing">thing</span> <span class="word" data-word="that">that</span> <span class="word" data-word="happens">happens</span> <span class="word" data-word="to">to</span> <span class="word" data-word="you">you</span> <span class="word" data-word="that">that</span> <span class="word" data-word="you">you</span> <span class="word" data-word="develop">develop</span> <span class="word" data-word="a">a</span> <span class="word" data-word="new">new</span> <span class="word" data-word="dimension">dimension</span> <span class="word" data-word="in">in</span> <span class="word" data-word="your">your</span> <span class="word" data-word="awareness">awareness</span> <span class="word" data-word="which">which</span> <span class="word" data-word="we">we</span> <span class="word" data-word="call">call</span> <span class="word" data-word="as">as</span> <span class="word" data-word="collective">collective</span> <span class="word" data-word="consciousness">consciousness</span>.</div>
+  <div class="pair">
+    <div class="en-text"><span class="w">But</span> <span class="w">the</span> <span class="w">highest</span> <span class="w">thing</span> <span class="w">that</span> <span class="w">happens</span> <span class="w">to</span> <span class="w">you</span> <span class="w">that</span> <span class="w">you</span> <span class="w">develop</span> a <span class="w">new</span> <span class="w">dimension</span> <span class="w">in</span> <span class="w">your</span> <span class="w">awareness</span> <span class="w">which</span> <span class="w">we</span> <span class="w">call</span> <span class="w">as</span> <span class="w">collective</span> <span class="w">consciousness</span>.</div>
+    <div class="zh-text">但在你身上会发生的最殊胜之事，是你的觉知里开辟出一个全新的维度——我们称之为&quot;集体意识&quot;。</div>
   </div>
-
-  <div class="zh-block">
-    <div class="lang-label">中文</div>
-    <div class="zh-text">但发生在你身上最殊胜的事，是你在觉知中发展出一种全新的维度，我们称之为&quot;集体意识&quot;。</div>
+  <div class="pair">
+    <div class="en-text"><span class="w">You</span> <span class="w">become</span> <span class="w">collectively</span> <span class="w">conscious</span>, <span class="w">Jung</span> <span class="w">has</span> <span class="w">talked</span> <span class="w">about</span> <span class="w">it</span>, <span class="w">that</span> <span class="w">you</span> <span class="w">start</span> <span class="w">feeling</span> <span class="w">others</span> <span class="w">on</span> <span class="w">your</span> <span class="w">finger</span> <span class="w">tips</span>.</div>
+    <div class="zh-text">你变得具有集体意识。荣格曾谈及这一点：你开始能在指尖感知他人。</div>
   </div>
-  <div class="en-block">
-    <div class="lang-label">English</div>
-    <div class="en-text clickable-text"><span class="word" data-word="You">You</span> <span class="word" data-word="become">become</span> <span class="word" data-word="collectively">collectively</span> <span class="word" data-word="conscious">conscious</span>, <span class="word" data-word="Jung">Jung</span> <span class="word" data-word="has">has</span> <span class="word" data-word="talked">talked</span> <span class="word" data-word="about">about</span> <span class="word" data-word="it">it</span>, <span class="word" data-word="that">that</span> <span class="word" data-word="you">you</span> <span class="word" data-word="start">start</span> <span class="word" data-word="feeling">feeling</span> <span class="word" data-word="others">others</span> <span class="word" data-word="on">on</span> <span class="word" data-word="your">your</span> <span class="word" data-word="finger">finger</span> <span class="word" data-word="tips">tips</span>.</div>
+  <div class="pair">
+    <div class="en-text"><span class="w">On</span> <span class="w">your</span> <span class="w">finger</span> <span class="w">tips</span> <span class="w">you</span> <span class="w">can</span> <span class="w">feel</span> <span class="w">yourself</span>.</div>
+    <div class="zh-text">你甚至能在指尖感受到自己。</div>
   </div>
-
-  <div class="zh-block">
-    <div class="lang-label">中文</div>
-    <div class="zh-text">你变得具有集体意识。荣格（Jung）也曾谈论过这一点。所谓集体意识，就是你开始能用指尖去感知他人。</div>
+  <div class="pair">
+    <div class="en-text"><span class="w">Now</span> <span class="w">these</span> <span class="w">chakras</span>, <span class="w">as</span> <span class="w">you</span> <span class="w">have</span> <span class="w">been</span> <span class="w">told</span>, <span class="w">are</span> <span class="w">denoted</span> <span class="w">on</span> <span class="w">your</span> <span class="w">hands</span> <span class="w">and</span> <span class="w">you</span> <span class="w">can</span> <span class="w">feel</span> <span class="w">your</span> <span class="w">chakras</span>, <span class="w">other</span> <span class="w">chakras</span> <span class="w">on</span> <span class="w">the</span> <span class="w">finger</span> <span class="w">tips</span>.</div>
+    <div class="zh-text">正如你所知，脉轮对应在你的手上，你能在指尖感受到自己的脉轮，也能感受到他人的脉轮。</div>
   </div>
-  <div class="en-block">
-    <div class="lang-label">English</div>
-    <div class="en-text clickable-text"><span class="word" data-word="On">On</span> <span class="word" data-word="your">your</span> <span class="word" data-word="finger">finger</span> <span class="word" data-word="tips">tips</span> <span class="word" data-word="you">you</span> <span class="word" data-word="can">can</span> <span class="word" data-word="feel">feel</span> <span class="word" data-word="yourself">yourself</span>.</div>
+  <div class="pair">
+    <div class="en-text"><span class="w">So</span> <span class="w">who</span> <span class="w">is</span> <span class="w">the</span> <span class="w">other</span>?</div>
+    <div class="zh-text">那么，谁是&quot;他人&quot;呢？</div>
   </div>
-
-  <div class="zh-block">
-    <div class="lang-label">中文</div>
-    <div class="zh-text">你甚至能用指尖感受到自己。</div>
-  </div>
-  <div class="en-block">
-    <div class="lang-label">English</div>
-    <div class="en-text clickable-text"><span class="word" data-word="Now">Now</span> <span class="word" data-word="these">these</span> <span class="word" data-word="chakras">chakras</span>, <span class="word" data-word="as">as</span> <span class="word" data-word="you">you</span> <span class="word" data-word="have">have</span> <span class="word" data-word="been">been</span> <span class="word" data-word="told">told</span>, <span class="word" data-word="are">are</span> <span class="word" data-word="denoted">denoted</span> <span class="word" data-word="on">on</span> <span class="word" data-word="your">your</span> <span class="word" data-word="hands">hands</span> <span class="word" data-word="and">and</span> <span class="word" data-word="you">you</span> <span class="word" data-word="can">can</span> <span class="word" data-word="feel">feel</span> <span class="word" data-word="your">your</span> <span class="word" data-word="chakras">chakras</span>, <span class="word" data-word="other">other</span> <span class="word" data-word="chakras">chakras</span> <span class="word" data-word="on">on</span> <span class="word" data-word="the">the</span> <span class="word" data-word="finger">finger</span> <span class="word" data-word="tips">tips</span>.</div>
-  </div>
-
-  <div class="zh-block">
-    <div class="lang-label">中文</div>
-    <div class="zh-text">正如你所知，这些脉轮（chakras）就对应在你的手掌上，而你能在指尖感受到自己的脉轮，也能感受到他人的脉轮——他人的能量。</div>
-  </div>
-  <div class="en-block">
-    <div class="lang-label">English</div>
-    <div class="en-text clickable-text"><span class="word" data-word="So">So</span> <span class="word" data-word="who">who</span> <span class="word" data-word="is">is</span> <span class="word" data-word="the">the</span> <span class="word" data-word="other">other</span>?</div>
-  </div>
-
-  <div class="zh-block">
-    <div class="lang-label">中文</div>
-    <div class="zh-text">那么，谁又是“他人”呢？</div>
-  </div>
-  <div class="en-block">
-    <div class="lang-label">English</div>
-    <div class="en-text clickable-text"><span class="word" data-word="You">You</span> <span class="word" data-word="become">become</span> <span class="word" data-word="collectively">collectively</span> <span class="word" data-word="conscious">conscious</span>.</div>
-  </div>
-
-  <div class="zh-block">
-    <div class="lang-label">中文</div>
+  <div class="pair">
+    <div class="en-text"><span class="w">You</span> <span class="w">become</span> <span class="w">collectively</span> <span class="w">conscious</span>.</div>
     <div class="zh-text">你已然成为具有集体意识的人。</div>
   </div>
-  <div class="en-block">
-    <div class="lang-label">English</div>
-    <div class="en-text clickable-text"><span class="word" data-word="I">I</span> <span class="word" data-word="am">am</span> <span class="word" data-word="saying">saying</span> <span class="word" data-word="again">again</span>, <span class="word" data-word="you">you</span> <span class="word" data-word="become">become</span>!</div>
+  <div class="pair">
+    <div class="en-text">I <span class="w">am</span> <span class="w">saying</span> <span class="w">again</span>, <span class="w">you</span> <span class="w">become</span>!</div>
+    <div class="zh-text">我再次强调——是&quot;成为&quot;！</div>
   </div>
-
-  <div class="zh-block">
-    <div class="lang-label">中文</div>
-    <div class="zh-text">我再次强调，你是“成为”了，而不是在听讲，也不是在听人说教。</div>
+  <div class="pair">
+    <div class="en-text"><span class="w">It</span>&#039;s <span class="w">not</span> <span class="w">lecturing</span>, <span class="w">it</span>&#039;s <span class="w">not</span> <span class="w">saying</span>.</div>
+    <div class="zh-text">不是听讲，也不是听说。</div>
   </div>
-  <div class="en-block">
-    <div class="lang-label">English</div>
-    <div class="en-text clickable-text"><span class="word" data-word="It">It</span>&#039;<span class="word" data-word="s">s</span> <span class="word" data-word="not">not</span> <span class="word" data-word="lecturing">lecturing</span>, <span class="word" data-word="it">it</span>&#039;<span class="word" data-word="s">s</span> <span class="word" data-word="not">not</span> <span class="word" data-word="saying">saying</span>.</div>
+  <div class="pair">
+    <div class="en-text"><span class="w">Then</span> <span class="w">see</span> <span class="w">how</span> <span class="w">many</span> <span class="w">problems</span> <span class="w">get</span> <span class="w">solved</span>, <span class="w">you</span> <span class="w">know</span>.</div>
+    <div class="zh-text">你就会看到，有多少问题迎刃而解。</div>
   </div>
-
-  <div class="zh-block">
-    <div class="lang-label">中文</div>
-    <div class="zh-text"></div>
+  <div class="pair">
+    <div class="en-text"><span class="w">For</span> <span class="w">example</span>, <span class="w">we</span> <span class="w">indulge</span>, <span class="w">as</span> <span class="w">he</span> <span class="w">said</span> <span class="w">that</span> <span class="w">we</span> <span class="w">are</span> <span class="w">really</span> <span class="w">creating</span> <span class="w">problems</span> <span class="w">for</span> <span class="w">Mother</span> <span class="w">Earth</span>, <span class="w">but</span> <span class="w">because</span> <span class="w">we</span> <span class="w">are</span> <span class="w">not</span> <span class="w">collectively</span> <span class="w">conscious</span>.</div>
+    <div class="zh-text">举个例子，正如他所说，我们确实在给地球母亲制造麻烦——根本原因是我们缺乏集体意识。</div>
   </div>
-  <div class="en-block">
-    <div class="lang-label">English</div>
-    <div class="en-text clickable-text"><span class="word" data-word="Then">Then</span> <span class="word" data-word="see">see</span> <span class="word" data-word="how">how</span> <span class="word" data-word="many">many</span> <span class="word" data-word="problems">problems</span> <span class="word" data-word="get">get</span> <span class="word" data-word="solved">solved</span>, <span class="word" data-word="you">you</span> <span class="word" data-word="know">know</span>.</div>
+  <div class="pair">
+    <div class="en-text"><span class="w">Once</span> <span class="w">you</span> <span class="w">are</span> <span class="w">collectively</span> <span class="w">conscious</span>, <span class="w">you</span> <span class="w">are</span> <span class="w">in</span> <span class="w">your</span> <span class="w">awareness</span> <span class="w">that</span> <span class="w">all</span> <span class="w">the</span> <span class="w">time</span> <span class="w">thinking</span>, &<span class="w">quot</span>;<span class="w">Should</span> I <span class="w">do</span> <span class="w">this</span>?</div>
+    <div class="zh-text">一旦你拥有集体意识，安住于觉知之中，你便会时时刻刻思量：&quot;我该做这件事吗？</div>
   </div>
-
-  <div class="zh-block">
-    <div class="lang-label">中文</div>
-    <div class="zh-text">一旦如此，你就会发现，有多少问题能在转瞬之间迎刃而解。</div>
-  </div>
-  <div class="en-block">
-    <div class="lang-label">English</div>
-    <div class="en-text clickable-text"><span class="word" data-word="For">For</span> <span class="word" data-word="example">example</span>, <span class="word" data-word="we">we</span> <span class="word" data-word="indulge">indulge</span>, <span class="word" data-word="as">as</span> <span class="word" data-word="he">he</span> <span class="word" data-word="said">said</span> <span class="word" data-word="that">that</span> <span class="word" data-word="we">we</span> <span class="word" data-word="are">are</span> <span class="word" data-word="really">really</span> <span class="word" data-word="creating">creating</span> <span class="word" data-word="problems">problems</span> <span class="word" data-word="for">for</span> <span class="word" data-word="Mother">Mother</span> <span class="word" data-word="Earth">Earth</span>, <span class="word" data-word="but">but</span> <span class="word" data-word="because">because</span> <span class="word" data-word="we">we</span> <span class="word" data-word="are">are</span> <span class="word" data-word="not">not</span> <span class="word" data-word="collectively">collectively</span> <span class="word" data-word="conscious">conscious</span>.</div>
-  </div>
-
-  <div class="zh-block">
-    <div class="lang-label">中文</div>
-    <div class="zh-text">举个例子，正如他所说，我们确实在给地球母亲制造麻烦，但究其根本，是因为我们缺乏集体意识。</div>
-  </div>
-  <div class="en-block">
-    <div class="lang-label">English</div>
-    <div class="en-text clickable-text"><span class="word" data-word="Once">Once</span> <span class="word" data-word="you">you</span> <span class="word" data-word="are">are</span> <span class="word" data-word="collectively">collectively</span> <span class="word" data-word="conscious">conscious</span>, <span class="word" data-word="you">you</span> <span class="word" data-word="are">are</span> <span class="word" data-word="in">in</span> <span class="word" data-word="your">your</span> <span class="word" data-word="awareness">awareness</span> <span class="word" data-word="that">that</span> <span class="word" data-word="all">all</span> <span class="word" data-word="the">the</span> <span class="word" data-word="time">time</span> <span class="word" data-word="thinking">thinking</span>, &<span class="word" data-word="quot">quot</span>;<span class="word" data-word="Should">Should</span> <span class="word" data-word="I">I</span> <span class="word" data-word="do">do</span> <span class="word" data-word="this">this</span>?</div>
-  </div>
-
-  <div class="zh-block">
-    <div class="lang-label">中文</div>
-    <div class="zh-text">一旦你拥有了集体意识，安住于觉知之中，你便会时时刻刻想到：&quot;这会伤害他人吗？</div>
-  </div>
-  <div class="en-block">
-    <div class="lang-label">English</div>
-    <div class="en-text clickable-text"><span class="word" data-word="Should">Should</span> <span class="word" data-word="I">I</span> <span class="word" data-word="smoke">smoke</span> <span class="word" data-word="or">or</span> <span class="word" data-word="not">not</span>?</div>
-  </div>
-
-  <div class="zh-block">
-    <div class="lang-label">中文</div>
+  <div class="pair">
+    <div class="en-text"><span class="w">Should</span> I <span class="w">smoke</span> <span class="w">or</span> <span class="w">not</span>?</div>
     <div class="zh-text">我该不该吸烟？</div>
   </div>
-  <div class="en-block">
-    <div class="lang-label">English</div>
-    <div class="en-text clickable-text"><span class="word" data-word="Why">Why</span> <span class="word" data-word="should">should</span> <span class="word" data-word="I">I</span> <span class="word" data-word="smoke">smoke</span>?</div>
-  </div>
-
-  <div class="zh-block">
-    <div class="lang-label">中文</div>
+  <div class="pair">
+    <div class="en-text"><span class="w">Why</span> <span class="w">should</span> I <span class="w">smoke</span>?</div>
     <div class="zh-text">我为何要吸烟？</div>
   </div>
-  <div class="en-block">
-    <div class="lang-label">English</div>
-    <div class="en-text clickable-text"><span class="word" data-word="It">It</span> <span class="word" data-word="will">will</span> <span class="word" data-word="harm">harm</span> <span class="word" data-word="others">others</span>.</div>
-  </div>
-
-  <div class="zh-block">
-    <div class="lang-label">中文</div>
+  <div class="pair">
+    <div class="en-text"><span class="w">It</span> <span class="w">will</span> <span class="w">harm</span> <span class="w">others</span>.</div>
     <div class="zh-text">这会伤害他人。</div>
   </div>
-  <div class="en-block">
-    <div class="lang-label">English</div>
-    <div class="en-text clickable-text"><span class="word" data-word="Should">Should</span> <span class="word" data-word="I">I</span> <span class="word" data-word="start">start</span> <span class="word" data-word="a">a</span> <span class="word" data-word="pub">pub</span> <span class="word" data-word="or">or</span> <span class="word" data-word="not">not</span>?</div>
-  </div>
-
-  <div class="zh-block">
-    <div class="lang-label">中文</div>
+  <div class="pair">
+    <div class="en-text"><span class="w">Should</span> I <span class="w">start</span> a <span class="w">pub</span> <span class="w">or</span> <span class="w">not</span>?</div>
     <div class="zh-text">我该不该开一家酒吧？</div>
   </div>
-  <div class="en-block">
-    <div class="lang-label">English</div>
-    <div class="en-text clickable-text"><span class="word" data-word="No">No</span>, <span class="word" data-word="because">because</span> <span class="word" data-word="it">it</span> <span class="word" data-word="will">will</span> <span class="word" data-word="harm">harm</span> <span class="word" data-word="others">others</span>.&<span class="word" data-word="quot">quot</span>; <span class="word" data-word="All">All</span> <span class="word" data-word="these">these</span> <span class="word" data-word="wrong">wrong</span> <span class="word" data-word="things">things</span> <span class="word" data-word="that">that</span> <span class="word" data-word="you">you</span> <span class="word" data-word="do">do</span> <span class="word" data-word="for">for</span> <span class="word" data-word="money">money</span> <span class="word" data-word="or">or</span> <span class="word" data-word="for">for</span> <span class="word" data-word="anything">anything</span>, <span class="word" data-word="just">just</span> <span class="word" data-word="drop">drop</span> <span class="word" data-word="out">out</span>.</div>
+  <div class="pair">
+    <div class="en-text"><span class="w">No</span>, <span class="w">because</span> <span class="w">it</span> <span class="w">will</span> <span class="w">harm</span> <span class="w">others</span>.&<span class="w">quot</span>; <span class="w">All</span> <span class="w">these</span> <span class="w">wrong</span> <span class="w">things</span> <span class="w">that</span> <span class="w">you</span> <span class="w">do</span> <span class="w">for</span> <span class="w">money</span> <span class="w">or</span> <span class="w">for</span> <span class="w">anything</span>, <span class="w">just</span> <span class="w">drop</span> <span class="w">out</span>.</div>
+    <div class="zh-text">不，因为这会伤害他人。&quot;所有这些为了金钱或任何目的而做的错事，都会自然脱落。</div>
   </div>
-
-  <div class="zh-block">
-    <div class="lang-label">中文</div>
-    <div class="zh-text">不，因为这会伤害他人。“所有这些你为了金钱或任何其他目的而做的错误之事，都会自然脱落。</div>
+  <div class="pair">
+    <div class="en-text"><span class="w">We</span> <span class="w">just</span> <span class="w">don</span>&#039;t <span class="w">do</span> <span class="w">wrong</span> <span class="w">things</span>, <span class="w">just</span> <span class="w">don</span>&#039;t <span class="w">do</span>.</div>
+    <div class="zh-text">我们就是不会再做错事——就是不做。</div>
   </div>
-  <div class="en-block">
-    <div class="lang-label">English</div>
-    <div class="en-text clickable-text"><span class="word" data-word="We">We</span> <span class="word" data-word="just">just</span> <span class="word" data-word="don">don</span>&#039;<span class="word" data-word="t">t</span> <span class="word" data-word="do">do</span> <span class="word" data-word="wrong">wrong</span> <span class="word" data-word="things">things</span>, <span class="word" data-word="just">just</span> <span class="word" data-word="don">don</span>&#039;<span class="word" data-word="t">t</span> <span class="word" data-word="do">do</span>.</div>
+  <div class="pair">
+    <div class="en-text"><span class="w">Why</span>?</div>
+    <div class="zh-text">为何？</div>
   </div>
-
-  <div class="zh-block">
-    <div class="lang-label">中文</div>
-    <div class="zh-text">你就是不会再去做错事，绝不会再做。</div>
-  </div>
-  <div class="en-block">
-    <div class="lang-label">English</div>
-    <div class="en-text clickable-text"><span class="word" data-word="Why">Why</span>?</div>
-  </div>
-
-  <div class="zh-block">
-    <div class="lang-label">中文</div>
-    <div class="zh-text">为什么？</div>
-  </div>
-  <div class="en-block">
-    <div class="lang-label">English</div>
-    <div class="en-text clickable-text"><span class="word" data-word="Because">Because</span> <span class="word" data-word="we">we</span> <span class="word" data-word="are">are</span> <span class="word" data-word="collectively">collectively</span> <span class="word" data-word="conscious">conscious</span>.</div>
-  </div>
-
-  <div class="zh-block">
-    <div class="lang-label">中文</div>
-    <div class="zh-text">因为你已具有集体意识。</div>
+  <div class="pair">
+    <div class="en-text"><span class="w">Because</span> <span class="w">we</span> <span class="w">are</span> <span class="w">collectively</span> <span class="w">conscious</span>.</div>
+    <div class="zh-text">因为我们已具有集体意识。</div>
   </div>
 </div>
 <footer>
@@ -264,96 +164,87 @@ footer .sep{color:#ddd;margin:0 8px}
 </footer>
 </div>
 <script>
-const ARTICLE_DATE = '1997-06-10';
-const WB_KEY = 'amruta_wordbook';
-function getWordbook(){try{return JSON.parse(localStorage.getItem(WB_KEY)||'{}')}catch(e){return {}}}
-function saveWordbook(wb){localStorage.setItem(WB_KEY,JSON.stringify(wb))}
-function refreshSavedMarks(){
-  const wb=getWordbook();
-  document.querySelectorAll('.word').forEach(el=>{
-    el.classList.toggle('saved',!!wb[el.dataset.word.toLowerCase()]);
+const ARTICLE_DATE='1997-06-10';
+const WB_KEY='amruta_wordbook';
+function getWB(){try{return JSON.parse(localStorage.getItem(WB_KEY)||'{}')}catch(e){return{}}}
+function saveWB(wb){localStorage.setItem(WB_KEY,JSON.stringify(wb))}
+function refreshMarks(){
+  const wb=getWB();
+  document.querySelectorAll('.en-text .w').forEach(el=>{
+    const w=el.textContent.replace(/[^A-Za-z']/g,'').toLowerCase();
+    el.classList.toggle('saved',!!wb[w]);
   });
-  const count=Object.keys(wb).length;
-  const navEl=document.getElementById('nav-wb-count');
-  if(navEl)navEl.textContent=count>0?'单词本 '+count:'单词本';
+  const n=Object.keys(wb).length;
+  const el=document.getElementById('nav-wb-count');
+  if(el)el.textContent=n>0?'单词本 '+n:'单词本';
 }
-let currentWord='',currentData=null;
+let curWord='',curData=null;
 function closePopup(){
   document.getElementById('word-popup').style.display='none';
   document.getElementById('word-popup-overlay').style.display='none';
 }
-function positionPopup(el){
-  const popup=document.getElementById('word-popup');
-  popup.style.display='block';
-  const rect=el.getBoundingClientRect();
-  const pw=popup.offsetWidth,ph=popup.offsetHeight;
-  let top=rect.bottom+8+window.scrollY;
-  let left=rect.left+window.scrollX;
+function posPopup(t){
+  const p=document.getElementById('word-popup');
+  p.style.display='block';
+  const r=t.getBoundingClientRect();
+  let top=r.bottom+8+window.scrollY, left=r.left+window.scrollX;
+  const pw=p.offsetWidth, ph=p.offsetHeight;
   if(left+pw>window.innerWidth-12)left=window.innerWidth-pw-12;
   if(left<12)left=12;
-  if(top+ph>window.scrollY+window.innerHeight-12)top=rect.top+window.scrollY-ph-8;
-  popup.style.top=top+'px';
-  popup.style.left=left+'px';
+  if(top+ph>window.scrollY+window.innerHeight-12)top=r.top+window.scrollY-ph-8;
+  p.style.top=top+'px'; p.style.left=left+'px';
 }
-async function openWordPopup(el,word){
-  currentWord=word.toLowerCase().replace(/['’]/g,"'");
-  currentData=null;
+async function openPopup(t,word){
+  curWord=word.toLowerCase().replace(/['’]/g,"'");
+  curData=null;
   document.getElementById('pp-word').textContent=word;
   document.getElementById('pp-phonetic').textContent='加载中…';
   document.getElementById('pp-defs').innerHTML='';
   document.getElementById('word-popup-overlay').style.display='block';
-  positionPopup(el);
-  updateSaveBtn();
+  posPopup(t); updateBtn();
   try{
-    const res=await fetch('https://api.dictionaryapi.dev/api/v2/entries/en/'+encodeURIComponent(currentWord));
-    if(!res.ok)throw new Error('not found');
+    const res=await fetch('https://api.dictionaryapi.dev/api/v2/entries/en/'+encodeURIComponent(curWord));
+    if(!res.ok)throw 0;
     const data=await res.json();
-    currentData=data[0];
-    const phonetic=currentData.phonetic||(currentData.phonetics||[]).find(p=>p.text)?.text||'';
-    document.getElementById('pp-phonetic').textContent=phonetic;
-    let defsHtml='';
-    (currentData.meanings||[]).slice(0,3).forEach(m=>{
-      const def=(m.definitions||[])[0];
-      if(!def)return;
-      defsHtml+='<div class="popup-def"><div class="popup-pos">'+m.partOfSpeech+'</div><div class="popup-meaning">'+def.definition+'</div>'+(def.example?'<div class="popup-example">"'+def.example+'"</div>':'')+'</div>';
+    curData=data[0];
+    const ph=curData.phonetic||(curData.phonetics||[]).find(p=>p.text)?.text||'';
+    document.getElementById('pp-phonetic').textContent=ph;
+    let h='';
+    (curData.meanings||[]).slice(0,3).forEach(m=>{
+      const d=(m.definitions||[])[0];
+      if(!d)return;
+      h+='<div class="popup-def"><div class="popup-pos">'+m.partOfSpeech+'</div><div class="popup-meaning">'+d.definition+'</div>'+(d.example?'<div class="popup-example">"'+d.example+'"</div>':'')+'</div>';
     });
-    document.getElementById('pp-defs').innerHTML=defsHtml||'<div class="popup-notfound">无释义</div>';
+    document.getElementById('pp-defs').innerHTML=h||'<div class="popup-notfound">无释义</div>';
   }catch(e){
     document.getElementById('pp-phonetic').textContent='';
     document.getElementById('pp-defs').innerHTML='<div class="popup-notfound">未找到释义，可直接加入单词本</div>';
   }
 }
-function updateSaveBtn(){
-  const wb=getWordbook();
-  const btn=document.getElementById('pp-save-btn');
-  if(wb[currentWord]){btn.textContent='✓ 已在单词本';btn.classList.add('saved-state');}
+function updateBtn(){
+  const wb=getWB(), btn=document.getElementById('pp-save-btn');
+  if(wb[curWord]){btn.textContent='✓ 已在单词本';btn.classList.add('saved-state');}
   else{btn.textContent='加入单词本';btn.classList.remove('saved-state');}
 }
 function saveWord(){
-  const wb=getWordbook();
-  if(wb[currentWord]){delete wb[currentWord];saveWordbook(wb);updateSaveBtn();refreshSavedMarks();return;}
-  const phonetic=document.getElementById('pp-phonetic').textContent.replace('加载中…','');
+  const wb=getWB();
+  if(wb[curWord]){delete wb[curWord];saveWB(wb);updateBtn();refreshMarks();return;}
+  const ph=document.getElementById('pp-phonetic').textContent.replace('加载中…','');
   let defs=[];
-  if(currentData&&currentData.meanings){
-    currentData.meanings.slice(0,3).forEach(m=>{
-      const d=(m.definitions||[])[0];
-      if(d)defs.push({pos:m.partOfSpeech,def:d.definition,example:d.example||''});
-    });
-  }
-  wb[currentWord]={word:currentWord,phonetic,defs,source:ARTICLE_DATE,savedAt:Date.now()};
-  saveWordbook(wb);
-  updateSaveBtn();
-  refreshSavedMarks();
+  if(curData&&curData.meanings)curData.meanings.slice(0,3).forEach(m=>{const d=(m.definitions||[])[0];if(d)defs.push({pos:m.partOfSpeech,def:d.definition,example:d.example||''});});
+  wb[curWord]={word:curWord,phonetic:ph,defs,source:ARTICLE_DATE,savedAt:Date.now()};
+  saveWB(wb);updateBtn();refreshMarks();
 }
-document.querySelectorAll('.word').forEach(el=>{
-  el.addEventListener('click',e=>{
+document.addEventListener('click',e=>{
+  const t=e.target;
+  if(t.classList.contains('w')&&t.closest('.en-text')){
     e.stopPropagation();
-    const w=el.dataset.word;
-    if(/^[A-Za-z]/.test(w))openWordPopup(el,w);
-  });
+    const w=t.textContent.replace(/[^A-Za-z']/g,'');
+    if(w.length>=2)openPopup(t,w);
+  }
 });
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closePopup();});
-refreshSavedMarks();
+refreshMarks();
 </script>
 </body>
 </html>
