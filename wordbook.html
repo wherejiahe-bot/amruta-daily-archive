@@ -24,13 +24,11 @@ header .subtitle{font-size:15px;color:#999}
 .btn-primary:hover{background:#1a1a1a}
 .btn-ghost{background:rgba(0,0,0,0.05);color:#666}
 .btn-ghost:hover{background:rgba(0,0,0,0.09)}
-.btn-danger{background:rgba(200,60,60,0.08);color:#c03c3c}
-.btn-danger:hover{background:rgba(200,60,60,0.15)}
 /* Word list */
 .word-list{display:flex;flex-direction:column;gap:10px;padding-bottom:40px}
 .word-card{background:rgba(255,255,255,0.65);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.8);border-radius:14px;padding:18px 22px;display:flex;align-items:flex-start;gap:16px}
 .word-card .wc-main{flex:1;min-width:0}
-.word-card .wc-word-row{display:flex;align-items:center;gap:8px;margin-bottom:2px}
+.word-card .wc-word-row{display:flex;align-items:center;gap:8px;margin-bottom:2px;flex-wrap:wrap}
 .word-card .wc-word{font-size:20px;font-weight:600;color:#1a1a1a}
 .word-card .btn-speak{background:none;border:none;cursor:pointer;padding:2px 4px;font-size:16px;color:#bbb;line-height:1;border-radius:4px;transition:color .15s,background .15s}
 .word-card .btn-speak:hover{color:#5a7a9a;background:rgba(90,122,154,0.1)}
@@ -40,7 +38,10 @@ header .subtitle{font-size:15px;color:#999}
 .word-card .wc-pos{font-size:11px;color:#bbb;letter-spacing:.04em;display:inline-block;margin-right:5px;background:rgba(0,0,0,0.04);padding:1px 6px;border-radius:4px}
 .word-card .wc-def-cn{color:#333;font-weight:500}
 .word-card .wc-def-en{font-size:12px;color:#bbb;line-height:1.5;margin-top:1px}
-.word-card .wc-source{font-size:12px;color:#bbb;margin-top:8px}
+.word-card .wc-source-row{display:flex;align-items:center;gap:8px;margin-top:8px}
+.word-card .wc-source{font-size:12px;color:#bbb}
+.word-card .wc-source-link{font-size:12px;color:#8a7a6a;text-decoration:none;display:inline-flex;align-items:center;gap:3px;padding:2px 8px;border:1px solid rgba(140,125,110,0.25);border-radius:10px;transition:all .2s}
+.word-card .wc-source-link:hover{background:rgba(140,125,110,0.08);border-color:rgba(140,125,110,0.45)}
 .word-card .wc-actions{display:flex;flex-direction:column;gap:8px;flex-shrink:0}
 .icon-btn{width:34px;height:34px;border:none;background:transparent;cursor:pointer;border-radius:8px;font-size:16px;display:flex;align-items:center;justify-content:center;transition:background .2s;color:#aaa}
 .icon-btn:hover{background:rgba(0,0,0,0.06);color:#666}
@@ -130,6 +131,7 @@ header .subtitle{font-size:15px;color:#999}
 
 <script>
 const WB_KEY = 'amruta_wordbook';
+const BASE = 'daily/';
 function getWordbook() { try { return JSON.parse(localStorage.getItem(WB_KEY)||'{}'); } catch(e){ return {}; } }
 function saveWordbook(wb){ localStorage.setItem(WB_KEY, JSON.stringify(wb)); }
 
@@ -166,15 +168,25 @@ function render() {
         + (enText ? '<div class="wc-def-en">'+enText+'</div>' : '')
         + '</div>';
     }).join('') || '<div style="color:#bbb;font-size:14px">无释义记录</div>';
+
     const speakBtn = hasSpeech
       ? '<button class="btn-speak" onclick="speakText(\''+w.word+'\')" title="朗读">🔊</button>'
       : '';
+
+    // Source link: jump to article and highlight the word's location
+    const sourceLink = w.source
+      ? '<a class="wc-source-link" href="'+BASE+w.source+'.html#word-'+encodeURIComponent(w.word)+'" target="_blank">↗ 回到原文</a>'
+      : '';
+
     return '<div class="word-card" id="wc-'+w.word+'">'
       + '<div class="wc-main">'
       + '<div class="wc-word-row"><span class="wc-word">'+w.word+'</span>'+speakBtn+'</div>'
       + (w.phonetic ? '<div class="wc-phonetic">'+w.phonetic+'</div>' : '')
       + '<div class="wc-defs">'+defsHtml+'</div>'
-      + (w.source ? '<div class="wc-source">来自 '+w.source+'</div>' : '')
+      + '<div class="wc-source-row">'
+      + (w.source ? '<span class="wc-source">来自 '+w.source+'</span>' : '')
+      + sourceLink
+      + '</div>'
       + '</div>'
       + '<div class="wc-actions">'
       + '<button class="icon-btn" title="删除" onclick="deleteWord(\''+w.word+'\')">🗑</button>'
@@ -216,9 +228,9 @@ function showFcCard() {
   fcFlipped = false;
   document.getElementById('fc-front').textContent = w.word;
   document.getElementById('fc-front').style.display = 'block';
-  // Show phonetic on front too
   const fpEl = document.getElementById('fc-front-phonetic');
   fpEl.textContent = w.phonetic || '';
+  fpEl.style.display = 'block';
   document.getElementById('fc-hint').style.display = 'block';
   const back = document.getElementById('fc-back');
   const defsHtml = (w.defs||[]).map(d => {
@@ -256,10 +268,7 @@ function flipCard() {
 
 function fcAnswer(know) {
   if (know) { fcKnown++; fcIdx++; }
-  else {
-    fcQueue.push(fcQueue[fcIdx]);
-    fcIdx++;
-  }
+  else { fcQueue.push(fcQueue[fcIdx]); fcIdx++; }
   document.getElementById('fc-front-phonetic').style.display = 'block';
   showFcCard();
 }
