@@ -23,17 +23,15 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 .divider{display:flex;align-items:center;gap:16px;margin:8px 0 40px;color:#ddd;font-size:12px;font-family:-apple-system,BlinkMacSystemFont,'Noto Sans SC',sans-serif}
 .divider::before,.divider::after{content:'';flex:1;height:1px;background:linear-gradient(to right,transparent,#e0d8d0,transparent)}
 .article-content{background:rgba(255,255,255,0.6);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,0.8);border-radius:16px;padding:40px 48px;margin-bottom:40px}
-.article-content .lang-label{font-family:-apple-system,BlinkMacSystemFont,'Noto Sans SC',sans-serif;font-size:12px;color:#bbb;text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px}
-.article-content .en-block{margin-bottom:28px;padding-bottom:24px;border-bottom:1px solid rgba(0,0,0,0.05)}
-.article-content .zh-block{margin-bottom:28px;padding-bottom:24px;border-bottom:1px solid rgba(0,0,0,0.05)}
-.article-content .en-block:last-child,.article-content .zh-block:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
-.article-content .en-text{font-size:17px;color:#3a3a3a;line-height:1.75}
-.article-content .zh-text{font-size:17px;color:#555;line-height:1.85;word-break:keep-all;overflow-wrap:anywhere;text-wrap:balance}
+.article-content .pair-block{margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid rgba(0,0,0,0.05)}
+.article-content .pair-block:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.article-content .en-text{font-size:14px;color:#999;line-height:1.6;margin-bottom:4px;font-style:italic}
+.article-content .zh-text{font-size:17px;color:#2c2c2c;line-height:1.85;word-break:keep-all;overflow-wrap:anywhere}
 footer{text-align:center;padding:32px 0 48px;font-family:-apple-system,BlinkMacSystemFont,'Noto Sans SC',sans-serif}
 footer a{color:#8a7a6a;text-decoration:none;font-size:14px;transition:color .2s}
 footer a:hover{color:#5a4a3a}
 footer .sep{color:#ddd;margin:0 8px}
-@media(max-width:600px){.article-content{padding:24px 20px}.article-header{padding:24px 0}.article-content .en-text,.article-content .zh-text{font-size:16px}}
+@media(max-width:600px){.article-content{padding:24px 20px}.article-header{padding:24px 0}.article-content .zh-text{font-size:16px}.article-content .en-text{font-size:13px}}
 </style>
 </head>
 <body>
@@ -50,184 +48,84 @@ footer .sep{color:#ddd;margin:0 8px}
 </div>
 <div class="divider">◇</div>
 <div class="article-content">
-  <div class="en-block">
-    <div class="lang-label">English</div>
+  <div class="pair-block">
     <div class="en-text">So you have to watch within yourself that we are here for liberation, for complete freedom.</div>
-  </div>
-
-  <div class="zh-block">
-    <div class="lang-label">中文</div>
     <div class="zh-text">因此，你们必须在内心观察到我们在这里是为了解脱，为了完全的自由</div>
   </div>
-  <div class="en-block">
-    <div class="lang-label">English</div>
+  <div class="pair-block">
     <div class="en-text">But in the subtle way all these things go on binding you and you are attached to it and you don’t know how they are still tagging you down, don’t allow you to fly, they don’t give you the freedom that is your own right to have it.</div>
-  </div>
-
-  <div class="zh-block">
-    <div class="lang-label">中文</div>
     <div class="zh-text">但以一种微妙的方式，所有这些事情都在束缚着你，你对此产生了依恋，甚至不知道它们如何拖累了你，不允许你飞翔，不给你本应拥有的自由</div>
   </div>
-  <div class="en-block">
-    <div class="lang-label">English</div>
+  <div class="pair-block">
     <div class="en-text">So even if I make a aeroplane, I do everything, put the fuel into it, I say everything, but doesn’t want to fly.</div>
-  </div>
-
-  <div class="zh-block">
-    <div class="lang-label">中文</div>
     <div class="zh-text">所以即使我制造了一架飞机，我做了所有的事情，加了油，一切都准备好了，但它就是不想飞</div>
   </div>
-  <div class="en-block">
-    <div class="lang-label">English</div>
+  <div class="pair-block">
     <div class="en-text">Now what do you do with such an aeroplane which doesn’t want to fly?</div>
-  </div>
-
-  <div class="zh-block">
-    <div class="lang-label">中文</div>
     <div class="zh-text">现在，对于一架不想飞的飞机，你还能做什么呢</div>
   </div>
-  <div class="en-block">
-    <div class="lang-label">English</div>
+  <div class="pair-block">
     <div class="en-text">This sort of a situation is there and this situation makes you so limited and so dwarfy.</div>
-  </div>
-
-  <div class="zh-block">
-    <div class="lang-label">中文</div>
     <div class="zh-text">这种状况使你变得如此有限，如此渺小</div>
   </div>
-  <div class="en-block">
-    <div class="lang-label">English</div>
+  <div class="pair-block">
     <div class="en-text">How will you grow?</div>
-  </div>
-
-  <div class="zh-block">
-    <div class="lang-label">中文</div>
     <div class="zh-text">你如何成长</div>
   </div>
-  <div class="en-block">
-    <div class="lang-label">English</div>
+  <div class="pair-block">
     <div class="en-text">Unless and until you grow and you show that in your day-to-day life, into your personality, into everything, I assure you nobody is going to be impressed by you.</div>
-  </div>
-
-  <div class="zh-block">
-    <div class="lang-label">中文</div>
     <div class="zh-text">除非你在日常生活中，在你的个性中，在各个方面都展现出成长，否则我保证没有人会被你所打动</div>
   </div>
-  <div class="en-block">
-    <div class="lang-label">English</div>
+  <div class="pair-block">
     <div class="en-text">Sahaja Yoga is not going to work by advertisement, nor by My photographs, it’s going to work by your work, by your responsibility, by your shouldering Sahaja Yoga, it’s your responsibility to spread Sahaja Yoga and to establish it.</div>
-  </div>
-
-  <div class="zh-block">
-    <div class="lang-label">中文</div>
     <div class="zh-text">霎哈嘉瑜伽不是通过广告，也不是通过我的照片来起作用的，而是通过你们的工作，通过你们的责任感，通过你们承担起霎哈嘉瑜伽来起作用的。传播霎哈嘉瑜伽并建立其体系是你们的责任</div>
   </div>
-  <div class="en-block">
-    <div class="lang-label">English</div>
+  <div class="pair-block">
     <div class="en-text">But first of all your shoulders should be strong.</div>
-  </div>
-
-  <div class="zh-block">
-    <div class="lang-label">中文</div>
     <div class="zh-text">但首先，你们的肩膀必须足够坚强</div>
   </div>
-  <div class="en-block">
-    <div class="lang-label">English</div>
+  <div class="pair-block">
     <div class="en-text">You are still out of job, you are still something, somebody hanging in the air, you are still somebody will not even look at you.</div>
-  </div>
-
-  <div class="zh-block">
-    <div class="lang-label">中文</div>
     <div class="zh-text">你们现在还没有工作，你们还在空中飘荡，别人甚至不愿意看你们一眼</div>
   </div>
-  <div class="en-block">
-    <div class="lang-label">English</div>
+  <div class="pair-block">
     <div class="en-text">Then how can you carry on your shoulders?</div>
-  </div>
-
-  <div class="zh-block">
-    <div class="lang-label">中文</div>
     <div class="zh-text">那么，你们如何能承担起这份责任呢</div>
   </div>
-  <div class="en-block">
-    <div class="lang-label">English</div>
+  <div class="pair-block">
     <div class="en-text">So first thing is to build yourself inside as well as outside, but such a vicious circle I tell you.</div>
-  </div>
-
-  <div class="zh-block">
-    <div class="lang-label">中文</div>
     <div class="zh-text">所以，首先要从内在和外在两方面建设自己。但是，这是一个恶性循环</div>
   </div>
-  <div class="en-block">
-    <div class="lang-label">English</div>
+  <div class="pair-block">
     <div class="en-text">If you do not go deep into yourself, you cannot also get the outside thing.</div>
-  </div>
-
-  <div class="zh-block">
-    <div class="lang-label">中文</div>
     <div class="zh-text">如果你不深入自己的内心，也无法在外在取得成就</div>
   </div>
-  <div class="en-block">
-    <div class="lang-label">English</div>
+  <div class="pair-block">
     <div class="en-text">So it works hand in hand, as soon as you start building yourself inside, you’ll be amazed how things will work out, how you’ll become dynamic, how you’ll become great.</div>
-  </div>
-
-  <div class="zh-block">
-    <div class="lang-label">中文</div>
     <div class="zh-text">两者相辅相成，一旦你开始从内心建设自己，你会惊讶地发现事情是如何进展的，你会变得多么有活力，多么伟大</div>
   </div>
-  <div class="en-block">
-    <div class="lang-label">English</div>
+  <div class="pair-block">
     <div class="en-text">But you get involved into things which are very small and transitory.</div>
-  </div>
-
-  <div class="zh-block">
-    <div class="lang-label">中文</div>
     <div class="zh-text">但你们却陷入了微不足道和短暂的事物中</div>
   </div>
-  <div class="en-block">
-    <div class="lang-label">English</div>
+  <div class="pair-block">
     <div class="en-text">So as I told you before, we are seeking the Eternal.</div>
-  </div>
-
-  <div class="zh-block">
-    <div class="lang-label">中文</div>
     <div class="zh-text">正如我之前所说，我们在寻求永恒</div>
   </div>
-  <div class="en-block">
-    <div class="lang-label">English</div>
+  <div class="pair-block">
     <div class="en-text">So the transitory things are to be only used very temporarily, what we need is not so important.</div>
-  </div>
-
-  <div class="zh-block">
-    <div class="lang-label">中文</div>
     <div class="zh-text">所以，那些短暂的事物只能暂时使用，它们对我们来说并不是那么重要</div>
   </div>
-  <div class="en-block">
-    <div class="lang-label">English</div>
+  <div class="pair-block">
     <div class="en-text">If you can understand this thing clearly, that we still are not free, not detached from all the things we had before Sahaja Yoga and they have become subtler and subtler and subtler.</div>
-  </div>
-
-  <div class="zh-block">
-    <div class="lang-label">中文</div>
     <div class="zh-text">如果你能清楚地认识到这一点，即我们仍然没有自由，没有从霎哈嘉瑜伽之前的种种事物中解脱出来，而这些事物正变得越来越微妙</div>
   </div>
-  <div class="en-block">
-    <div class="lang-label">English</div>
+  <div class="pair-block">
     <div class="en-text">And we are still only using Sahaja Yoga for that purpose and not for spreading the light.</div>
-  </div>
-
-  <div class="zh-block">
-    <div class="lang-label">中文</div>
     <div class="zh-text">我们仍在利用霎哈嘉瑜伽来追求那些目的，而不是传播光明</div>
   </div>
-  <div class="en-block">
-    <div class="lang-label">English</div>
+  <div class="pair-block">
     <div class="en-text">So what’s going to happen?</div>
-  </div>
-
-  <div class="zh-block">
-    <div class="lang-label">中文</div>
     <div class="zh-text">那么，会发生什么呢</div>
   </div>
 </div>
