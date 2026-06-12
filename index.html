@@ -50,8 +50,21 @@ footer a:hover{color:#6a5a4a}
 </header>
 <div class="toolbar">
   <span class="count">共 <strong>8</strong> 篇讲话</span>
-  <a href="https://amruta.today/" class="rss-link" target="_blank">Amruta.today →</a>
+  <div style="display:flex;gap:10px;align-items:center">
+    <a href="wordbook.html" class="rss-link" id="idx-wb-link">📖 单词本 <span id="idx-wb-count"></span></a>
+    <a href="https://amruta.today/" class="rss-link" target="_blank">Amruta.today →</a>
+  </div>
 </div>
+<script>
+(function(){
+  try{
+    const wb=JSON.parse(localStorage.getItem('amruta_wordbook')||'{}');
+    const n=Object.keys(wb).length;
+    const el=document.getElementById('idx-wb-count');
+    if(el&&n>0)el.textContent='('+n+')';
+  }catch(e){}
+})();
+</script>
 <div class="article-list">
   <a href="daily/2026-06-12.html" class="article-card">
     <div class="date-badge">
@@ -61,7 +74,7 @@ footer a:hover{color:#6a5a4a}
     </div>
     <div class="card-content">
       <div class="card-title">The reason for rationality</div>
-      <div class="card-preview">2026-06-12 · The reason for rationality</div>
+      <div class="card-preview">2026-06-12 · 理性、情感与智慧</div>
     </div>
     <span class="arrow">→</span>
   </a>
@@ -144,7 +157,7 @@ footer a:hover{color:#6a5a4a}
       <span class="year">2026</span>
     </div>
     <div class="card-content">
-      <div class="card-title">In the illusion of &quot;doing&quot;</div>
+      <div class="card-title">In the illusion of "doing"</div>
       <div class="card-preview">2026-06-05 · 在「做」的幻象之中</div>
     </div>
     <span class="arrow">→</span>
