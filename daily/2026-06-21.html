@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>No need for fear or malice · 2026-06-21</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;-webkit-font-smoothing:antialiased}
+body{font-family:'Noto Serif SC','Source Han Serif SC','STSongti','Songti SC',Georgia,'Times New Roman',serif;background:#f8f5f0;color:#2c2c2c;line-height:1.8;min-height:100vh}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse at 15% 8%,rgba(180,160,140,0.10) 0%,transparent 50%),radial-gradient(ellipse at 85% 92%,rgba(200,180,160,0.08) 0%,transparent 50%);pointer-events:none;z-index:-1}
+.container{max-width:780px;margin:0 auto;padding:0 24px}
+.nav-bar{display:flex;align-items:center;justify-content:space-between;padding:20px 0;font-family:-apple-system,BlinkMacSystemFont,'Noto Sans SC','PingFang SC',sans-serif}
+.nav-bar a{color:#8a7a6a;text-decoration:none;font-size:14px;transition:color .2s}
+.nav-bar a:hover{color:#5a4a3a}
+.article-header{padding:40px 0 32px;text-align:center}
+.article-header .article-date{font-family:-apple-system,BlinkMacSystemFont,'Noto Sans SC',sans-serif;font-size:14px;color:#aaa;letter-spacing:.05em;margin-bottom:6px}
+.article-header .article-source{font-family:-apple-system,BlinkMacSystemFont,'Noto Sans SC',sans-serif;font-size:13px;color:#bbb;margin-bottom:16px}
+.article-header .article-source a{color:#8a7a6a;text-decoration:none}
+.article-header .article-source a:hover{text-decoration:underline}
+.article-header h1{font-size:clamp(24px,4vw,34px);font-weight:600;color:#1a1a1a;letter-spacing:.02em;line-height:1.35}
+.article-header .chinese-title{font-size:clamp(18px,3vw,24px);color:#666;font-weight:500;margin-top:10px}
+.divider{display:flex;align-items:center;gap:16px;margin:8px 0 40px;color:#ddd;font-size:12px;font-family:-apple-system,BlinkMacSystemFont,'Noto Sans SC',sans-serif}
+.divider::before,.divider::after{content:'';flex:1;height:1px;background:linear-gradient(to right,transparent,#e0d8d0,transparent)}
+.article-content{background:rgba(255,255,255,0.6);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,0.8);border-radius:16px;padding:28px 40px;margin-bottom:32px}
+.article-content .pair{margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid rgba(0,0,0,0.05)}
+.article-content .pair:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.article-content .en-text{font-size:16px;color:#3a3a3a;line-height:1.7;margin-bottom:4px}
+.article-content .zh-text{font-size:15px;color:#777;line-height:1.75;word-break:keep-all;overflow-wrap:anywhere}
+footer{text-align:center;padding:24px 0 40px;font-family:-apple-system,BlinkMacSystemFont,'Noto Sans SC',sans-serif}
+footer a{color:#8a7a6a;text-decoration:none;font-size:14px;transition:color .2s}
+footer a:hover{color:#5a4a3a}
+footer .sep{color:#ddd;margin:0 8px}
+@media(max-width:600px){.article-content{padding:18px 16px}.article-header{padding:20px 0 16px}.article-content .en-text{font-size:15px}.article-content .zh-text{font-size:14px}}
+/* Word click */
+.en-text .w{cursor:pointer;border-radius:2px;transition:background .12s}
+.en-text .w:hover,.en-text .w:active{background:rgba(138,122,106,0.18)}
+.en-text .w.saved{color:#8a7a6a;border-bottom:1.5px dotted #8a7a6a}
+/* Bottom-sheet popup */
+#word-popup-overlay{display:none;position:fixed;inset:0;z-index:9998;background:rgba(0,0,0,0.25);backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px)}
+#word-popup{position:fixed;z-index:9999;left:0;right:0;bottom:0;background:#fff;border-radius:18px 18px 0 0;box-shadow:0 -4px 32px rgba(0,0,0,0.13);padding:0 24px 32px;font-family:-apple-system,BlinkMacSystemFont,'Noto Sans SC',sans-serif;transform:translateY(100%);transition:transform .25s cubic-bezier(.32,.72,0,1);will-change:transform;max-height:70vh;overflow-y:auto}
+#word-popup.open{transform:translateY(0)}
+#word-popup .drag-handle{width:36px;height:4px;background:#e0e0e0;border-radius:2px;margin:12px auto 16px;cursor:grab}
+#word-popup .popup-word{font-size:22px;font-weight:700;color:#1a1a1a;margin-bottom:2px}
+#word-popup .popup-phonetic-row{display:flex;align-items:center;gap:8px;margin-bottom:12px;min-height:18px}
+#word-popup .popup-phonetic{font-size:13px;color:#aaa;font-style:italic}
+#word-popup .btn-speak{background:none;border:none;cursor:pointer;padding:2px 4px;font-size:16px;color:#aaa;line-height:1;border-radius:4px;transition:color .15s,background .15s}
+#word-popup .btn-speak:hover{color:#5a7a9a;background:rgba(90,122,154,0.1)}
+#word-popup .btn-speak:active{color:#2a5a7a}
+#word-popup .popup-defs{margin-bottom:16px}
+#word-popup .popup-def{margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid #f0f0f0}
+#word-popup .popup-def:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+#word-popup .popup-pos{font-size:11px;text-transform:uppercase;letter-spacing:.07em;color:#ccc;margin-bottom:3px}
+#word-popup .popup-meaning-cn{font-size:15px;color:#333;line-height:1.6;font-weight:500}
+#word-popup .popup-meaning-en{font-size:12px;color:#bbb;line-height:1.5;margin-top:2px}
+#word-popup .popup-example{font-size:12px;color:#bbb;font-style:italic;margin-top:3px}
+#word-popup .popup-loading{font-size:14px;color:#ccc;padding:8px 0 16px;text-align:center}
+#word-popup .popup-notfound{font-size:13px;color:#bbb;padding:6px 0 16px}
+#word-popup .popup-actions{display:flex;gap:8px;position:sticky;bottom:0;background:#fff;padding-top:8px}
+#word-popup .btn-save{flex:1;padding:11px 0;background:#2c2c2c;color:#fff;border:none;border-radius:10px;font-size:14px;cursor:pointer;transition:background .2s;font-weight:500}
+#word-popup .btn-save:active{background:#111}
+#word-popup .btn-save.saved-state{background:#e8f4ee;color:#2a8a55}
+#word-popup .btn-close{padding:11px 16px;background:rgba(0,0,0,0.05);color:#888;border:none;border-radius:10px;font-size:14px;cursor:pointer}
+</style>
+</head>
+<body>
+<div id="word-popup-overlay" onclick="closePopup()"></div>
+<div id="word-popup">
+  <div class="drag-handle"></div>
+  <div class="popup-word" id="pp-word"></div>
+  <div class="popup-phonetic-row">
+    <span class="popup-phonetic" id="pp-phonetic"></span>
+    <button class="btn-speak" id="pp-speak-btn" onclick="speakWord()" title="朗读" style="display:none">🔊</button>
+  </div>
+  <div class="popup-defs" id="pp-defs"></div>
+  <div class="popup-actions">
+    <button class="btn-save" id="pp-save-btn" onclick="saveWord()">加入单词本</button>
+    <button class="btn-close" onclick="closePopup()">关闭</button>
+  </div>
+</div>
+<div class="container">
+<nav class="nav-bar">
+  <a href="../index.html">← 返回首页</a>
+  <a href="../wordbook.html" style="display:flex;align-items:center;gap:5px;font-size:13px;color:#8a7a6a;text-decoration:none" id="nav-wb-link">📖 <span id="nav-wb-count"></span></a>
+  <a href="https://amruta.today/" target="_blank">Amruta.today</a>
+</nav>
+<div class="article-header">
+  <div class="article-date">Jun 21, 2026</div>
+  <h1>No need for fear or malice</h1>
+  <div class="chinese-title">不需要恐惧或恶意</div>
+  <div class="article-source">Source: <a href="https://www.sahaja.live/1992-06-21-shri-kundalini-puja-cabella-1992/" target="_blank">www.sahaja.live</a></div>
+</div>
+<div class="divider">◇</div>
+<div class="article-content">
+  <div class="pair">
+    <div class="en-text"><span class="w">There</span>’s a <span class="w">saying</span> <span class="w">in</span> <span class="w">Sanskrit</span> ‘<span class="w">Vinaasha</span> <span class="w">kale</span> <span class="w">vipreet</span> <span class="w">buddhi</span>’ <span class="w">means</span>, ‘<span class="w">Their</span> <span class="w">destruction</span> <span class="w">will</span> <span class="w">start</span> <span class="w">by</span> <span class="w">their</span> <span class="w">own</span> <span class="w">stupid</span> <span class="w">methods</span>.’ [<span class="w">Those</span> <span class="w">who</span> <span class="w">will</span> <span class="w">try</span> <span class="w">to</span> <span class="w">destroy</span> <span class="w">you</span>] <span class="w">will</span> <span class="w">become</span> <span class="w">stupid</span>.</div>
+    <div class="zh-text">梵语中有一句话 “vinaasha kale vipreet buddhi'” 的意思是，“他们的毁灭将以他们自己愚蠢的方法开始。” [那些试图摧毁你的人] 将变得愚蠢。</div>
+  </div>
+  <div class="pair">
+    <div class="en-text"><span class="w">And</span> <span class="w">at</span> <span class="w">every</span> <span class="w">stage</span>, <span class="w">you</span>’<span class="w">ll</span> <span class="w">see</span> <span class="w">they</span> <span class="w">are</span> <span class="w">becoming</span> <span class="w">stupid</span> <span class="w">and</span> <span class="w">by</span> <span class="w">their</span> <span class="w">stupidity</span> <span class="w">they</span> <span class="w">are</span> <span class="w">destroying</span> <span class="w">themselves</span>, <span class="w">you</span> <span class="w">don</span>’t <span class="w">have</span> <span class="w">to</span> <span class="w">worry</span> <span class="w">about</span> <span class="w">that</span> <span class="w">part</span>.</div>
+    <div class="zh-text">在每一个阶段，你都会看到他们变得愚蠢，他们的愚蠢正在摧毁自己，你不必担心这一部分。</div>
+  </div>
+  <div class="pair">
+    <div class="en-text"><span class="w">So</span> <span class="w">that</span>’s <span class="w">why</span> <span class="w">you</span> <span class="w">don</span>’t <span class="w">need</span> <span class="w">any</span> <span class="w">destructive</span> <span class="w">powers</span>.</div>
+    <div class="zh-text">所以这就是为什么你不需要任何破坏力。</div>
+  </div>
+  <div class="pair">
+    <div class="en-text"><span class="w">It</span> <span class="w">will</span> <span class="w">all</span> <span class="w">be</span> <span class="w">done</span> <span class="w">by</span> <span class="w">this</span> <span class="w">All</span>-<span class="w">pervading</span> <span class="w">Divine</span> <span class="w">power</span>.</div>
+    <div class="zh-text">这一切都将由这种普遍的神圣力量来完成。</div>
+  </div>
+  <div class="pair">
+    <div class="en-text"><span class="w">So</span> <span class="w">that</span> <span class="w">part</span> <span class="w">you</span> <span class="w">have</span> <span class="w">to</span> <span class="w">give</span> <span class="w">up</span>.</div>
+    <div class="zh-text">所以你必须放弃那部分。</div>
+  </div>
+  <div class="pair">
+    <div class="en-text"><span class="w">You</span> <span class="w">just</span> <span class="w">forgive</span> <span class="w">that</span> <span class="w">person</span>.</div>
+    <div class="zh-text">你只要原谅那个人。</div>
+  </div>
+  <div class="pair">
+    <div class="en-text"><span class="w">As</span> <span class="w">soon</span> <span class="w">as</span> <span class="w">you</span> <span class="w">forgive</span>, <span class="w">the</span> <span class="w">responsibility</span> <span class="w">from</span> <span class="w">you</span> <span class="w">shifts</span> <span class="w">and</span> <span class="w">then</span> <span class="w">Kundalini</span> <span class="w">rises</span>.</div>
+    <div class="zh-text">一旦你原谅，你的责任就会转移，然后昆达里尼就会上升。</div>
+  </div>
+  <div class="pair">
+    <div class="en-text"><span class="w">You</span> <span class="w">don</span>’t <span class="w">have</span> <span class="w">to</span> <span class="w">carry</span> <span class="w">any</span> <span class="w">malice</span>, <span class="w">anything</span> <span class="w">against</span> <span class="w">him</span> <span class="w">but</span> <span class="w">just</span> <span class="w">laugh</span> <span class="w">because</span> <span class="w">they</span> <span class="w">are</span> <span class="w">blind</span>, <span class="w">because</span> <span class="w">they</span> <span class="w">are</span> <span class="w">stupid</span>, <span class="w">they</span> <span class="w">are</span> <span class="w">foolish</span>.</div>
+    <div class="zh-text">你不必对他有任何恶意，任何反对他的事情，只要笑，因为他们是盲目的，因为他们是愚蠢的，他们是愚蠢的。</div>
+  </div>
+  <div class="pair">
+    <div class="en-text"><span class="w">What</span> <span class="w">do</span> <span class="w">we</span> <span class="w">do</span> <span class="w">if</span> <span class="w">you</span> <span class="w">see</span> <span class="w">an</span> <span class="w">idiot</span>.</div>
+    <div class="zh-text">如果你看到一个白痴，我们该怎么办？</div>
+  </div>
+  <div class="pair">
+    <div class="en-text"><span class="w">We</span> <span class="w">may</span> <span class="w">not</span> <span class="w">laugh</span> <span class="w">in</span> <span class="w">his</span> <span class="w">presence</span> <span class="w">but</span> <span class="w">we</span> <span class="w">do</span>, <span class="w">isn</span>’t <span class="w">it</span>, <span class="w">at</span> <span class="w">his</span> <span class="w">back</span> <span class="w">because</span> <span class="w">he</span>’s <span class="w">an</span> <span class="w">idiot</span>.</div>
+    <div class="zh-text">我们可能不会在他面前笑，但我们会在他背后笑，不是吗，因为他是个白痴。</div>
+  </div>
+  <div class="pair">
+    <div class="en-text"><span class="w">So</span> <span class="w">they</span> <span class="w">become</span> <span class="w">idiotic</span> <span class="w">and</span> <span class="w">you</span> <span class="w">see</span> <span class="w">them</span> <span class="w">becoming</span> <span class="w">idiotic</span> <span class="w">and</span> <span class="w">then</span> <span class="w">you</span> <span class="w">just</span> <span class="w">start</span>, <span class="w">you</span> <span class="w">see</span> <span class="w">that</span>’s <span class="w">the</span> <span class="w">humour</span> <span class="w">of</span> <span class="w">Sahaja</span> <span class="w">Yoga</span>.</div>
+    <div class="zh-text">所以他们变得愚蠢，你看到他们变得愚蠢，然后你开始，你看到这就是霎哈嘉瑜伽的幽默。</div>
+  </div>
+  <div class="pair">
+    <div class="en-text"><span class="w">You</span> <span class="w">have</span> <span class="w">to</span> <span class="w">have</span> <span class="w">some</span> <span class="w">humour</span> <span class="w">also</span> <span class="w">isn</span>’t <span class="w">it</span>?</div>
+    <div class="zh-text">你必须有一些幽默，不是吗？</div>
+  </div>
+  <div class="pair">
+    <div class="en-text"><span class="w">And</span> <span class="w">then</span> <span class="w">you</span> <span class="w">start</span> <span class="w">seeing</span> <span class="w">these</span> <span class="w">jokers</span>, <span class="w">you</span> <span class="w">see</span>, <span class="w">behaving</span> <span class="w">in</span> <span class="w">that</span> <span class="w">manner</span> <span class="w">and</span> <span class="w">the</span> <span class="w">whole</span> <span class="w">circus</span> <span class="w">they</span> <span class="w">do</span> <span class="w">is</span> <span class="w">nothing</span> <span class="w">but</span> <span class="w">jocular</span>.</div>
+    <div class="zh-text">然后你开始看到这些小丑，你看，以这种方式行事，他们所做的整个马戏团只不过是开玩笑。</div>
+  </div>
+  <div class="pair">
+    <div class="en-text"><span class="w">So</span> <span class="w">there</span>’s <span class="w">nothing</span> <span class="w">to</span> <span class="w">have</span> <span class="w">any</span> <span class="w">fear</span> <span class="w">from</span> <span class="w">any</span> <span class="w">human</span> <span class="w">being</span>; <span class="w">same</span> <span class="w">about</span> <span class="w">organizations</span> <span class="w">or</span> <span class="w">anything</span>.</div>
+    <div class="zh-text">因此，任何人都没有任何恐惧; 组织或任何东西都一样。</div>
+  </div>
+  <div class="pair">
+    <div class="en-text"><span class="w">Naturally</span> <span class="w">you</span> <span class="w">have</span> <span class="w">to</span> <span class="w">know</span> <span class="w">one</span> <span class="w">thing</span>: <span class="w">that</span> <span class="w">as</span> <span class="w">you</span> <span class="w">are</span> <span class="w">Realized</span> <span class="w">souls</span>, <span class="w">you</span> <span class="w">have</span> <span class="w">seen</span> <span class="w">the</span> <span class="w">truth</span>, <span class="w">you</span> <span class="w">are</span> <span class="w">in</span> <span class="w">the</span> <span class="w">light</span> <span class="w">so</span> <span class="w">they</span> <span class="w">are</span> <span class="w">going</span> <span class="w">to</span> <span class="w">oppose</span> <span class="w">you</span>, <span class="w">they</span> <span class="w">are</span> <span class="w">going</span> <span class="w">to</span> <span class="w">oppose</span> <span class="w">you</span>.</div>
+    <div class="zh-text">自然地，你必须知道一件事: 当你意识到灵魂，你已经看到了真相，你在光中，所以他们会反对你，他们会反对你。</div>
+  </div>
+  <div class="pair">
+    <div class="en-text"><span class="w">They</span> <span class="w">did</span> <span class="w">this</span>, <span class="w">isn</span>’t <span class="w">it</span>, <span class="w">to</span> <span class="w">others</span>; <span class="w">everybody</span> <span class="w">suffered</span> <span class="w">so</span> <span class="w">much</span>.</div>
+    <div class="zh-text">他们这样做了，不是吗，对其他人来说; 每个人都遭受了如此多的痛苦。</div>
+  </div>
+  <div class="pair">
+    <div class="en-text"><span class="w">But</span> <span class="w">now</span> <span class="w">no</span> <span class="w">more</span> <span class="w">sufferings</span> <span class="w">to</span> <span class="w">you</span>, <span class="w">only</span> <span class="w">thing</span> <span class="w">you</span> <span class="w">can</span> <span class="w">enjoy</span> <span class="w">the</span> <span class="w">humor</span>.</div>
+    <div class="zh-text">但现在没有更多的痛苦给你，只有你可以享受幽默。</div>
+  </div>
+  <div class="pair">
+    <div class="en-text"><span class="w">Just</span> <span class="w">understand</span> <span class="w">this</span> <span class="w">point</span>, <span class="w">that</span> <span class="w">nothing</span> <span class="w">will</span> <span class="w">destroy</span> <span class="w">you</span>, <span class="w">no</span> <span class="w">one</span> <span class="w">can</span> <span class="w">touch</span> <span class="w">you</span> <span class="w">but</span> <span class="w">they</span> <span class="w">are</span> <span class="w">there</span> <span class="w">just</span> <span class="w">to</span> <span class="w">supply</span> <span class="w">some</span> <span class="w">humor</span> <span class="w">for</span> <span class="w">you</span>.</div>
+    <div class="zh-text">只要明白这一点，没有什么会毁了你，没有人可以碰你，但他们只是为你提供一些幽默。</div>
+  </div>
+  <div class="pair">
+    <div class="en-text"><span class="w">If</span> <span class="w">you</span> <span class="w">take</span> <span class="w">such</span> a <span class="w">light</span> <span class="w">attitude</span> <span class="w">towards</span> <span class="w">them</span>, <span class="w">all</span> <span class="w">this</span> <span class="w">fear</span> <span class="w">and</span> <span class="w">left</span> <span class="w">side</span> <span class="w">will</span> <span class="w">go</span> <span class="w">away</span>.</div>
+    <div class="zh-text">如果你对他们采取这样一个轻的态度，所有这些恐惧和左侧将消失。</div>
+  </div>
+  <div class="pair">
+    <div class="en-text"><span class="w">What</span> <span class="w">are</span> <span class="w">these</span> <span class="w">baddhas</span>, <span class="w">and</span> <span class="w">what</span> <span class="w">are</span> <span class="w">these</span> <span class="w">bhoots</span>, <span class="w">and</span> <span class="w">what</span> <span class="w">are</span> <span class="w">these</span> <span class="w">tantrikas</span>?</div>
+    <div class="zh-text">这些baddhas是什么，这些bhoots是什么，这些tantrikas是什么？</div>
+  </div>
+  <div class="pair">
+    <div class="en-text"><span class="w">You</span> <span class="w">are</span> <span class="w">so</span> <span class="w">powerful</span>.</div>
+    <div class="zh-text">你太强大了。</div>
+  </div>
+  <div class="pair">
+    <div class="en-text"><span class="w">Just</span> <span class="w">with</span> <span class="w">one</span> <span class="w">glance</span> <span class="w">you</span> <span class="w">can</span> <span class="w">see</span> <span class="w">them</span> <span class="w">dancing</span> <span class="w">on</span> <span class="w">their</span> <span class="w">heads</span>, <span class="w">the</span> <span class="w">other</span> <span class="w">way</span> <span class="w">round</span>.</div>
+    <div class="zh-text">只要看一眼，你就能看到他们在头上跳舞，反之。</div>
+  </div>
+  <div class="pair">
+    <div class="en-text"><span class="w">As</span> <span class="w">long</span> <span class="w">as</span> <span class="w">you</span>’<span class="w">ll</span> <span class="w">have</span> <span class="w">fear</span> <span class="w">Kundalini</span> <span class="w">won</span>’t <span class="w">rise</span> <span class="w">because</span> <span class="w">She</span> <span class="w">doesn</span>’t <span class="w">rise</span> <span class="w">for</span> <span class="w">people</span> <span class="w">who</span> <span class="w">are</span> <span class="w">cowards</span>.</div>
+    <div class="zh-text">只要你害怕昆达里尼不会崛起，因为她不会为懦夫崛起。</div>
+  </div>
+  <div class="pair">
+    <div class="en-text"><span class="w">Cowardice</span> <span class="w">She</span> <span class="w">is</span> <span class="w">not</span> <span class="w">going</span> <span class="w">to</span> <span class="w">support</span>.</div>
+    <div class="zh-text">她不会支持的懦弱。</div>
+  </div>
+  <div class="pair">
+    <div class="en-text"><span class="w">If</span> <span class="w">you</span> <span class="w">are</span> a <span class="w">coward</span> <span class="w">She</span> <span class="w">said</span>, “<span class="w">All</span> <span class="w">right</span>”.</div>
+    <div class="zh-text">如果你是个懦夫，她说: “好吧。</div>
+  </div>
+  <div class="pair">
+    <div class="en-text"><span class="w">You</span> <span class="w">are</span> <span class="w">walking</span> <span class="w">on</span> <span class="w">the</span> <span class="w">street</span>, <span class="w">normally</span> <span class="w">people</span> <span class="w">are</span> <span class="w">afraid</span> <span class="w">if</span> <span class="w">there</span>’s <span class="w">darkness</span>, <span class="w">afraid</span> <span class="w">that</span> <span class="w">somebody</span> <span class="w">might</span> <span class="w">attack</span>, <span class="w">but</span> a <span class="w">Sahaja</span> <span class="w">Yogi</span> <span class="w">does</span> <span class="w">not</span>, <span class="w">if</span> <span class="w">he</span>’s a <span class="w">real</span> <span class="w">Sahaja</span> <span class="w">Yogi</span>, <span class="w">because</span> <span class="w">he</span> <span class="w">knows</span> <span class="w">there</span> <span class="w">are</span> <span class="w">ganas</span> <span class="w">and</span> <span class="w">there</span> <span class="w">are</span> <span class="w">angels</span> <span class="w">around</span> <span class="w">him</span>.</div>
+    <div class="zh-text">你走在街上，通常人们会害怕黑暗，害怕有人会攻击，但是一个霎哈嘉瑜伽士不会，如果他是一个真正的霎哈嘉瑜伽士，因为他知道有加纳人，有天使在他周围。</div>
+  </div>
+  <div class="pair">
+    <div class="en-text"><span class="w">No</span> <span class="w">one</span> <span class="w">can</span> <span class="w">touch</span> <span class="w">him</span>, <span class="w">and</span> <span class="w">the</span> <span class="w">one</span> <span class="w">who</span> <span class="w">will</span> <span class="w">try</span>, <span class="w">these</span> <span class="w">ganas</span> <span class="w">will</span> <span class="w">make</span> <span class="w">such</span> a <span class="w">fool</span> <span class="w">out</span> <span class="w">of</span> <span class="w">that</span> <span class="w">person</span> <span class="w">that</span> <span class="w">you</span>’<span class="w">ll</span> <span class="w">have</span> a <span class="w">nice</span> <span class="w">chance</span> <span class="w">to</span> <span class="w">laugh</span> <span class="w">at</span> <span class="w">him</span>.</div>
+    <div class="zh-text">没有人可以碰他，而那些会尝试的人，这些ganas会让那个人变得如此愚蠢，以至于您将有很好的机会嘲笑他。</div>
+  </div>
+  <div class="pair">
+    <div class="en-text"><span class="w">Now</span> <span class="w">you</span> <span class="w">watch</span> <span class="w">and</span> <span class="w">see</span>.</div>
+    <div class="zh-text">现在你看看。</div>
+  </div>
+  <div class="pair">
+    <div class="en-text"><span class="w">So</span> <span class="w">this</span> <span class="w">left</span> <span class="w">side</span> <span class="w">or</span> <span class="w">this</span> <span class="w">fear</span> <span class="w">should</span> <span class="w">go</span>.</div>
+    <div class="zh-text">所以这个左边或者这个恐惧应该消失。</div>
+  </div>
+  <div class="pair">
+    <div class="en-text"><span class="w">Once</span> <span class="w">this</span> <span class="w">fear</span> <span class="w">will</span> <span class="w">go</span> <span class="w">all</span> <span class="w">your</span> <span class="w">slyness</span>, <span class="w">all</span> <span class="w">your</span> <span class="w">intrigues</span>, <span class="w">all</span> <span class="w">your</span> <span class="w">jealousies</span> <span class="w">will</span> <span class="w">just</span> <span class="w">disappear</span>.</div>
+    <div class="zh-text">一旦这种恐惧将消除您所有的狡猾，所有的阴谋，所有的嫉妒就会消失。</div>
+  </div>
+  <div class="pair">
+    <div class="en-text"><span class="w">That</span>’s <span class="w">how</span> <span class="w">the</span> <span class="w">Kundalini</span> <span class="w">will</span> <span class="w">rise</span> <span class="w">very</span> <span class="w">well</span>.</div>
+    <div class="zh-text">这就是昆达里尼会很好地崛起的方式。</div>
+  </div>
+</div>
+<footer>
+  <a href="../index.html">← 返回首页</a>
+  <span class="sep">·</span>
+  <a href="../wordbook.html">📖 单词本</a>
+  <span class="sep">·</span>
+  <a href="https://amruta.today/" target="_blank">Amruta.today</a>
+  <span class="sep">·</span>
+  <a href="https://github.com/wherejiahe-bot/amruta-daily-archive" target="_blank">GitHub</a>
+</footer>
+</div>
+<script>
+const ARTICLE_DATE = '2026-06-21';
+const WB_KEY = 'amruta_wordbook';
+
+function getWordbook() { try { return JSON.parse(localStorage.getItem(WB_KEY) || '{}'); } catch(e) { return {}; } }
+function saveWordbook(wb) { localStorage.setItem(WB_KEY, JSON.stringify(wb)); }
+
+function refreshSavedMarks() {
+  const wb = getWordbook();
+  document.querySelectorAll('.en-text .w').forEach(el => {
+    const w = el.textContent.replace(/[^A-Za-z']/g,'').toLowerCase();
+    el.classList.toggle('saved', !!wb[w]);
+  });
+  const count = Object.keys(wb).length;
+  const navEl = document.getElementById('nav-wb-count');
+  if (navEl) navEl.textContent = count > 0 ? '单词本 ' + count : '单词本';
+}
+
+let currentWord = '';
+let currentData = null;
+let currentAudioUrl = '';
+
+const POS_CN = {
+  noun:'名词', verb:'动词', adjective:'形容词', adverb:'副词',
+  pronoun:'代词', preposition:'介词', conjunction:'连词',
+  interjection:'感叹词', article:'冠词', determiner:'限定词',
+  exclamation:'感叹词', abbreviation:'缩写'
+};
+
+function posLabel(pos) {
+  return POS_CN[pos] || pos;
+}
+
+function speakWord() {
+  // Prefer API audio URL; fallback to speechSynthesis
+  if (currentAudioUrl) {
+    const audio = new Audio(currentAudioUrl);
+    audio.play().catch(() => synthSpeak());
+  } else {
+    synthSpeak();
+  }
+}
+
+function synthSpeak() {
+  if (!window.speechSynthesis) return;
+  const utter = new SpeechSynthesisUtterance(currentWord);
+  utter.lang = 'en-US';
+  utter.rate = 0.9;
+  window.speechSynthesis.cancel();
+  window.speechSynthesis.speak(utter);
+}
+
+// 阿里云预翻译单词表（构建时生成）
+const WORD_MAP = {"about":"关于","afraid":"害怕","against":"反对","all":"全部","also":"也","an":"一个","and":"和","angels":"天使","any":"任何","anything":"任何东西","are":"是","around":"周围","as":"作为","at":"在","attack":"攻击","attitude":"态度","away":"离开","back":"返回","baddhas":"巴达人","be":"是","because":"因为","become":"成为","becoming":"正在成为","behaving":"行为","being":"存在","blind":"盲的","but":"但是","by":"由","can":"可以","carry":"携带","chance":"机会","circus":"马戏团","coward":"懦夫","cowardice":"懦弱","cowards":"懦夫","dancing":"跳舞","darkness":"黑暗","destroy":"摧毁","destroying":"正在破坏","destruction":"破坏","destructive":"破坏性","did":"做了","disappear":"消失","divine":"神圣的","do":"做","does":"是否","doesn":"不会","don":"唐","done":"完成了","enjoy":"享受","every":"每个","everybody":"每个人","fear":"恐惧","fool":"傻瓜","foolish":"愚蠢的","for":"用于","forgive":"原谅","from":"从","give":"给予","glance":"瞥一眼","go":"去","going":"正在去","have":"有","he":"他","heads":"正面","him":"他","his":"他的","how":"如何","human":"人类","humor":"幽默","humour":"幽默","idiot":"白痴","idiotic":"愚蠢的","if":"如果","in":"在","intrigues":"阴谋","is":"是","isn":"不是","it":"它","jealousies":"嫉妒","jocular":"幽默","jokers":"小丑","just":"只是","kale":"羽衣甘蓝","know":"知道","knows":"知道","kundalini":"昆达里尼","laugh":"笑","left":"左","light":"光","ll":"小二","long":"长","make":"制作","malice":"恶意","manner":"方式","may":"可能","means":"意味着","methods":"方法","might":"可能","more":"更多","much":"很多","naturally":"自然地","need":"需要","nice":"不错","no":"没有","normally":"通常情况下","not":"不","nothing":"没什么","now":"现在","of":"的","on":"在","once":"一次","one":"一","only":"仅","oppose":"反对","or":"或者","organizations":"组织","other":"其他","others":"其他","out":"出去","own":"自己的","part":"部分","people":"人们","person":"人","pervading":"弥漫的","point":"点","power":"力量","powerful":"强大的","powers":"权力","presence":"存在","real":"真实的","realized":"意识到","responsibility":"责任","right":"正确","rise":"上升","rises":"上升","round":"回合","sahaja":"仅仅","said":"说","same":"相同","sanskrit":"梵语","saying":"说","see":"看到","seeing":"看到","seen":"见过","she":"她","should":"应该","side":"侧面","slyness":"狡猾","so":"所以","some":"一些","somebody":"某人","soon":"很快","souls":"灵魂","stage":"阶段","start":"开始","street":"街道","stupid":"愚蠢","stupidity":"愚蠢","such":"这样的","suffered":"遭受了","sufferings":"苦难","supply":"供应","support":"支持","take":"拿","that":"那","the":"这个","their":"他们的","them":"他们","themselves":"他们自己","then":"然后","there":"那里","these":"这些","they":"他们","thing":"东西","this":"这个","those":"那些","to":"到","touch":"触摸","towards":"朝向","truth":"真理","try":"尝试","understand":"理解","up":"向上","very":"非常","walking":"走路","watch":"手表","way":"方式","we":"我们","well":"好吧","what":"什么","who":"谁","whole":"整个","why":"为什么","will":"将要","with":"与","won":"赢了","worry":"担心","yoga":"瑜伽","yogi":"瑜伽士","you":"你","your":"你的"};
+
+async function translateDef(text) {
+  // 先查本地预翻译表（阿里云构建时翻译）
+  const w = text.toLowerCase().replace(/[^a-z]/g, '');
+  if (WORD_MAP[w]) { return WORD_MAP[w]; }
+  // 查不到则用 MyMemory
+  try {
+    const url = 'https://api.mymemory.translated.net/get?q=' + encodeURIComponent(text) + '&langpair=en|zh';
+    const r = await fetch(url, { signal: AbortSignal.timeout(4000) });
+    if (!r.ok) return '';
+    const d = await r.json();
+    const t = d?.responseData?.translatedText || '';
+    if (!t || t === text) return '';
+    return t;
+  } catch(e) { return ''; }
+}
+
+function closePopup() {
+  const popup = document.getElementById('word-popup');
+  const overlay = document.getElementById('word-popup-overlay');
+  popup.classList.remove('open');
+  overlay.style.display = 'none';
+}
+
+function openSheet() {
+  const overlay = document.getElementById('word-popup-overlay');
+  const popup = document.getElementById('word-popup');
+  overlay.style.display = 'block';
+  // Force reflow so transition fires
+  popup.getBoundingClientRect();
+  popup.classList.add('open');
+}
+
+async function openWordPopup(el, word) {
+  currentWord = word.toLowerCase().replace(/['’]/g, "'");
+  currentData = null;
+  currentAudioUrl = '';
+  document.getElementById('pp-word').textContent = word;
+  document.getElementById('pp-phonetic').textContent = '';
+  document.getElementById('pp-speak-btn').style.display = 'none';
+  document.getElementById('pp-defs').innerHTML = '<div class="popup-loading">查询中…</div>';
+  updateSaveBtn();
+  openSheet();
+
+  try {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), 6000);
+    const res = await fetch('https://api.dictionaryapi.dev/api/v2/entries/en/' + encodeURIComponent(currentWord), { signal: controller.signal });
+    clearTimeout(timer);
+    if (!res.ok) throw new Error('not found');
+    const data = await res.json();
+    currentData = data[0];
+
+    // Phonetic text
+    const phonetics = currentData.phonetics || [];
+    const phonetic = currentData.phonetic || phonetics.find(p => p.text)?.text || '';
+    document.getElementById('pp-phonetic').textContent = phonetic;
+
+    // Audio URL from API (prefer one with text + audio)
+    const audioEntry = phonetics.find(p => p.audio && p.audio.length > 0);
+    if (audioEntry) {
+      currentAudioUrl = audioEntry.audio.startsWith('http') ? audioEntry.audio : 'https:' + audioEntry.audio;
+    }
+
+    // Show speaker button if speechSynthesis available or audio url found
+    if (currentAudioUrl || window.speechSynthesis) {
+      document.getElementById('pp-speak-btn').style.display = '';
+    }
+
+    // Build defs with async CN translation
+    const meanings = (currentData.meanings || []).slice(0, 3);
+    // Show immediately with English, then patch with Chinese
+    let defsHtml = '';
+    meanings.forEach((m, i) => {
+      const def = (m.definitions || [])[0];
+      if (!def) return;
+      defsHtml += '<div class="popup-def" id="pp-def-' + i + '">'
+        + '<div class="popup-pos">' + posLabel(m.partOfSpeech) + '</div>'
+        + '<div class="popup-meaning-cn" id="pp-cn-' + i + '">' + def.definition + '</div>'
+        + (def.example ? '<div class="popup-example">' + def.example + '</div>' : '')
+        + '</div>';
+    });
+    document.getElementById('pp-defs').innerHTML = defsHtml || '<div class="popup-notfound">无释义</div>';
+
+    // Async: translate each definition to Chinese
+    meanings.forEach((m, i) => {
+      const def = (m.definitions || [])[0];
+      if (!def) return;
+      translateDef(def.definition).then(cn => {
+        const cnEl = document.getElementById('pp-cn-' + i);
+        if (!cnEl) return;
+        if (cn) {
+          cnEl.textContent = cn;
+          // Add English original as small text below
+          const enSmall = document.createElement('div');
+          enSmall.className = 'popup-meaning-en';
+          enSmall.textContent = def.definition;
+          cnEl.after(enSmall);
+        }
+      });
+    });
+
+  } catch(e) {
+    document.getElementById('pp-phonetic').textContent = '';
+    // Still show speaker via speechSynthesis even on API failure
+    if (window.speechSynthesis) {
+      document.getElementById('pp-speak-btn').style.display = '';
+    }
+    document.getElementById('pp-defs').innerHTML = '<div class="popup-notfound">未找到释义，可直接加入单词本</div>';
+  }
+}
+
+function updateSaveBtn() {
+  const wb = getWordbook();
+  const btn = document.getElementById('pp-save-btn');
+  if (wb[currentWord]) {
+    btn.textContent = '✓ 已在单词本';
+    btn.classList.add('saved-state');
+  } else {
+    btn.textContent = '加入单词本';
+    btn.classList.remove('saved-state');
+  }
+}
+
+function saveWord() {
+  const wb = getWordbook();
+  if (wb[currentWord]) {
+    delete wb[currentWord];
+    saveWordbook(wb);
+    updateSaveBtn();
+    refreshSavedMarks();
+    return;
+  }
+  const phonetic = document.getElementById('pp-phonetic').textContent.trim();
+  let defs = [];
+  if (currentData && currentData.meanings) {
+    currentData.meanings.slice(0,3).forEach((m, i) => {
+      const d = (m.definitions||[])[0];
+      if (!d) return;
+      // Try to grab translated CN from DOM if available
+      const cnEl = document.getElementById('pp-cn-' + i);
+      const cnText = cnEl ? cnEl.textContent.trim() : '';
+      defs.push({ pos: m.partOfSpeech, posCn: posLabel(m.partOfSpeech), def: d.definition, defCn: cnText !== d.definition ? cnText : '', example: d.example||'' });
+    });
+  }
+  wb[currentWord] = { word: currentWord, phonetic, defs, source: ARTICLE_DATE, savedAt: Date.now() };
+  saveWordbook(wb);
+  updateSaveBtn();
+  refreshSavedMarks();
+}
+
+// Event delegation — handles all .w spans, works regardless of render order
+document.addEventListener('click', e => {
+  const t = e.target;
+  if (t.classList.contains('w') && t.closest('.en-text')) {
+    e.stopPropagation();
+    const word = t.textContent.replace(/[^A-Za-z']/g, '');
+    if (word.length >= 2) openWordPopup(t, word);
+  }
+});
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closePopup(); });
+refreshSavedMarks();
+// Hash-based word highlight: #word-{word} scrolls to first occurrence and highlights the pair
+(function(){
+  const hash = location.hash;
+  if (!hash || !hash.startsWith('#word-')) return;
+  const target = decodeURIComponent(hash.slice(6)).toLowerCase();
+  const spans = document.querySelectorAll('.en-text .w');
+  let found = null;
+  for (const s of spans) {
+    if (s.textContent.replace(/[^A-Za-z']/g,'').toLowerCase() === target) { found = s; break; }
+  }
+  if (!found) return;
+  const pair = found.closest('.pair');
+  if (!pair) return;
+  pair.id = 'highlight-pair';
+  pair.style.cssText += ';border-radius:8px;transition:background .4s;';
+  setTimeout(() => {
+    pair.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    pair.style.background = 'rgba(138,122,106,0.13)';
+    for (const s of pair.querySelectorAll('.w')) {
+      if (s.textContent.replace(/[^A-Za-z']/g,'').toLowerCase() === target) {
+        s.style.cssText += ';background:rgba(138,122,106,0.28);border-radius:3px;padding:0 1px;';
+      }
+    }
+    setTimeout(() => { pair.style.background = ''; }, 2200);
+  }, 350);
+})();
+</script>
+</body>
+</html>
