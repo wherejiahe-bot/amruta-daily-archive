@@ -32,6 +32,9 @@ header .subtitle span{display:inline-block;padding:4px 14px;background:rgba(180,
 .article-card .card-content .card-preview{font-size:14px;color:#aaa;margin-top:4px;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden}
 .article-card .arrow{flex-shrink:0;color:#ccc;font-size:18px;transition:all .2s}
 .article-card:hover .arrow{color:#8a7a6a;transform:translateX(3px)}
+.empty-state{text-align:center;padding:80px 24px;color:#bbb}
+.empty-state .empty-icon{font-size:40px;margin-bottom:16px;opacity:0.4}
+.empty-state p{font-size:16px;line-height:1.6}
 footer{text-align:center;padding:32px 0 48px;border-top:1px solid rgba(0,0,0,0.04)}
 footer a{color:#8a7a6a;text-decoration:none;font-size:14px;transition:color .2s}
 footer a:hover{color:#6a5a4a}
@@ -47,21 +50,22 @@ footer a:hover{color:#6a5a4a}
 </header>
 <div class="toolbar">
   <span class="count">共 <strong>21</strong> 篇讲话</span>
-  <a href="https://amruta.today/" class="rss-link" target="_blank">Amruta.today →</a>
+  <div style="display:flex;gap:10px;align-items:center">
+    <a href="wordbook.html" class="rss-link" id="idx-wb-link">📖 单词本 <span id="idx-wb-count"></span></a>
+    <a href="https://sahaja.live/" class="rss-link" target="_blank">Sahaja Live →</a>
+  </div>
 </div>
+<script>
+(function(){
+  try{
+    const wb=JSON.parse(localStorage.getItem('amruta_wordbook')||'{}');
+    const n=Object.keys(wb).length;
+    const el=document.getElementById('idx-wb-count');
+    if(el&&n>0)el.textContent='('+n+')';
+  }catch(e){}
+})();
+</script>
 <div class="article-list">
-  <a href="daily/1995-06-25.html" class="article-card">
-    <div class="date-badge">
-      <span class="month">Jun</span>
-      <span class="day">25</span>
-      <span class="year">2026</span>
-    </div>
-    <div class="card-content">
-      <div class="card-title">Queen Victoria</div>
-      <div class="card-preview">1995-06-25 · 维多利亚女王</div>
-    </div>
-    <span class="arrow">→</span>
-  </a>
   <a href="daily/2026-06-24.html" class="article-card">
     <div class="date-badge">
       <span class="month">Jun</span>
@@ -190,7 +194,7 @@ footer a:hover{color:#6a5a4a}
     </div>
     <div class="card-content">
       <div class="card-title">Tending to the Self</div>
-      <div class="card-preview">2026-06-14 · 关照真我</div>
+      <div class="card-preview">2026-06-14 · 照料真我</div>
     </div>
     <span class="arrow">→</span>
   </a>
@@ -302,9 +306,21 @@ footer a:hover{color:#6a5a4a}
     </div>
     <span class="arrow">→</span>
   </a>
+  <a href="daily/1995-06-25.html" class="article-card">
+    <div class="date-badge">
+      <span class="month">Jun</span>
+      <span class="day">25</span>
+      <span class="year">1995</span>
+    </div>
+    <div class="card-content">
+      <div class="card-title">Queen Victoria</div>
+      <div class="card-preview">1995-06-25 · 维多利亚女王</div>
+    </div>
+    <span class="arrow">→</span>
+  </a>
 </div>
 <footer>
-  <a href="https://amruta.today/" target="_blank">Amruta.today</a>
+  <a href="https://sahaja.live/" target="_blank">Sahaja Live</a>
   &nbsp;·&nbsp;
   <a href="https://github.com/wherejiahe-bot/amruta-daily-archive" target="_blank">GitHub</a>
 </footer>
