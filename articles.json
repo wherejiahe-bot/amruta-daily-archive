@@ -90,15 +90,6 @@
     "pushDate": "2026-06-16"
   },
   {
-    "date": "2026-06-15",
-    "title": "Still in the dreamland of reflection",
-    "titleCn": "犹在思虑的梦境中",
-    "year": "2026",
-    "month": "Jun",
-    "source": "https://www.sahaja.live/the-higher-life-amruta/",
-    "pushDate": "2026-06-15"
-  },
-  {
     "date": "2026-06-13",
     "title": "Value through testing",
     "titleCn": "通过实践体现价值",
@@ -187,5 +178,14 @@
     "month": "Jun",
     "source": "https://amruta.today/",
     "pushDate": "2026-07-09"
+  },
+  {
+    "date": "2026-06-15",
+    "title": "Still in the dreamland of reflection",
+    "titleCn": "仍在倒影的梦境中",
+    "year": "2026",
+    "month": "Jun",
+    "source": "https://www.sahaja.live/the-higher-life-amruta/",
+    "pushDate": "2026-06-15"
   }
 ]
