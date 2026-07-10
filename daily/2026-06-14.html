@@ -1,4 +1,4 @@
-`<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
@@ -88,7 +88,7 @@ footer .sep{color:#ddd;margin:0 8px}
   <div class="article-date">Jun 14, 2026</div>
   <h1>Tending to the Self</h1>
   <div class="chinese-title">照料真我</div>
-  <div class="article-source">Source: <a href="https://amruta.today/" target="_blank">amruta.today</a></div>
+  <div class="article-source">Source: <a href="https://www.sahaja.live/1982-0614-public-program-you-are-bound-by-one-thread-caxton-hall-london-uk-transcribed/" target="_blank">www.sahaja.live</a></div>
 </div>
 <div class="divider">◇</div>
 <div class="article-content">
@@ -244,7 +244,7 @@ function synthSpeak() {
 }
 
 // 阿里云预翻译单词表（构建时生成）
-const WORD_MAP = {JSON.stringify(wordMap || {})};
+const WORD_MAP = {};
 
 async function translateDef(text) {
   // 先查本地预翻译表（阿里云构建时翻译）
@@ -279,7 +279,7 @@ function openSheet() {
 }
 
 async function openWordPopup(el, word) {
-  currentWord = word.toLowerCase().replace(/['\u2019]/g, "'");
+  currentWord = word.toLowerCase().replace(/['’]/g, "'");
   currentData = null;
   currentAudioUrl = '';
   document.getElementById('pp-word').textContent = word;
