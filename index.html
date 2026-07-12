@@ -40,6 +40,7 @@ footer a{color:#8a7a6a;text-decoration:none;font-size:14px;transition:color .2s}
 footer a:hover{color:#6a5a4a}
 @media(max-width:480px){header{padding:40px 0 32px}.article-card{padding:14px 16px;gap:14px}.article-card .date-badge{min-width:44px}.article-card .date-badge .day{font-size:22px}.article-card .card-content .card-title{font-size:15px}.toolbar{flex-direction:column;gap:12px;align-items:flex-start}}
 </style>
+</style>
 </head>
 <body>
 <div class="container">
@@ -49,7 +50,7 @@ footer a:hover{color:#6a5a4a}
   <p class="subtitle"><span>Amruta Today Archive</span></p>
 </header>
 <div class="toolbar">
-  <span class="count">共 <strong>26</strong> 篇讲话</span>
+  <span class="count">共 <strong>25</strong> 篇讲话</span>
   <div style="display:flex;gap:10px;align-items:center">
     <a href="wordbook.html" class="rss-link" id="idx-wb-link">📖 单词本 <span id="idx-wb-count"></span></a>
     <a href="https://sahaja.live/" class="rss-link" target="_blank">Sahaja Live →</a>
@@ -58,7 +59,7 @@ footer a:hover{color:#6a5a4a}
 <script>
 (function(){
   try{
-    const wb=JSON.parse(localStorage.getItem('amruta_wordbook')||'{}');
+    const wb=JSON.parse(localStorage.getItem('amruta_wordbook')||'{{}}'));
     const n=Object.keys(wb).length;
     const el=document.getElementById('idx-wb-count');
     if(el&&n>0)el.textContent='('+n+')';
@@ -74,17 +75,6 @@ footer a:hover{color:#6a5a4a}
     <div class="card-content">
       <div class="card-title">Becoming aware of the Divine</div>
       <div class="card-preview">2026-07-10 · 成为神性的觉知</div>
-    </div>
-    <span class="arrow">→</span>
-  </a>  <a href="daily/2026-06-14.html" class="article-card">
-    <div class="date-badge">
-      <span class="month">Jun</span>
-      <span class="day">14</span>
-      <span class="year">2026</span>
-    </div>
-    <div class="card-content">
-      <div class="card-title">Tending to the Self</div>
-      <div class="card-preview">2026-06-14 · 照料真我</div>
     </div>
     <span class="arrow">→</span>
   </a>  <a href="daily/2026-06-28.html" class="article-card">
@@ -241,15 +231,15 @@ footer a:hover{color:#6a5a4a}
       <div class="card-preview">2026-06-15 · 仍在倒影的梦境中</div>
     </div>
     <span class="arrow">→</span>
-  </a>  <a href="daily/2026-06-12.html" class="article-card">
+  </a>  <a href="daily/2026-06-14.html" class="article-card">
     <div class="date-badge">
       <span class="month">Jun</span>
-      <span class="day">12</span>
+      <span class="day">14</span>
       <span class="year">2026</span>
     </div>
     <div class="card-content">
-      <div class="card-title">The reason for rationality</div>
-      <div class="card-preview">2026-06-12 · 理性的理由</div>
+      <div class="card-title">Tending to the Self</div>
+      <div class="card-preview">2026-06-14 · 照料真我</div>
     </div>
     <span class="arrow">→</span>
   </a>  <a href="daily/2026-06-13.html" class="article-card">
@@ -261,6 +251,17 @@ footer a:hover{color:#6a5a4a}
     <div class="card-content">
       <div class="card-title">Value through testing</div>
       <div class="card-preview">2026-06-13 · 通过实践去体会它的价值</div>
+    </div>
+    <span class="arrow">→</span>
+  </a>  <a href="daily/2026-06-12.html" class="article-card">
+    <div class="date-badge">
+      <span class="month">Jun</span>
+      <span class="day">12</span>
+      <span class="year">2026</span>
+    </div>
+    <div class="card-content">
+      <div class="card-title">The reason for rationality</div>
+      <div class="card-preview">2026-06-12 · 理性的理由</div>
     </div>
     <span class="arrow">→</span>
   </a>  <a href="daily/2026-06-11.html" class="article-card">
@@ -338,17 +339,6 @@ footer a:hover{color:#6a5a4a}
     <div class="card-content">
       <div class="card-title">In the illusion of "doing"</div>
       <div class="card-preview">2026-06-05 · 在「做」的幻象之中</div>
-    </div>
-    <span class="arrow">→</span>
-  </a>  <a href="daily/1995-06-25.html" class="article-card">
-    <div class="date-badge">
-      <span class="month">Jun</span>
-      <span class="day">25</span>
-      <span class="year">1995</span>
-    </div>
-    <div class="card-content">
-      <div class="card-title">Queen Victoria</div>
-      <div class="card-preview">1995-06-25 · 维多利亚女王</div>
     </div>
     <span class="arrow">→</span>
   </a>
