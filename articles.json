@@ -216,15 +216,6 @@
     "pushDate": "2026-06-25"
   },
   {
-    "date": "2026-06-27",
-    "title": "Self Knowledge",
-    "titleCn": "自我认知",
-    "year": "2026",
-    "month": "Jun",
-    "source": "https://www.sahaja.live/1999-0627-public-program-vancouver-canada/",
-    "pushDate": "2026-06-27"
-  },
-  {
     "date": "2026-06-28",
     "title": "Antecedents to Sahaja Yoga",
     "titleCn": "霎哈嘉瑜伽的渊源",
@@ -232,5 +223,14 @@
     "month": "Jun",
     "source": "https://www.sahaja.live/1996-0628-public-program-royal-albert-hall-london-uk-transcribed/",
     "pushDate": "2026-06-28"
+  },
+  {
+    "date": "2026-06-27",
+    "title": "Self Knowledge",
+    "titleCn": "自觉之道",
+    "year": "2026",
+    "month": "Jun",
+    "source": "https://www.sahaja.live/1999-0627-public-program-vancouver-canada/",
+    "pushDate": "2026-06-27"
   }
 ]
