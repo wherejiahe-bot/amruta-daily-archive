@@ -3,202 +3,377 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Amruta Daily Archive</title>
+<title>每日 Shri Mataji 讲话 · 中英对照存档</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;1,9..144,400&family=Noto+Sans+SC:wght@300;400;500&family=Noto+Serif+SC:wght@600;900&display=swap" rel="stylesheet">
 <style>
-body{font-family:Arial,sans-serif;margin:40px;background:#f5f5f5}
-.container{max-width:800px;margin:0 auto}
-h1{text-align:center;color:#333}
-.card{background:#fff;border-radius:8px;padding:20px;margin-bottom:16px;box-shadow:0 2px 4px rgba(0,0,0,.1)}
-.card-date{color:#666;font-size:.9em}
-.card-title{font-size:1.2em;font-weight:bold;margin:8px 0}
-.card-preview{color:#888;font-size:.9em}
-.card a{text-decoration:none;color:inherit;display:block}
-.card a:hover{opacity:.8}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+::selection{background:#F4D758;color:#1A1A2E}
+body{
+  font-family:'Noto Sans SC',-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif;
+  background:#fefcf6;color:#1A1A2E;line-height:1.7;min-height:100vh;overflow-x:hidden;
+}
+body::before{
+  content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:
+    radial-gradient(ellipse 80% 50% at 15% 20%,rgba(43,127,216,0.04) 0%,transparent 100%),
+    radial-gradient(ellipse 60% 40% at 85% 80%,rgba(244,215,88,0.06) 0%,transparent 100%),
+    radial-gradient(ellipse 50% 60% at 50% 50%,rgba(232,74,95,0.02) 0%,transparent 100%);
+}
+.container{max-width:1300px;margin:0 auto;padding:0 clamp(16px,4vw,48px)}
+
+/* Hero */
+.hero{padding:clamp(60px,10vh,120px) 0 clamp(40px,6vh,80px);text-align:center;position:relative}
+.hero-deco{
+  position:absolute;top:clamp(20px,3vh,50px);left:50%;transform:translateX(-50%);
+  font-family:'Fraunces',serif;font-style:italic;font-weight:700;
+  font-size:clamp(5rem,15vw,10rem);color:rgba(43,127,216,0.035);
+  letter-spacing:-0.03em;white-space:nowrap;pointer-events:none;user-select:none;
+}
+.hero h1{
+  font-family:'Noto Serif SC',Georgia,'Times New Roman',serif;
+  font-weight:900;font-size:clamp(2rem,5vw,3.6rem);
+  color:#1A1A2E;letter-spacing:0.01em;line-height:1.3;margin-bottom:16px;
+}
+.hero .subtitle{font-size:clamp(0.9rem,2vw,1.15rem);color:#555;font-weight:300;margin-bottom:20px}
+.hero .brand-tag{
+  display:inline-block;padding:6px 20px;border-radius:24px;
+  background:rgba(43,127,216,0.07);border:1px solid rgba(43,127,216,0.12);
+  font-size:0.82rem;color:#2B7FD8;letter-spacing:0.04em;font-weight:400;
+}
+
+/* Toolbar */
+.toolbar{
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;
+  padding:clamp(16px,3vw,28px) 0;border-top:1px solid rgba(26,26,46,0.06);
+  border-bottom:1px solid rgba(26,26,46,0.06);margin-bottom:clamp(32px,5vw,48px);
+}
+.toolbar .count{font-size:0.85rem;color:#888}
+.toolbar .count strong{color:#2B7FD8;font-weight:600}
+.toolbar-links{display:flex;gap:12px;flex-wrap:wrap}
+.toolbar-links a{
+  font-size:0.82rem;color:#2B7FD8;text-decoration:none;padding:6px 16px;
+  border-radius:20px;border:1px solid rgba(43,127,216,0.15);transition:all .2s;
+}
+.toolbar-links a:hover{background:rgba(43,127,216,0.06);border-color:rgba(43,127,216,0.3)}
+
+/* Grid */
+.article-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr));
+  gap:clamp(12px,2vw,20px);padding-bottom:clamp(40px,6vh,80px);
+}
+.article-card{
+  display:flex;align-items:stretch;gap:clamp(12px,2vw,20px);
+  padding:clamp(16px,2.5vw,28px);background:#fff;
+  border-radius:16px;text-decoration:none;color:inherit;
+  transition:all .3s cubic-bezier(0.25,0.46,0.45,0.94);
+  border:1px solid rgba(26,26,46,0.04);position:relative;overflow:hidden;
+}
+.article-card::before{
+  content:'';position:absolute;top:0;left:0;width:3px;height:100%;
+  background:linear-gradient(180deg,#2B7FD8 0%,#F4D758 100%);opacity:0;
+  transition:opacity .3s;border-radius:0 2px 2px 0;
+}
+.article-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 8px 32px rgba(43,127,216,0.06),0 2px 8px rgba(0,0,0,0.03);
+  border-color:rgba(43,127,216,0.1);
+}
+.article-card:hover::before{opacity:1}
+
+.date-badge{
+  flex-shrink:0;display:flex;flex-direction:column;align-items:center;
+  justify-content:center;min-width:clamp(48px,6vw,64px);
+  padding:8px 4px;border-radius:12px;
+  background:linear-gradient(135deg,rgba(43,127,216,0.04),rgba(244,215,88,0.04));
+  border:1px solid rgba(43,127,216,0.06);
+}
+.date-badge .month{
+  display:block;font-size:0.68rem;color:#888;text-transform:uppercase;
+  letter-spacing:0.1em;line-height:1;font-weight:500;
+}
+.date-badge .day{
+  display:block;font-size:clamp(1.4rem,3vw,2rem);font-weight:700;
+  color:#2B7FD8;line-height:1.15;margin-top:2px;font-family:'Fraunces',serif;
+}
+.date-badge .year{
+  display:block;font-size:0.62rem;color:#bbb;line-height:1;margin-top:2px;
+}
+.card-content{flex:1;min-width:0}
+.card-title{
+  font-family:'Noto Serif SC',Georgia,serif;font-size:clamp(0.95rem,1.8vw,1.1rem);
+  font-weight:600;color:#1A1A2E;line-height:1.45;margin-bottom:6px;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;
+  overflow:hidden;word-break:keep-all;
+}
+.card-preview{
+  font-size:0.78rem;color:#999;line-height:1.5;
+  display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden;
+}
+.card-arrow{
+  flex-shrink:0;display:flex;align-items:center;padding-top:clamp(8px,1.5vw,16px);
+  color:#ccc;font-size:1.1rem;transition:all .25s;
+}
+.article-card:hover .card-arrow{color:#F4D758;transform:translateX(4px)}
+
+/* Footer */
+.footer{
+  text-align:center;padding:clamp(32px,5vh,56px) 0 clamp(24px,4vh,40px);
+  border-top:1px solid rgba(26,26,46,0.04);
+}
+.footer a{
+  color:#2B7FD8;text-decoration:none;font-size:0.82rem;transition:all .2s;
+  padding:4px 12px;border-radius:16px;border:1px solid rgba(43,127,216,0.12);
+}
+.footer a:hover{background:rgba(43,127,216,0.06);border-color:rgba(43,127,216,0.25)}
+.footer .sep{color:#ddd;margin:0 2px}
+
+/* Scroll Reveal */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* Responsive */
+@media(max-width:900px){.article-grid{grid-template-columns:1fr}.toolbar{flex-direction:column;align-items:flex-start;gap:16px}}
+@media(max-width:600px){
+  .hero-deco{font-size:3.5rem}
+  .date-badge .day{font-size:1.6rem}
+  .article-card{padding:16px;gap:14px}
+  .card-title{font-size:0.92rem}
+}
+@media(prefers-reduced-motion:reduce){
+  .reveal{transition:none;opacity:1;transform:none}
+  .article-card{transition:none}
+  .article-card:hover{transform:none}
+  .article-card:hover .card-arrow{transform:none}
+}
 </style>
 </head>
 <body>
 <div class="container">
-<h1>Amruta Daily Archive</h1>
-    <div class="card"><a href="daily/2026-07-13.html">
-        <div class="card-date">2026-07-13</div>
-        <div class="card-title">Depth achieved by setting boundaries</div>
-        <div class="card-preview">2026-07-13 · 通过设定边界获得深度</div>
-    </a></div>
-    <div class="card"><a href="daily/2026-07-10.html">
-        <div class="card-date">2026-07-10</div>
-        <div class="card-title">Becoming aware of the Divine</div>
-        <div class="card-preview">2026-07-10 · 成为神性的觉知</div>
-    </a></div>
-    <div class="card"><a href="daily/2026-07-08.html">
-        <div class="card-date">2026-07-08</div>
-        <div class="card-title">Zen Tea Ceremony and Guru Principle</div>
-        <div class="card-preview">2026-07-08 · 茶道与上师原则</div>
-    </a></div>
-    <div class="card"><a href="daily/2026-07-07.html">
-        <div class="card-date">2026-07-07</div>
-        <div class="card-title">Challenging one's past</div>
-        <div class="card-preview">2026-07-07 · 待补充（数据错误）</div>
-    </a></div>
-    <div class="card"><a href="daily/2026-07-06.html">
-        <div class="card-date">2026-07-06</div>
-        <div class="card-title">A real guru overcomes material attraction</div>
-        <div class="card-preview">2026-07-06 · 人从大地母亲那里感受到的其他吸</div>
-    </a></div>
-    <div class="card"><a href="daily/2026-07-05.html">
-        <div class="card-date">2026-07-05</div>
-        <div class="card-title">Fixing up priorities</div>
-        <div class="card-preview">2026-07-05 · 调整优先级</div>
-    </a></div>
-    <div class="card"><a href="daily/2026-07-04.html">
-        <div class="card-date">2026-07-04</div>
-        <div class="card-title">The Guru Principle is to be maintained</div>
-        <div class="card-preview">2026-07-04 · 导师原则须自觉维护</div>
-    </a></div>
-    <div class="card"><a href="daily/2026-07-03.html">
-        <div class="card-date">2026-07-03</div>
-        <div class="card-title">A close look at spontaneity, evolution</div>
-        <div class="card-preview">2026-07-03 · 自发性，进化</div>
-    </a></div>
-    <div class="card"><a href="daily/2026-07-02.html">
-        <div class="card-date">2026-07-02</div>
-        <div class="card-title">Comforter, counselor, and redeemer</div>
-        <div class="card-preview">2026-07-02 · 安慰者、指导者和拯救者</div>
-    </a></div>
-    <div class="card"><a href="daily/2026-07-01.html">
-        <div class="card-date">2026-07-01</div>
-        <div class="card-title">Blasting into the Kingdom of God</div>
-        <div class="card-preview">2026-07-01 · 飞速进入上帝的国度</div>
-    </a></div>
-    <div class="card"><a href="daily/2026-06-30.html">
-        <div class="card-date">2026-06-30</div>
-        <div class="card-title">No place for cowards</div>
-        <div class="card-preview">2026-06-30 · 懦夫无处容身</div>
-    </a></div>
-    <div class="card"><a href="daily/2026-06-29.html">
-        <div class="card-date">2026-06-29</div>
-        <div class="card-title">The law of Divine Love</div>
-        <div class="card-preview">2026-06-29 · 神圣之爱的法则</div>
-    </a></div>
-    <div class="card"><a href="daily/2026-06-28.html">
-        <div class="card-date">2026-06-28</div>
-        <div class="card-title">Antecedents to Sahaja Yoga</div>
-        <div class="card-preview">2026-06-28 · 霎哈嘉瑜伽的渊源</div>
-    </a></div>
-    <div class="card"><a href="daily/2026-06-27.html">
-        <div class="card-date">2026-06-27</div>
-        <div class="card-title">Self Knowledge</div>
-        <div class="card-preview">2026-06-27 · 真我的知识</div>
-    </a></div>
-    <div class="card"><a href="daily/2026-06-26.html">
-        <div class="card-date">2026-06-26</div>
-        <div class="card-title">Humans and the evolutionary process</div>
-        <div class="card-preview">2026-06-26 · 进化的过程</div>
-    </a></div>
-    <div class="card"><a href="daily/2026-06-25.html">
-        <div class="card-date">2026-06-25</div>
-        <div class="card-title">Queen Victoria</div>
-        <div class="card-preview">2026-06-25 · 维多利亚女王</div>
-    </a></div>
-    <div class="card"><a href="daily/2026-06-24.html">
-        <div class="card-date">2026-06-24</div>
-        <div class="card-title">A loving temperament</div>
-        <div class="card-preview">2026-06-24 · 充满爱的性情</div>
-    </a></div>
-    <div class="card"><a href="daily/2026-06-23.html">
-        <div class="card-date">2026-06-23</div>
-        <div class="card-title">The need for the Right Channel</div>
-        <div class="card-preview">2026-06-23 · 使用右脉给予自觉的需要</div>
-    </a></div>
-    <div class="card"><a href="daily/2026-06-22.html">
-        <div class="card-date">2026-06-22</div>
-        <div class="card-title">Horizontal layers versus vertical channels</div>
-        <div class="card-preview">2026-06-22 · 水平分层与垂直通道</div>
-    </a></div>
-    <div class="card"><a href="daily/2026-06-21.html">
-        <div class="card-date">2026-06-21</div>
-        <div class="card-title">No need for fear or malice</div>
-        <div class="card-preview">2026-06-21 · 无需恐惧或恶意</div>
-    </a></div>
-    <div class="card"><a href="daily/2026-06-20.html">
-        <div class="card-date">2026-06-20</div>
-        <div class="card-title">Divine Love</div>
-        <div class="card-preview">2026-06-20 · 神圣之爱</div>
-    </a></div>
-    <div class="card"><a href="daily/2026-06-19.html">
-        <div class="card-date">2026-06-19</div>
-        <div class="card-title">Strengthening our Kundalini</div>
-        <div class="card-preview">2026-06-19 · 加强我们的昆达里尼</div>
-    </a></div>
-    <div class="card"><a href="daily/2026-06-18.html">
-        <div class="card-date">2026-06-18</div>
-        <div class="card-title">Expanding the awareness</div>
-        <div class="card-preview">2026-06-18 · 扩大觉知</div>
-    </a></div>
-    <div class="card"><a href="daily/2026-06-17.html">
-        <div class="card-date">2026-06-17</div>
-        <div class="card-title">Love and Knowledge of God&#8217;s Divine Nature</div>
-        <div class="card-preview">2026-06-17 · 爱及对上主神圣本性的知识</div>
-    </a></div>
-    <div class="card"><a href="daily/2026-06-16.html">
-        <div class="card-date">2026-06-16</div>
-        <div class="card-title">Receiving the beauty that is promised</div>
-        <div class="card-preview">2026-06-16 · 获得所承诺的美好</div>
-    </a></div>
-    <div class="card"><a href="daily/2026-06-15.html">
-        <div class="card-date">2026-06-15</div>
-        <div class="card-title">Still in the dreamland of reflection</div>
-        <div class="card-preview">2026-06-15 · 仍在倒影的梦境中</div>
-    </a></div>
-    <div class="card"><a href="daily/2026-06-14.html">
-        <div class="card-date">2026-06-14</div>
-        <div class="card-title">Tending to the Self</div>
-        <div class="card-preview">2026-06-14 · 照料真我</div>
-    </a></div>
-    <div class="card"><a href="daily/2026-06-13.html">
-        <div class="card-date">2026-06-13</div>
-        <div class="card-title">Value through testing</div>
-        <div class="card-preview">2026-06-13 · 通过实践去体会它的价值</div>
-    </a></div>
-    <div class="card"><a href="daily/2026-06-12.html">
-        <div class="card-date">2026-06-12</div>
-        <div class="card-title">The reason for rationality</div>
-        <div class="card-preview">2026-06-12 · 理性的理由</div>
-    </a></div>
-    <div class="card"><a href="daily/2026-06-11.html">
-        <div class="card-date">2026-06-11</div>
-        <div class="card-title">Shouldering Sahaja Yoga</div>
-        <div class="card-preview">2026-06-11 · 肩负起霎哈嘉瑜伽</div>
-    </a></div>
-    <div class="card"><a href="daily/2026-06-10.html">
-        <div class="card-date">2026-06-10</div>
-        <div class="card-title">"Who is the other?"</div>
-        <div class="card-preview">2026-06-10 · 谁是他人？</div>
-    </a></div>
-    <div class="card"><a href="daily/2026-06-09.html">
-        <div class="card-date">2026-06-09</div>
-        <div class="card-title">Curing with a purpose</div>
-        <div class="card-preview">2026-06-09 · 带着目的去治疗</div>
-    </a></div>
-    <div class="card"><a href="daily/2026-06-08.html">
-        <div class="card-date">2026-06-08</div>
-        <div class="card-title">A second stone age</div>
-        <div class="card-preview">2026-06-08 · 第二个石器时代</div>
-    </a></div>
-    <div class="card"><a href="daily/2026-06-07.html">
-        <div class="card-date">2026-06-07</div>
-        <div class="card-title">Avoiding plastic</div>
-        <div class="card-preview">2026-06-07 · 避免塑料制品</div>
-    </a></div>
-    <div class="card"><a href="daily/2026-06-06.html">
-        <div class="card-date">2026-06-06</div>
-        <div class="card-title">Ego satisfied with own shadow</div>
-        <div class="card-preview">2026-06-06 · 自我满足于自身的阴影</div>
-    </a></div>
-    <div class="card"><a href="daily/2026-06-05.html">
-        <div class="card-date">2026-06-05</div>
-        <div class="card-title">In the illusion of "doing"</div>
-        <div class="card-preview">2026-06-05 · 在「做」的幻象之中</div>
-    </a></div>
+
+<section class="hero">
+  <div class="hero-deco">Amruta</div>
+  <h1>每日 Shri Mataji 讲话</h1>
+  <p class="subtitle">中英对照 · 逐日存档</p>
+  <span class="brand-tag">Amruta Today Archive</span>
+</section>
+
+<div class="toolbar">
+  <span class="count">共 <strong>31</strong> 篇讲话</span>
+  <div class="toolbar-links">
+    <a href="wordbook.html">📖 单词本</a>
+    <a href="https://sahaja.live/" target="_blank">Sahaja Live →</a>
+  </div>
 </div>
+
+<div class="article-grid">
+  <a href="daily/2026-07-13.html" class="article-card reveal">
+    <div class="date-badge"><span class="month">Jul</span><span class="day">13</span><span class="year">2026</span></div>
+    <div class="card-content"><div class="card-title">Depth achieved by setting boundaries</div><div class="card-preview">2026-07-13 · 通过设定边界获得深度</div></div>
+    <span class="card-arrow">→</span>
+  </a>
+  <a href="daily/2026-07-10.html" class="article-card reveal">
+    <div class="date-badge"><span class="month">Jul</span><span class="day">10</span><span class="year">2026</span></div>
+    <div class="card-content"><div class="card-title">Becoming aware of the Divine</div><div class="card-preview">2026-07-10 · 成为神性的觉知</div></div>
+    <span class="card-arrow">→</span>
+  </a>
+  <a href="daily/2026-07-08.html" class="article-card reveal">
+    <div class="date-badge"><span class="month">Jul</span><span class="day">8</span><span class="year">2026</span></div>
+    <div class="card-content"><div class="card-title">Zen Tea Ceremony and Guru Principle</div><div class="card-preview">2026-07-08 · 茶道与上师原则</div></div>
+    <span class="card-arrow">→</span>
+  </a>
+  <a href="daily/2026-07-07.html" class="article-card reveal">
+    <div class="date-badge"><span class="month">Jul</span><span class="day">7</span><span class="year">2026</span></div>
+    <div class="card-content"><div class="card-title">Challenging one's past</div><div class="card-preview">2026-07-07 · 待补充（数据错误）</div></div>
+    <span class="card-arrow">→</span>
+  </a>
+  <a href="daily/2026-07-06.html" class="article-card reveal">
+    <div class="date-badge"><span class="month">Jul</span><span class="day">6</span><span class="year">2026</span></div>
+    <div class="card-content"><div class="card-title">A real guru overcomes material attraction</div><div class="card-preview">2026-07-06 · 人从大地母亲那里感受到的其他吸</div></div>
+    <span class="card-arrow">→</span>
+  </a>
+  <a href="daily/2026-07-05.html" class="article-card reveal">
+    <div class="date-badge"><span class="month">Jul</span><span class="day">5</span><span class="year">2026</span></div>
+    <div class="card-content"><div class="card-title">Fixing up priorities</div><div class="card-preview">2026-07-05 · 调整优先级</div></div>
+    <span class="card-arrow">→</span>
+  </a>
+  <a href="daily/2026-07-04.html" class="article-card reveal">
+    <div class="date-badge"><span class="month">Jul</span><span class="day">4</span><span class="year">2026</span></div>
+    <div class="card-content"><div class="card-title">The Guru Principle is to be maintained</div><div class="card-preview">2026-07-04 · 导师原则须自觉维护</div></div>
+    <span class="card-arrow">→</span>
+  </a>
+  <a href="daily/2026-07-03.html" class="article-card reveal">
+    <div class="date-badge"><span class="month">Jul</span><span class="day">3</span><span class="year">2026</span></div>
+    <div class="card-content"><div class="card-title">A close look at spontaneity, evolution</div><div class="card-preview">2026-07-03 · 自发性，进化</div></div>
+    <span class="card-arrow">→</span>
+  </a>
+  <a href="daily/2026-07-02.html" class="article-card reveal">
+    <div class="date-badge"><span class="month">Jul</span><span class="day">2</span><span class="year">2026</span></div>
+    <div class="card-content"><div class="card-title">Comforter, counselor, and redeemer</div><div class="card-preview">2026-07-02 · 安慰者、指导者和拯救者</div></div>
+    <span class="card-arrow">→</span>
+  </a>
+  <a href="daily/2026-07-01.html" class="article-card reveal">
+    <div class="date-badge"><span class="month">Jul</span><span class="day">1</span><span class="year">2026</span></div>
+    <div class="card-content"><div class="card-title">Blasting into the Kingdom of God</div><div class="card-preview">2026-07-01 · 飞速进入上帝的国度</div></div>
+    <span class="card-arrow">→</span>
+  </a>
+  <a href="daily/2026-06-30.html" class="article-card reveal">
+    <div class="date-badge"><span class="month">Jun</span><span class="day">30</span><span class="year">2026</span></div>
+    <div class="card-content"><div class="card-title">No place for cowards</div><div class="card-preview">2026-06-30 · 懦夫无处容身</div></div>
+    <span class="card-arrow">→</span>
+  </a>
+  <a href="daily/2026-06-29.html" class="article-card reveal">
+    <div class="date-badge"><span class="month">Jun</span><span class="day">29</span><span class="year">2026</span></div>
+    <div class="card-content"><div class="card-title">The law of Divine Love</div><div class="card-preview">2026-06-29 · 神圣之爱的法则</div></div>
+    <span class="card-arrow">→</span>
+  </a>
+  <a href="daily/2026-06-28.html" class="article-card reveal">
+    <div class="date-badge"><span class="month">Jun</span><span class="day">28</span><span class="year">2026</span></div>
+    <div class="card-content"><div class="card-title">Antecedents to Sahaja Yoga</div><div class="card-preview">2026-06-28 · 霎哈嘉瑜伽的渊源</div></div>
+    <span class="card-arrow">→</span>
+  </a>
+  <a href="daily/2026-06-27.html" class="article-card reveal">
+    <div class="date-badge"><span class="month">Jun</span><span class="day">27</span><span class="year">2026</span></div>
+    <div class="card-content"><div class="card-title">Self Knowledge</div><div class="card-preview">2026-06-27 · 真我的知识</div></div>
+    <span class="card-arrow">→</span>
+  </a>
+  <a href="daily/2026-06-26.html" class="article-card reveal">
+    <div class="date-badge"><span class="month">Jun</span><span class="day">26</span><span class="year">2026</span></div>
+    <div class="card-content"><div class="card-title">Humans and the evolutionary process</div><div class="card-preview">2026-06-26 · 进化的过程</div></div>
+    <span class="card-arrow">→</span>
+  </a>
+  <a href="daily/2026-06-25.html" class="article-card reveal">
+    <div class="date-badge"><span class="month">Jun</span><span class="day">25</span><span class="year">2026</span></div>
+    <div class="card-content"><div class="card-title">Queen Victoria</div><div class="card-preview">2026-06-25 · 维多利亚女王</div></div>
+    <span class="card-arrow">→</span>
+  </a>
+  <a href="daily/2026-06-24.html" class="article-card reveal">
+    <div class="date-badge"><span class="month">Jun</span><span class="day">24</span><span class="year">2026</span></div>
+    <div class="card-content"><div class="card-title">A loving temperament</div><div class="card-preview">2026-06-24 · 充满爱的性情</div></div>
+    <span class="card-arrow">→</span>
+  </a>
+  <a href="daily/2026-06-23.html" class="article-card reveal">
+    <div class="date-badge"><span class="month">Jun</span><span class="day">23</span><span class="year">2026</span></div>
+    <div class="card-content"><div class="card-title">The need for the Right Channel</div><div class="card-preview">2026-06-23 · 使用右脉给予自觉的需要</div></div>
+    <span class="card-arrow">→</span>
+  </a>
+  <a href="daily/2026-06-22.html" class="article-card reveal">
+    <div class="date-badge"><span class="month">Jun</span><span class="day">22</span><span class="year">2026</span></div>
+    <div class="card-content"><div class="card-title">Horizontal layers versus vertical channels</div><div class="card-preview">2026-06-22 · 水平分层与垂直通道</div></div>
+    <span class="card-arrow">→</span>
+  </a>
+  <a href="daily/2026-06-21.html" class="article-card reveal">
+    <div class="date-badge"><span class="month">Jun</span><span class="day">21</span><span class="year">2026</span></div>
+    <div class="card-content"><div class="card-title">No need for fear or malice</div><div class="card-preview">2026-06-21 · 无需恐惧或恶意</div></div>
+    <span class="card-arrow">→</span>
+  </a>
+  <a href="daily/2026-06-20.html" class="article-card reveal">
+    <div class="date-badge"><span class="month">Jun</span><span class="day">20</span><span class="year">2026</span></div>
+    <div class="card-content"><div class="card-title">Divine Love</div><div class="card-preview">2026-06-20 · 神圣之爱</div></div>
+    <span class="card-arrow">→</span>
+  </a>
+  <a href="daily/2026-06-19.html" class="article-card reveal">
+    <div class="date-badge"><span class="month">Jun</span><span class="day">19</span><span class="year">2026</span></div>
+    <div class="card-content"><div class="card-title">Strengthening our Kundalini</div><div class="card-preview">2026-06-19 · 加强我们的昆达里尼</div></div>
+    <span class="card-arrow">→</span>
+  </a>
+  <a href="daily/2026-06-18.html" class="article-card reveal">
+    <div class="date-badge"><span class="month">Jun</span><span class="day">18</span><span class="year">2026</span></div>
+    <div class="card-content"><div class="card-title">Expanding the awareness</div><div class="card-preview">2026-06-18 · 扩大觉知</div></div>
+    <span class="card-arrow">→</span>
+  </a>
+  <a href="daily/2026-06-17.html" class="article-card reveal">
+    <div class="date-badge"><span class="month">Jun</span><span class="day">17</span><span class="year">2026</span></div>
+    <div class="card-content"><div class="card-title">Love and Knowledge of God's Divine Nature</div><div class="card-preview">2026-06-17 · 爱及对上主神圣本性的知识</div></div>
+    <span class="card-arrow">→</span>
+  </a>
+  <a href="daily/2026-06-16.html" class="article-card reveal">
+    <div class="date-badge"><span class="month">Jun</span><span class="day">16</span><span class="year">2026</span></div>
+    <div class="card-content"><div class="card-title">Receiving the beauty that is promised</div><div class="card-preview">2026-06-16 · 获得所承诺的美好</div></div>
+    <span class="card-arrow">→</span>
+  </a>
+  <a href="daily/2026-06-15.html" class="article-card reveal">
+    <div class="date-badge"><span class="month">Jun</span><span class="day">15</span><span class="year">2026</span></div>
+    <div class="card-content"><div class="card-title">Still in the dreamland of reflection</div><div class="card-preview">2026-06-15 · 仍在倒影的梦境中</div></div>
+    <span class="card-arrow">→</span>
+  </a>
+  <a href="daily/2026-06-14.html" class="article-card reveal">
+    <div class="date-badge"><span class="month">Jun</span><span class="day">14</span><span class="year">2026</span></div>
+    <div class="card-content"><div class="card-title">Tending to the Self</div><div class="card-preview">2026-06-14 · 照料真我</div></div>
+    <span class="card-arrow">→</span>
+  </a>
+  <a href="daily/2026-06-13.html" class="article-card reveal">
+    <div class="date-badge"><span class="month">Jun</span><span class="day">13</span><span class="year">2026</span></div>
+    <div class="card-content"><div class="card-title">Value through testing</div><div class="card-preview">2026-06-13 · 通过实践去体会它的价值</div></div>
+    <span class="card-arrow">→</span>
+  </a>
+  <a href="daily/2026-06-12.html" class="article-card reveal">
+    <div class="date-badge"><span class="month">Jun</span><span class="day">12</span><span class="year">2026</span></div>
+    <div class="card-content"><div class="card-title">The reason for rationality</div><div class="card-preview">2026-06-12 · 理性的理由</div></div>
+    <span class="card-arrow">→</span>
+  </a>
+  <a href="daily/2026-06-11.html" class="article-card reveal">
+    <div class="date-badge"><span class="month">Jun</span><span class="day">11</span><span class="year">2026</span></div>
+    <div class="card-content"><div class="card-title">Shouldering Sahaja Yoga</div><div class="card-preview">2026-06-11 · 肩负起霎哈嘉瑜伽</div></div>
+    <span class="card-arrow">→</span>
+  </a>
+  <a href="daily/2026-06-10.html" class="article-card reveal">
+    <div class="date-badge"><span class="month">Jun</span><span class="day">10</span><span class="year">2026</span></div>
+    <div class="card-content"><div class="card-title">"Who is the other?"</div><div class="card-preview">2026-06-10 · 谁是他人？</div></div>
+    <span class="card-arrow">→</span>
+  </a>
+  <a href="daily/2026-06-09.html" class="article-card reveal">
+    <div class="date-badge"><span class="month">Jun</span><span class="day">9</span><span class="year">2026</span></div>
+    <div class="card-content"><div class="card-title">Curing with a purpose</div><div class="card-preview">2026-06-09 · 带着目的去治疗</div></div>
+    <span class="card-arrow">→</span>
+  </a>
+  <a href="daily/2026-06-08.html" class="article-card reveal">
+    <div class="date-badge"><span class="month">Jun</span><span class="day">8</span><span class="year">2026</span></div>
+    <div class="card-content"><div class="card-title">A second stone age</div><div class="card-preview">2026-06-08 · 第二个石器时代</div></div>
+    <span class="card-arrow">→</span>
+  </a>
+  <a href="daily/2026-06-07.html" class="article-card reveal">
+    <div class="date-badge"><span class="month">Jun</span><span class="day">7</span><span class="year">2026</span></div>
+    <div class="card-content"><div class="card-title">Avoiding plastic</div><div class="card-preview">2026-06-07 · 避免塑料制品</div></div>
+    <span class="card-arrow">→</span>
+  </a>
+  <a href="daily/2026-06-06.html" class="article-card reveal">
+    <div class="date-badge"><span class="month">Jun</span><span class="day">6</span><span class="year">2026</span></div>
+    <div class="card-content"><div class="card-title">Ego satisfied with own shadow</div><div class="card-preview">2026-06-06 · 自我满足于自身的阴影</div></div>
+    <span class="card-arrow">→</span>
+  </a>
+  <a href="daily/2026-06-05.html" class="article-card reveal">
+    <div class="date-badge"><span class="month">Jun</span><span class="day">5</span><span class="year">2026</span></div>
+    <div class="card-content"><div class="card-title">In the illusion of "doing"</div><div class="card-preview">2026-06-05 · 在「做」的幻象之中</div></div>
+    <span class="card-arrow">→</span>
+  </a>
+</div>
+
+<footer class="footer">
+  <a href="https://sahaja.live/" target="_blank">Sahaja Live</a>
+  <span class="sep">·</span>
+  <a href="https://github.com/wherejiahe-bot/amruta-daily-archive" target="_blank">GitHub</a>
+</footer>
+
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+  var items=document.querySelectorAll('.reveal');
+  if(!items.length)return;
+  var observer=new IntersectionObserver(function(entries){
+    entries.forEach(function(entry,i){
+      if(entry.isIntersecting){
+        setTimeout(function(){entry.target.classList.add('visible')},i*60);
+        observer.unobserve(entry.target);
+      }
+    });
+  },{threshold:0.08,rootMargin:'0px 0px -20px 0px'});
+  items.forEach(function(item){observer.observe(item)});
+});
+</script>
 </body>
 </html>
