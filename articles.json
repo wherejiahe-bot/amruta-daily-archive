@@ -324,15 +324,6 @@
     "pushDate": "2026-07-07"
   },
   {
-    "date": "2026-07-15",
-    "title": "Misuse of Freedom",
-    "titleCn": "自由的滥用",
-    "year": "2026",
-    "month": "Jul",
-    "source": "https://www.sahaja.live/1989-07-15-misuse-of-freedom/",
-    "pushDate": "2026-07-15"
-  },
-  {
     "date": "2026-07-16",
     "title": "Lakshmi qualities",
     "titleCn": "拉克希米品质",
@@ -403,5 +394,14 @@
     "month": "Jul",
     "source": "https://amruta.today/daily-talk/stages-to-becoming-ones-own-guru/",
     "pushDate": "2026-07-14"
+  },
+  {
+    "date": "2026-07-15",
+    "title": "Misuse of Freedom",
+    "titleCn": "自由的滥用",
+    "year": "2026",
+    "month": "Jul",
+    "source": "https://amruta.today/daily-talk/misuse-of-freedom/",
+    "pushDate": "2026-07-15"
   }
 ]
