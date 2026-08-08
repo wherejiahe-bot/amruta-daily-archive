@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modern movies often glamorize destructive tendencies · 2026-08-09</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;-webkit-font-smoothing:antialiased}
+body{font-family:'Noto Serif SC','Source Han Serif SC','STSongti','Songti SC',Georgia,'Times New Roman',serif;background:#f8f5f0;color:#2c2c2c;line-height:1.8;min-height:100vh}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse at 15% 8%,rgba(180,160,140,0.10) 0%,transparent 50%),radial-gradient(ellipse at 85% 92%,rgba(200,180,160,0.08) 0%,transparent 50%);pointer-events:none;z-index:-1}
+.container{max-width:780px;margin:0 auto;padding:0 24px}
+.nav-bar{display:flex;align-items:center;justify-content:space-between;padding:20px 0;font-family:-apple-system,BlinkMacSystemFont,'Noto Sans SC','PingFang SC',sans-serif}
+.nav-bar a{color:#8a7a6a;text-decoration:none;font-size:14px;transition:color .2s}
+.nav-bar a:hover{color:#5a4a3a}
+.article-header{padding:40px 0 32px;text-align:center}
+.article-header .article-date{font-family:-apple-system,BlinkMacSystemFont,'Noto Sans SC',sans-serif;font-size:14px;color:#aaa;letter-spacing:.05em;margin-bottom:6px}
+.article-header .article-source{font-family:-apple-system,BlinkMacSystemFont,'Noto Sans SC',sans-serif;font-size:13px;color:#bbb;margin-bottom:16px}
+.article-header .article-source a{color:#8a7a6a;text-decoration:none}
+.article-header .article-source a:hover{text-decoration:underline}
+.article-header h1{font-size:clamp(24px,4vw,34px);font-weight:600;color:#1a1a1a;letter-spacing:.02em;line-height:1.35}
+.article-header .chinese-title{font-size:clamp(18px,3vw,24px);color:#666;font-weight:500;margin-top:10px}
+.divider{display:flex;align-items:center;gap:16px;margin:8px 0 40px;color:#ddd;font-size:12px;font-family:-apple-system,BlinkMacSystemFont,'Noto Sans SC',sans-serif}
+.divider::before,.divider::after{content:'';flex:1;height:1px;background:linear-gradient(to right,transparent,#e0d8d0,transparent)}
+.article-content{background:rgba(255,255,255,0.6);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,0.8);border-radius:16px;padding:28px 40px;margin-bottom:32px}
+.article-content .pair{margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid rgba(0,0,0,0.05)}
+.article-content .pair:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.article-content .en-text{font-size:16px;color:#3a3a3a;line-height:1.7;margin-bottom:4px}
+.article-content .zh-text{font-size:15px;color:#777;line-height:1.75;word-break:keep-all;overflow-wrap:anywhere}
+footer{text-align:center;padding:24px 0 40px;font-family:-apple-system,BlinkMacSystemFont,'Noto Sans SC',sans-serif}
+footer a{color:#8a7a6a;text-decoration:none;font-size:14px;transition:color .2s}
+footer a:hover{color:#5a4a3a}
+footer .sep{color:#ddd;margin:0 8px}
+@media(max-width:600px){.article-content{padding:18px 16px}.article-header{padding:20px 0 16px}.article-content .en-text{font-size:15px}.article-content .zh-text{font-size:14px}}
+/* Word click */
+.en-text .w{cursor:pointer;border-radius:2px;transition:background .12s}
+.en-text .w:hover,.en-text .w:active{background:rgba(138,122,106,0.18)}
+.en-text .w.saved{color:#8a7a6a;border-bottom:1.5px dotted #8a7a6a}
+/* Bottom-sheet popup */
+#word-popup-overlay{display:none;position:fixed;inset:0;z-index:9998;background:rgba(0,0,0,0.25);backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px)}
+#word-popup{position:fixed;z-index:9999;left:0;right:0;bottom:0;background:#fff;border-radius:18px 18px 0 0;box-shadow:0 -4px 32px rgba(0,0,0,0.13);padding:0 24px 32px;font-family:-apple-system,BlinkMacSystemFont,'Noto Sans SC',sans-serif;transform:translateY(100%);transition:transform .25s cubic-bezier(.32,.72,0,1);will-change:transform;max-height:70vh;overflow-y:auto}
+#word-popup.open{transform:translateY(0)}
+#word-popup .drag-handle{width:36px;height:4px;background:#e0e0e0;border-radius:2px;margin:12px auto 16px;cursor:grab}
+#word-popup .popup-word{font-size:22px;font-weight:700;color:#1a1a1a;margin-bottom:2px}
+#word-popup .popup-phonetic-row{display:flex;align-items:center;gap:8px;margin-bottom:12px;min-height:18px}
+#word-popup .popup-phonetic{font-size:13px;color:#aaa;font-style:italic}
+#word-popup .btn-speak{background:none;border:none;cursor:pointer;padding:2px 4px;font-size:16px;color:#aaa;line-height:1;border-radius:4px;transition:color .15s,background .15s}
+#word-popup .btn-speak:hover{color:#5a7a9a;background:rgba(90,122,154,0.1)}
+#word-popup .btn-speak:active{color:#2a5a7a}
+#word-popup .popup-defs{margin-bottom:16px}
+#word-popup .popup-def{margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid #f0f0f0}
+#word-popup .popup-def:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+#word-popup .popup-pos{font-size:11px;text-transform:uppercase;letter-spacing:.07em;color:#ccc;margin-bottom:3px}
+#word-popup .popup-meaning-cn{font-size:15px;color:#333;line-height:1.6;font-weight:500}
+#word-popup .popup-meaning-en{font-size:12px;color:#bbb;line-height:1.5;margin-top:2px}
+#word-popup .popup-example{font-size:12px;color:#bbb;font-style:italic;margin-top:3px}
+#word-popup .popup-loading{font-size:14px;color:#ccc;padding:8px 0 16px;text-align:center}
+#word-popup .popup-notfound{font-size:13px;color:#bbb;padding:6px 0 16px}
+#word-popup .popup-actions{display:flex;gap:8px;position:sticky;bottom:0;background:#fff;padding-top:8px}
+#word-popup .btn-save{flex:1;padding:11px 0;background:#2c2c2c;color:#fff;border:none;border-radius:10px;font-size:14px;cursor:pointer;transition:background .2s;font-weight:500}
+#word-popup .btn-save:active{background:#111}
+#word-popup .btn-save.saved-state{background:#e8f4ee;color:#2a8a55}
+#word-popup .btn-close{padding:11px 16px;background:rgba(0,0,0,0.05);color:#888;border:none;border-radius:10px;font-size:14px;cursor:pointer}
+</style>
+</head>
+<body>
+<div id="word-popup-overlay" onclick="closePopup()"></div>
+<div id="word-popup">
+  <div class="drag-handle"></div>
+  <div class="popup-word" id="pp-word"></div>
+  <div class="popup-phonetic-row">
+    <span class="popup-phonetic" id="pp-phonetic"></span>
+    <button class="btn-speak" id="pp-speak-btn" onclick="speakWord()" title="朗读" style="display:none">🔊</button>
+  </div>
+  <div class="popup-defs" id="pp-defs"></div>
+  <div class="popup-actions">
+    <button class="btn-save" id="pp-save-btn" onclick="saveWord()">加入单词本</button>
+    <button class="btn-close" onclick="closePopup()">关闭</button>
+  </div>
+</div>
+<div class="container">
+<nav class="nav-bar">
+  <a href="../index.html">← 返回首页</a>
+  <a href="../wordbook.html" style="display:flex;align-items:center;gap:5px;font-size:13px;color:#8a7a6a;text-decoration:none" id="nav-wb-link">📖 <span id="nav-wb-count"></span></a>
+  <a href="https://sahaja.live/" target="_blank">Sahaja Live</a>
+</nav>
+<div class="article-header">
+  <div class="article-date">Aug 9, 2026</div>
+  <h1>Modern movies often glamorize destructive tendencies</h1>
+  <div class="chinese-title"></div>
+  <div class="article-source">Source: <a href="https://amruta.today/daily-talk/modern-movies-often-glamorize-destructive-tendencies/" target="_blank">amruta.today</a></div>
+</div>
+<div class="divider">◇</div>
+<div class="article-content">
+  <div class="pair">
+    <div class="en-text"><span class="w">The</span> <span class="w">second</span> <span class="w">thing</span> <span class="w">that</span> <span class="w">happens</span> <span class="w">to</span> <span class="w">you</span> <span class="w">when</span> <span class="w">you</span> <span class="w">become</span> <span class="w">the</span> <span class="w">Spirit</span> <span class="w">is</span> <span class="w">that</span> <span class="w">you</span> <span class="w">become</span> <span class="w">so</span> <span class="w">powerful</span> <span class="w">that</span> <span class="w">nothing</span> <span class="w">dominates</span> <span class="w">you</span>.
+<span class="w">Nothing</span> <span class="w">dominates</span> <span class="w">you</span>.</div>
+    <div class="zh-text">当你成为灵之后，第二件发生的事，就是你变得无比强大——如此强大，以至于没有任何事物能支配你。</div>
+  </div>
+  <div class="pair">
+    <div class="en-text"><span class="w">There</span> <span class="w">is</span> <span class="w">no</span> <span class="w">habit</span> <span class="w">that</span> <span class="w">can</span> <span class="w">dominate</span> <span class="w">you</span>.</div>
+    <div class="zh-text">没有任何习气能控制你，</div>
+  </div>
+  <div class="pair">
+    <div class="en-text"><span class="w">No</span> <span class="w">temptation</span> <span class="w">can</span> <span class="w">dominate</span> <span class="w">you</span> <span class="w">and</span> <span class="w">you</span> <span class="w">become</span> <span class="w">very</span> <span class="w">powerful</span>.</div>
+    <div class="zh-text">没有任何诱惑能左右你，你变得极其有力。</div>
+  </div>
+  <div class="pair">
+    <div class="en-text"><span class="w">But</span> <span class="w">at</span> <span class="w">the</span> <span class="w">same</span> <span class="w">time</span> <span class="w">you</span> <span class="w">are</span> <span class="w">extremely</span> <span class="w">compassionate</span>, <span class="w">you</span> <span class="w">are</span> <span class="w">extremely</span> <span class="w">kind</span>, <span class="w">so</span> <span class="w">it</span> <span class="w">is</span> a <span class="w">very</span> <span class="w">compassionate</span> <span class="w">power</span> <span class="w">that</span> <span class="w">you</span> <span class="w">develop</span> <span class="w">of</span> <span class="w">the</span> <span class="w">Spirit</span> <span class="w">and</span> <span class="w">you</span> <span class="w">become</span> a <span class="w">new</span> <span class="w">personality</span>, a <span class="w">wonderful</span> <span class="w">personality</span>.</div>
+    <div class="zh-text">但与此同时，你又充满极致的慈悲与温柔。因此，你所发展出的，是一种充满慈悲的力量，你成为一个崭新的人格，一个美妙的人格。</div>
+  </div>
+  <div class="pair">
+    <div class="en-text"><span class="w">We</span> <span class="w">know</span> <span class="w">when</span> <span class="w">we</span> <span class="w">have</span> <span class="w">Christmas</span>, <span class="w">when</span> <span class="w">we</span> <span class="w">have</span> <span class="w">Easter</span>, <span class="w">we</span> <span class="w">give</span> <span class="w">eggs</span> <span class="w">to</span> <span class="w">people</span>.</div>
+    <div class="zh-text">我们知道，在圣诞节或复活节时，我们会送彩蛋给人。</div>
+  </div>
+  <div class="pair">
+    <div class="en-text"><span class="w">This</span> <span class="w">denotes</span> <span class="w">the</span> <span class="w">Resurrection</span> <span class="w">of</span> <span class="w">Christ</span> <span class="w">as</span> <span class="w">our</span> <span class="w">own</span> <span class="w">Resurrection</span>, <span class="w">that</span> <span class="w">an</span> <span class="w">egg</span> <span class="w">has</span> <span class="w">to</span> <span class="w">become</span> <span class="w">the</span> <span class="w">bird</span>.</div>
+    <div class="zh-text">这象征着基督的复活，也象征着我们自身的复活——因为蛋终将化为飞鸟。</div>
+  </div>
+  <div class="pair">
+    <div class="en-text"><span class="w">It</span> <span class="w">is</span> <span class="w">symbolic</span> <span class="w">of</span> <span class="w">that</span>.</div>
+    <div class="zh-text">这正是一种隐喻：</div>
+  </div>
+  <div class="pair">
+    <div class="en-text"><span class="w">That</span> <span class="w">we</span> <span class="w">are</span> <span class="w">like</span> <span class="w">eggs</span> <span class="w">when</span> <span class="w">we</span> <span class="w">are</span> <span class="w">closed</span>, <span class="w">when</span> <span class="w">we</span> <span class="w">have</span> <span class="w">this</span> &<span class="w">amp</span>;#8216;I-<span class="w">ness</span>&<span class="w">amp</span>;#8217; <span class="w">within</span> <span class="w">us</span>, <span class="w">and</span> <span class="w">then</span> <span class="w">suddenly</span> <span class="w">when</span> <span class="w">this</span> <span class="w">happens</span> <span class="w">to</span> <span class="w">us</span>, <span class="w">this</span> <span class="w">egg</span> <span class="w">becomes</span> <span class="w">the</span> <span class="w">bird</span> <span class="w">and</span> <span class="w">you</span> <span class="w">become</span> <span class="w">completely</span> <span class="w">free</span> <span class="w">and</span> <span class="w">you</span> <span class="w">know</span> <span class="w">what</span> <span class="w">freedom</span> <span class="w">is</span>.</div>
+    <div class="zh-text">当我们封闭自我、内心充满“我执”时，我们就像一枚封闭的蛋；而当自觉降临于我们，这枚蛋便破壳而出，化作飞鸟，你便彻底获得自由，并真正明白何为自由。</div>
+  </div>
+  <div class="pair">
+    <div class="en-text"><span class="w">Freedom</span> <span class="w">is</span> <span class="w">not</span> a <span class="w">license</span> <span class="w">but</span> a <span class="w">freedom</span> <span class="w">which</span> <span class="w">absolutely</span> <span class="w">does</span> <span class="w">not</span> <span class="w">curb</span> <span class="w">anybody</span>’s <span class="w">freedom</span> <span class="w">nor</span> <span class="w">is</span> [<span class="w">it</span>] <span class="w">giving</span> <span class="w">you</span> <span class="w">any</span> <span class="w">bondages</span>.</div>
+    <div class="zh-text">真正的自由并非放纵，而是一种既不束缚他人、也不给自己套上枷锁的自由。</div>
+  </div>
+  <div class="pair">
+    <div class="en-text"><span class="w">It</span> <span class="w">is</span> <span class="w">something</span> <span class="w">so</span> <span class="w">great</span> <span class="w">it</span> <span class="w">should</span> <span class="w">happen</span> <span class="w">to</span> <span class="w">all</span> <span class="w">of</span> <span class="w">us</span>.</div>
+    <div class="zh-text">这是一种如此伟大的境界，愿我们人人都能亲历此境。</div>
+  </div>
+</div>
+<footer>
+  <a href="../index.html">← 返回首页</a>
+  <span class="sep">·</span>
+  <a href="../wordbook.html">📖 单词本</a>
+  <span class="sep">·</span>
+  <a href="https://sahaja.live/" target="_blank">Sahaja Live</a>
+  <span class="sep">·</span>
+  <a href="https://github.com/wherejiahe-bot/amruta-daily-archive" target="_blank">GitHub</a>
+</footer>
+</div>
+<script>
+const ARTICLE_DATE = '2026-08-09';
+const WB_KEY = 'amruta_wordbook';
+
+function getWordbook() { try { return JSON.parse(localStorage.getItem(WB_KEY) || '{}'); } catch(e) { return {}; } }
+function saveWordbook(wb) { localStorage.setItem(WB_KEY, JSON.stringify(wb)); }
+
+function refreshSavedMarks() {
+  const wb = getWordbook();
+  document.querySelectorAll('.en-text .w').forEach(el => {
+    const w = el.textContent.replace(/[^A-Za-z']/g,'').toLowerCase();
+    el.classList.toggle('saved', !!wb[w]);
+  });
+  const count = Object.keys(wb).length;
+  const navEl = document.getElementById('nav-wb-count');
+  if (navEl) navEl.textContent = count > 0 ? '单词本 ' + count : '单词本';
+}
+
+let currentWord = '';
+let currentData = null;
+let currentAudioUrl = '';
+
+const POS_CN = {
+  noun:'名词', verb:'动词', adjective:'形容词', adverb:'副词',
+  pronoun:'代词', preposition:'介词', conjunction:'连词',
+  interjection:'感叹词', article:'冠词', determiner:'限定词',
+  exclamation:'感叹词', abbreviation:'缩写'
+};
+
+function posLabel(pos) {
+  return POS_CN[pos] || pos;
+}
+
+function speakWord() {
+  // Prefer API audio URL; fallback to speechSynthesis
+  if (currentAudioUrl) {
+    const audio = new Audio(currentAudioUrl);
+    audio.play().catch(() => synthSpeak());
+  } else {
+    synthSpeak();
+  }
+}
+
+function synthSpeak() {
+  if (!window.speechSynthesis) return;
+  const utter = new SpeechSynthesisUtterance(currentWord);
+  utter.lang = 'en-US';
+  utter.rate = 0.9;
+  window.speechSynthesis.cancel();
+  window.speechSynthesis.speak(utter);
+}
+
+// 阿里云预翻译单词表（构建时生成）
+const WORD_MAP = {"------":"------","称呼 Mother 指太初之母时":"「母亲」","称呼自己":"「妈妈」","他人的生母时":"「妈妈」","\"灵\"作名词时":"「心灵的灵」","日常描述可用的词":"负面能量、热力、阻塞","---------":"------","Adi Shakti":"元母 / 太初之母","Shri Ganesha":"格涅沙 / 神圣的格涅沙","Sri Ganesha":"格涅沙 / 神圣的格涅沙","Ganesha (单独出现)":"格涅沙","Shri Vishnu":"锡吕毗湿奴","Sri Vishnu":"锡吕毗湿奴","Shri Lakshmi":"锡吕拉克什米","Gauri":"高丽","Jesus Christ":"耶稣基督","Guru":"导师","guru":"导师","Mahakali":"摩诃迦利","Agnya":"额轮","chakra":"轮穴","Chakra":"轮穴","Hamsa Chakra":"明善轮","Mooladhara Chakra":"根轮","Kundalini":"昆达里尼","Pranava":"普拉纳瓦","Sushumna Nadi":"中脉","vibration":"生命能量","vibrated water":"能量水","Void":"虚空","subtle centre":"精微中心","bandhan":"班丹","God-Realisation":"神觉醒","Self-Realisation":"自觉","Sahaja Yoga":"霎哈嘉瑜伽","Sahaja Yogi":"霎哈嘉瑜伽士","Yogis":"霎哈嘉瑜伽士","Dharma":"达摩（正法）","Sadhana":"修法","darshan":"达显","amrita":"甘露","Shraddha":"信念","Karma":"业力","karmas":"业力","Adharma":"非法","Virat":"宇宙大我","Virata":"宇宙大我","grace":"恩典","Deity":"神祇","spirit":"灵体","entity (负面)":"灵体","seeker":"求道者","realised soul":"已觉悟的灵魂","God-realised soul":"已觉悟的灵魂","Incarnation":"化身","petal":"块花瓣","three such arrows":"矢状分区 / 三段矢状分区","arrow":"矢状分区 / 三段矢状分区","pattern of waves":"波纹图案分区 / 三段波纹图案分区","three patterns of waves":"波纹图案分区 / 三段波纹图案分区","the first":"第一段 / 第二段 / 第三段","second":"第一段 / 第二段 / 第三段","third (在花瓣上下文中)":"第一段 / 第二段 / 第三段","pure":"纯净 / 纯净度","purity":"纯净 / 纯净度","innocence":"纯真","chastity":"贞洁","ego":"自我","superego":"超我","subconscious":"潜意识","supraconscious":"超意识","collective consciousness":"集体意识","All-pervading Power":"遍在的力量","Divine Power":"神圣力量","negative energies":"负面能量","heat":"热力","blockage":"阻塞","catching":"阻塞","Kavach":"女神护身颂","Kavacha":"女神护身颂","The Kavach of the Devi":"女神护身颂"};
+
+async function translateDef(text) {
+  // 先查本地预翻译表（阿里云构建时翻译）
+  const w = text.toLowerCase().replace(/[^a-z]/g, '');
+  if (WORD_MAP[w]) { return WORD_MAP[w]; }
+  // 查不到则用 MyMemory
+  try {
+    const url = 'https://api.mymemory.translated.net/get?q=' + encodeURIComponent(text) + '&langpair=en|zh';
+    const r = await fetch(url, { signal: AbortSignal.timeout(4000) });
+    if (!r.ok) return '';
+    const d = await r.json();
+    const t = d?.responseData?.translatedText || '';
+    if (!t || t === text) return '';
+    return t;
+  } catch(e) { return ''; }
+}
+
+function closePopup() {
+  const popup = document.getElementById('word-popup');
+  const overlay = document.getElementById('word-popup-overlay');
+  popup.classList.remove('open');
+  overlay.style.display = 'none';
+}
+
+function openSheet() {
+  const overlay = document.getElementById('word-popup-overlay');
+  const popup = document.getElementById('word-popup');
+  overlay.style.display = 'block';
+  // Force reflow so transition fires
+  popup.getBoundingClientRect();
+  popup.classList.add('open');
+}
+
+async function openWordPopup(el, word) {
+  currentWord = word.toLowerCase().replace(/['’]/g, "'");
+  currentData = null;
+  currentAudioUrl = '';
+  document.getElementById('pp-word').textContent = word;
+  document.getElementById('pp-phonetic').textContent = '';
+  document.getElementById('pp-speak-btn').style.display = 'none';
+  document.getElementById('pp-defs').innerHTML = '<div class="popup-loading">查询中…</div>';
+  updateSaveBtn();
+  openSheet();
+
+  try {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), 6000);
+    const res = await fetch('https://api.dictionaryapi.dev/api/v2/entries/en/' + encodeURIComponent(currentWord), { signal: controller.signal });
+    clearTimeout(timer);
+    if (!res.ok) throw new Error('not found');
+    const data = await res.json();
+    currentData = data[0];
+
+    // Phonetic text
+    const phonetics = currentData.phonetics || [];
+    const phonetic = currentData.phonetic || phonetics.find(p => p.text)?.text || '';
+    document.getElementById('pp-phonetic').textContent = phonetic;
+
+    // Audio URL from API (prefer one with text + audio)
+    const audioEntry = phonetics.find(p => p.audio && p.audio.length > 0);
+    if (audioEntry) {
+      currentAudioUrl = audioEntry.audio.startsWith('http') ? audioEntry.audio : 'https:' + audioEntry.audio;
+    }
+
+    // Show speaker button if speechSynthesis available or audio url found
+    if (currentAudioUrl || window.speechSynthesis) {
+      document.getElementById('pp-speak-btn').style.display = '';
+    }
+
+    // Build defs with async CN translation
+    const meanings = (currentData.meanings || []).slice(0, 3);
+    // Show immediately with English, then patch with Chinese
+    let defsHtml = '';
+    meanings.forEach((m, i) => {
+      const def = (m.definitions || [])[0];
+      if (!def) return;
+      defsHtml += '<div class="popup-def" id="pp-def-' + i + '">'
+        + '<div class="popup-pos">' + posLabel(m.partOfSpeech) + '</div>'
+        + '<div class="popup-meaning-cn" id="pp-cn-' + i + '">' + def.definition + '</div>'
+        + (def.example ? '<div class="popup-example">' + def.example + '</div>' : '')
+        + '</div>';
+    });
+    document.getElementById('pp-defs').innerHTML = defsHtml || '<div class="popup-notfound">无释义</div>';
+
+    // Async: translate each definition to Chinese
+    meanings.forEach((m, i) => {
+      const def = (m.definitions || [])[0];
+      if (!def) return;
+      translateDef(def.definition).then(cn => {
+        const cnEl = document.getElementById('pp-cn-' + i);
+        if (!cnEl) return;
+        if (cn) {
+          cnEl.textContent = cn;
+          // Add English original as small text below
+          const enSmall = document.createElement('div');
+          enSmall.className = 'popup-meaning-en';
+          enSmall.textContent = def.definition;
+          cnEl.after(enSmall);
+        }
+      });
+    });
+
+  } catch(e) {
+    document.getElementById('pp-phonetic').textContent = '';
+    // Still show speaker via speechSynthesis even on API failure
+    if (window.speechSynthesis) {
+      document.getElementById('pp-speak-btn').style.display = '';
+    }
+    document.getElementById('pp-defs').innerHTML = '<div class="popup-notfound">未找到释义，可直接加入单词本</div>';
+  }
+}
+
+function updateSaveBtn() {
+  const wb = getWordbook();
+  const btn = document.getElementById('pp-save-btn');
+  if (wb[currentWord]) {
+    btn.textContent = '✓ 已在单词本';
+    btn.classList.add('saved-state');
+  } else {
+    btn.textContent = '加入单词本';
+    btn.classList.remove('saved-state');
+  }
+}
+
+function saveWord() {
+  const wb = getWordbook();
+  if (wb[currentWord]) {
+    delete wb[currentWord];
+    saveWordbook(wb);
+    updateSaveBtn();
+    refreshSavedMarks();
+    return;
+  }
+  const phonetic = document.getElementById('pp-phonetic').textContent.trim();
+  let defs = [];
+  if (currentData && currentData.meanings) {
+    currentData.meanings.slice(0,3).forEach((m, i) => {
+      const d = (m.definitions||[])[0];
+      if (!d) return;
+      // Try to grab translated CN from DOM if available
+      const cnEl = document.getElementById('pp-cn-' + i);
+      const cnText = cnEl ? cnEl.textContent.trim() : '';
+      defs.push({ pos: m.partOfSpeech, posCn: posLabel(m.partOfSpeech), def: d.definition, defCn: cnText !== d.definition ? cnText : '', example: d.example||'' });
+    });
+  }
+  wb[currentWord] = { word: currentWord, phonetic, defs, source: ARTICLE_DATE, savedAt: Date.now() };
+  saveWordbook(wb);
+  updateSaveBtn();
+  refreshSavedMarks();
+}
+
+// Event delegation — handles all .w spans, works regardless of render order
+document.addEventListener('click', e => {
+  const t = e.target;
+  if (t.classList.contains('w') && t.closest('.en-text')) {
+    e.stopPropagation();
+    const word = t.textContent.replace(/[^A-Za-z']/g, '');
+    if (word.length >= 2) openWordPopup(t, word);
+  }
+});
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closePopup(); });
+refreshSavedMarks();
+// Hash-based word highlight: #word-{word} scrolls to first occurrence and highlights the pair
+(function(){
+  const hash = location.hash;
+  if (!hash || !hash.startsWith('#word-')) return;
+  const target = decodeURIComponent(hash.slice(6)).toLowerCase();
+  const spans = document.querySelectorAll('.en-text .w');
+  let found = null;
+  for (const s of spans) {
+    if (s.textContent.replace(/[^A-Za-z']/g,'').toLowerCase() === target) { found = s; break; }
+  }
+  if (!found) return;
+  const pair = found.closest('.pair');
+  if (!pair) return;
+  pair.id = 'highlight-pair';
+  pair.style.cssText += ';border-radius:8px;transition:background .4s;';
+  setTimeout(() => {
+    pair.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    pair.style.background = 'rgba(138,122,106,0.13)';
+    for (const s of pair.querySelectorAll('.w')) {
+      if (s.textContent.replace(/[^A-Za-z']/g,'').toLowerCase() === target) {
+        s.style.cssText += ';background:rgba(138,122,106,0.28);border-radius:3px;padding:0 1px;';
+      }
+    }
+    setTimeout(() => { pair.style.background = ''; }, 2200);
+  }, 350);
+})();
+</script>
+</body>
+</html>
